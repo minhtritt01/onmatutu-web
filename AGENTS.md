@@ -72,13 +72,10 @@ story, and full technical SEO (sitemap, JSON-LD, OG tags).
 
 ## Pending / must do
 
-### 🔴 Critical — do before expecting Google traffic
-1. **Submit to Google Search Console**
-   - Go to https://search.google.com/search-console
-   - Add property `https://onmatutu.com`
-   - Choose HTML tag verification → get the `content="..."` value
-   - Add it to `layout.tsx` metadata: `verification: { google: "YOUR_CODE" }`
-   - Deploy, then verify and submit `https://onmatutu.com/sitemap.xml`
+### ✅ Done
+1. **Google Search Console** — site verified, sitemap `https://onmatutu.com/sitemap.xml`
+   submitted on 2026-06-13. Google will index pages within a few days.
+   Monitor: Search Console → Coverage tab.
 
 ### 🟡 Nice to have — do soon
 2. **Real social URLs** — `src/lib/site-config.ts` has placeholder handles
