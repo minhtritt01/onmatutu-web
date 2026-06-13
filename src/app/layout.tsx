@@ -46,12 +46,12 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="vi" className={`h-full antialiased ${poppins.variable} ${geistMono.variable}`}>
-      <head>
-        {/* Runs before paint to apply saved theme and avoid flash */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})()` }} />
-      </head>
+    // suppressHydrationWarning: the anti-FOUC script may add "dark" to <html>
+    // before React hydrates, causing a class mismatch we intentionally allow.
+    <html lang="vi" className={`h-full antialiased ${poppins.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
+        {/* Runs synchronously before paint — prevents dark-mode flash on reload */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})()` }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
