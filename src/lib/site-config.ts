@@ -3,7 +3,7 @@ export const siteConfig = {
   hashtag: "#OnMaTuTu",
   description:
     "Những câu chuyện hoạt hình nhỏ về động lực, mindset và sự tử tế với chính mình — ổn mà, từ từ rồi cũng ổn.",
-  url: "https://onmatutu.com", // TODO: replace with real domain
+  url: "https://onmatutu.com",
   ogImage: "/opengraph-image",
   socials: {
     tiktok: "https://www.tiktok.com/@onmatutu",
