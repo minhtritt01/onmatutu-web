@@ -1,15 +1,25 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Class-based dark mode — toggle .dark on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #2b2b2b;
 
   /* Brand palette - 01-brand-identity.md */
-  --color-brand-yellow: #f4c95d; /* accent */
-  --color-brand-navy: #a8c5d6; /* secondary */
-  --color-brand-white: #ffffff; /* background */
-  --color-brand-gray: #d9d9d9; /* border/shadow */
+  --color-brand-yellow: #f4c95d;
+  --color-brand-navy: #a8c5d6;
+  --color-brand-white: #ffffff;
+  --color-brand-gray: #d9d9d9;
+}
+
+.dark {
+  --background: #0f0f11;
+  --foreground: #f0ede8;
+  --color-brand-gray: #2a2a2e;
+  --color-brand-white: #0f0f11;
 }
 
 @theme inline {

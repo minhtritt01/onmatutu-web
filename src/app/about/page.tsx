@@ -23,7 +23,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="prose prose-neutral max-w-none">
+      <div className="prose prose-neutral max-w-none dark:prose-invert">
         <p>
           <strong>{siteConfig.name}</strong> ({siteConfig.hashtag}) là một
           kênh hoạt hình ngắn dành cho những ai đang đi làm, đi học, và đôi khi

@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-brand-gray bg-brand-white">
+    <footer className="mt-16 border-t border-brand-gray bg-background">
       <div className="mx-auto max-w-4xl px-4 py-8 text-sm text-foreground/60">
         <p className="mb-3">
           © {new Date().getFullYear()} {siteConfig.name} — {siteConfig.hashtag}

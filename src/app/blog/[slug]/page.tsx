@@ -98,7 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       )}
 
-      <div className="prose prose-neutral mt-8 max-w-none">
+      <div className="prose prose-neutral mt-8 max-w-none dark:prose-invert">
         <MDXRemote source={post.content} />
       </div>
 
