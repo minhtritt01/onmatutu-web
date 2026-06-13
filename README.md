@@ -11,18 +11,18 @@ Short animated stories about motivation, mindset, and being kind to yourself —
 
 **Ổn Mà, Từ Từ** creates short animated videos for people who are working, studying, and sometimes feel like everything is a bit too much.
 
-The main character is not a motivational coach — they're more like a friend sitting next to you, saying *"it's okay, take it slow, things will work out."*
+The main character is not a motivational coach — they're more like a friend sitting next to you, saying _"it's okay, take it slow, things will work out."_
 
 Each video takes a small everyday situation — failure, self-comparison, exhaustion, burnout — and offers a positive perspective: no lecturing, no empty quotes, just warmth and honesty.
 
 ### Channels
 
-| Platform | Link |
-|----------|------|
-| TikTok | [tiktok.com/@onmatutu](https://www.tiktok.com/@onmatutu) |
-| YouTube | [youtube.com/@onmatutu](https://www.youtube.com/@onmatutu) |
-| Instagram | [instagram.com/onmatutu](https://www.instagram.com/onmatutu) |
-| Facebook | [facebook.com/onmatutu](https://www.facebook.com/onmatutu) |
+| Platform  | Link                                                               |
+| --------- | ------------------------------------------------------------------ |
+| TikTok    | [tiktok.com/@onmatutu](https://www.tiktok.com/@onmatutu)           |
+| YouTube   | [youtube.com/@onmatutu](https://www.youtube.com/@onmatutu)         |
+| Instagram | [instagram.com/onmatutu](https://www.instagram.com/onmatutu)       |
+| Facebook  | [facebook.com/onmatutu](https://www.facebook.com/onmatutuofficial) |
 
 ---
 
@@ -33,6 +33,7 @@ Built as an SEO home base. Each published video gets a companion blog post that 
 **Tech stack:** Next.js 16 (App Router) · TypeScript · Tailwind v4 · MDX · Vercel
 
 ### Features
+
 - Blog posts per episode (`/blog`)
 - Mini-series pages for Pillar D content (`/series`)
 - Daily affirmations (`/affirmations`)
@@ -62,10 +63,11 @@ description: "..."
 date: "2026-06-13"
 pillar: "B"
 episodeId: "EP001"
-videoUrl: ""        # optional TikTok/YouTube embed URL
+videoUrl: "" # optional TikTok/YouTube embed URL
+series: "" # optional TikTok/YouTube embed URL
 series: ""          # optional, links to content/series/<slug>.mdx
 ---
 ```
 
-2. Write 300–600 words. Tone: warm, casual, no lecturing.
-3. `npm run build` → `vercel --prod`
+1. Write 300–600 words. Tone: warm, casual, no lecturing.
+2. `npm run build` → `vercel --prod`

@@ -9,7 +9,7 @@ export const siteConfig = {
     tiktok: "https://www.tiktok.com/@onmatutu",
     youtube: "https://www.youtube.com/@onmatutu",
     instagram: "https://www.instagram.com/onmatutu",
-    facebook: "https://www.facebook.com/onmatutu",
+    facebook: "https://www.facebook.com/onmatutuofficial",
   },
   pillars: {
     A: "Câu chuyện ngụ ngôn ngắn",
