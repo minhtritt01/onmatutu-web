@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/lib/site-config";
 
-const GA_ID = "G-1PCZPEX30C";
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID!;
 
 import { Poppins, Geist_Mono } from "next/font/google";
 const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin", "latin-ext"], weight: ["400","500","600","700"] });
