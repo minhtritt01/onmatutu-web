@@ -47,5 +47,5 @@ Google Search Console: verified + sitemap submitted 2026-06-13.
 
 ## TODO
 - **Social URLs** — `site-config.ts` has placeholder `@onmatutu` handles; update when confirmed
-- **Analytics** — nothing wired yet; add GA4/Plausible to `layout.tsx` when ready
+- **Analytics** — GA4 `G-1PCZPEX30C` wired in `layout.tsx` via `next/script` ✅
 - **Per-post OG image** — add `opengraph-image.tsx` in `app/blog/[slug]/` for richer sharing
