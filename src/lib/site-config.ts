@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Những câu chuyện hoạt hình nhỏ về động lực, mindset và sự tử tế với chính mình — ổn mà, từ từ rồi cũng ổn.",
   url: "https://onmatutu.com", // TODO: replace with real domain
-  ogImage: "/og-image.png",
+  ogImage: "/opengraph-image",
   socials: {
     tiktok: "https://www.tiktok.com/@onmatutu",
     youtube: "https://www.youtube.com/@onmatutu",
