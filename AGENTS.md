@@ -18,61 +18,109 @@ Site purpose: SEO "home base" — blog posts that expand each published video's
 script into a short article, mini-series pages, affirmations roundup, brand
 story, and full technical SEO (sitemap, JSON-LD, OG tags).
 
-## Current state (already scaffolded — do not rebuild from scratch)
-- Next.js 16 App Router + TypeScript + Tailwind v4, fully static (SSG)
-- `npm run build` passes successfully
-- Brand colors wired as Tailwind theme tokens in `src/app/globals.css`:
-  `brand-yellow` #F4C95D, `brand-navy` #A8C5D6, `brand-white` #FFFFFF,
-  `brand-gray` #D9D9D9
-- `@tailwindcss/typography` installed for MDX prose styling
-- Content system: MDX files in `content/blog/*.mdx` and
-  `content/series/*.mdx`, loaded via `src/lib/content.ts` (gray-matter)
-- Pages built: `/`, `/blog`, `/blog/[slug]`, `/series/[slug]`, `/about`,
-  `/affirmations`, plus `sitemap.ts` and `robots.ts`
-- One example post: `content/blog/ep001-cham-hon-moi-nguoi.mdx`
-- Character reference image copied to `public/character/phoenix-peaceful.jpg`
-  and used on the homepage hero + about page
+---
 
-## Known TODO / things to fix
-1. **Font**: `src/app/layout.tsx` currently uses a system font fallback
-   because the build sandbox couldn't reach fonts.googleapis.com. The brand
-   font is **Poppins** (per `01-brand-identity.md`, supports Vietnamese
-   diacritics, used in CapCut). Re-enable the commented-out
-   `next/font/google` Poppins + Geist Mono setup in `layout.tsx` and add the
-   `.variable` classes back to the `<html>` element — this should just work
-   in a normal dev environment.
-2. **`siteConfig`** in `src/lib/site-config.ts` has placeholder values:
-   - `url` is `https://onmatutu.com` — update to the real purchased domain
-   - `socials` (tiktok/youtube/instagram/facebook) are placeholder handles —
-     update to real channel URLs
-   - `ogImage` points to `/og-image.png` which doesn't exist yet — create a
-     1200x630 OG image (can reuse character art) and add to `public/`
-3. **Default Next.js SVG assets** (`public/{file,globe,next,vercel,window}.svg`)
-   are leftover from `create-next-app` and unused — safe to delete.
+## Current state
+
+### Stack
+- Next.js 16 App Router + TypeScript + Tailwind v4, fully static (SSG)
+- Deployed on **Vercel** (project: `onmatutu-web`, account: `phantritts-projects`)
+- Live at **https://onmatutu.com** (DNS via PaVietnam, A record → 76.76.21.21)
+- `npm run build` passes; deploy with `vercel --prod`
+
+### Brand colors (Tailwind tokens in `src/app/globals.css`)
+- `brand-yellow` #F4C95D — accent, CTA buttons, borders
+- `brand-navy` #A8C5D6 — secondary, pillar labels
+- `brand-white` #FFFFFF (light) / #0F0F11 (dark) — switches via CSS var
+- `brand-gray` #D9D9D9 (light) / #2A2A2E (dark) — borders
+
+### Dark/light mode
+- Class-based: `.dark` on `<html>` element
+- Toggle button (`src/components/ThemeToggle.tsx`) — persists to localStorage, respects `prefers-color-scheme`
+- Anti-FOUC inline script in `<body>` (first child), `suppressHydrationWarning` on `<html>`
+- All color tokens switch via CSS variables; prose uses `dark:prose-invert`
+- Mobile: hamburger menu (`src/components/MobileNav.tsx`), desktop nav hidden on `sm:` breakpoint
+
+### Pages
+| Route | File |
+|-------|------|
+| `/` | `src/app/page.tsx` |
+| `/blog` | `src/app/blog/page.tsx` |
+| `/blog/[slug]` | `src/app/blog/[slug]/page.tsx` |
+| `/series/[slug]` | `src/app/series/[slug]/page.tsx` |
+| `/about` | `src/app/about/page.tsx` |
+| `/affirmations` | `src/app/affirmations/page.tsx` |
+| 404 | `src/app/not-found.tsx` |
+| Sitemap | `src/app/sitemap.ts` |
+| Robots | `src/app/robots.ts` |
+| OG image | `src/app/opengraph-image.tsx` |
+
+### SEO already wired
+- Sitemap at `/sitemap.xml` — all pages + blog posts, with `priority` and `changeFrequency`
+- `robots.txt` — allows all, points to sitemap
+- JSON-LD Organization schema on every page (layout), Article/VideoObject on blog posts
+- OG image generated at build time (`opengraph-image.tsx`) — 1200×630, dark bg, character art
+- `keywords`, `authors`, `canonical`, `robots: index/follow` in root metadata
+- All blog post `lastModified` uses actual frontmatter `date`
+
+### Content system
+- MDX files in `content/blog/*.mdx` and `content/series/*.mdx`
+- Parsed via `src/lib/content.ts` (gray-matter)
+- Fonts: Poppins (latin + latin-ext) + Geist Mono via `next/font/google`
+
+---
+
+## Pending / must do
+
+### 🔴 Critical — do before expecting Google traffic
+1. **Submit to Google Search Console**
+   - Go to https://search.google.com/search-console
+   - Add property `https://onmatutu.com`
+   - Choose HTML tag verification → get the `content="..."` value
+   - Add it to `layout.tsx` metadata: `verification: { google: "YOUR_CODE" }`
+   - Deploy, then verify and submit `https://onmatutu.com/sitemap.xml`
+
+### 🟡 Nice to have — do soon
+2. **Real social URLs** — `src/lib/site-config.ts` has placeholder handles
+   (`@onmatutu`) — update once channels are confirmed
+3. **More blog posts** — only 1 post exists (`ep001`). Each new published video
+   should have a corresponding MDX post (see Content workflow below)
+
+### 🟢 Optional / future
+4. **Analytics** — no GA4 or Plausible wired yet; add to `layout.tsx` when ready
+5. **OG image per blog post** — currently all pages share the site-level OG image;
+   add `opengraph-image.tsx` inside `app/blog/[slug]/` to generate per-post images
+
+---
 
 ## Content workflow for new posts
 When a video reaches "Published" status in `06-episode-backlog.md`:
-1. Create `content/blog/<slug>.mdx` with frontmatter (see README for schema:
-   title, description, date, pillar A-D, episodeId, optional videoUrl/series/
-   tags/coverImage).
-2. Body: 300-600 words, Hook-Story-Lesson structure expanded into prose,
-   tone = gần gũi/ấm áp/không giáo điều (per brand identity doc), avoid
-   cliché quotes — ground everything in the character's specific situation.
-3. If part of a Pillar D mini-series, also ensure
-   `content/series/<series-slug>.mdx` exists and set `series:
-   "<series-slug>"` in the post frontmatter.
+1. Create `content/blog/<slug>.mdx` with frontmatter:
+   ```
+   title, description, date (ISO), pillar (A/B/C/D), episodeId,
+   optional: videoUrl, series, tags, coverImage
+   ```
+2. Body: 300-600 words, Hook-Story-Lesson structure expanded into prose.
+   Tone = gần gũi/ấm áp/không giáo điều. Avoid cliché quotes — ground
+   everything in the character's specific situation.
+3. If part of a Pillar D mini-series, ensure `content/series/<series-slug>.mdx`
+   exists and set `series: "<series-slug>"` in the post frontmatter.
 4. Run `npm run build` to verify it compiles and appears in sitemap.
+5. Run `vercel --prod` to deploy.
 
-## Conventions to follow
+---
+
+## Conventions
 - Keep pages as Server Components (no `"use client"`) unless interactivity
   is required — site should remain fully static for SEO.
-- All new pages need `generateMetadata()` (title, description, canonical via
-  `siteConfig.url`).
-- Use brand color tokens (`brand-yellow`, `brand-navy`, `brand-white`,
-  `brand-gray`) rather than arbitrary hex values.
-- Structured data: follow the existing pattern of inline `<script
-  type="application/ld+json">` with `dangerouslySetInnerHTML` (see
-  `layout.tsx` for Organization, `blog/[slug]/page.tsx` for
-  Article/VideoObject).
-- All UI copy is in Vietnamese, matching the warm/casual tone of the brand.
-
+- All new pages need `generateMetadata()` with title, description, and
+  `alternates: { canonical: \`${siteConfig.url}/path\` }`.
+- Use brand color tokens (`brand-yellow`, `brand-navy`, `brand-background`,
+  `brand-gray`) — never arbitrary hex values.
+- Dark mode: use CSS variable tokens (they switch automatically). Only add
+  explicit `dark:` classes for prose (`dark:prose-invert`) or one-off overrides.
+- Structured data: inline `<script type="application/ld+json">` with
+  `dangerouslySetInnerHTML` — see `layout.tsx` (Organization) and
+  `blog/[slug]/page.tsx` (Article/VideoObject) for the pattern.
+- All UI copy in Vietnamese, warm/casual tone matching brand identity.
+- After any change: `npm run build` must pass before deploying.
