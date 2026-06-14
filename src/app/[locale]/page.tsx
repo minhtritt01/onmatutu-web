@@ -22,6 +22,7 @@ export default async function Home({ params }: Props) {
             src="/character/phoenix-peaceful.jpg"
             alt={t("heroAlt")}
             fill
+            sizes="160px"
             className="object-cover"
             priority
           />

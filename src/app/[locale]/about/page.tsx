@@ -39,6 +39,7 @@ export default async function AboutPage({ params }: Props) {
             src="/character/phoenix-peaceful.jpg"
             alt={t("charAlt")}
             fill
+            sizes="192px"
             className="object-cover"
           />
         </div>
