@@ -1,0 +1,79 @@
+{
+  "site": {
+    "name": "Ổn Mà, Từ Từ",
+    "hashtag": "#OnMaTuTu",
+    "description": "Những câu chuyện hoạt hình nhỏ về động lực, mindset và sự tử tế với chính mình — ổn mà, từ từ rồi cũng ổn.",
+    "tagline": "Câu chuyện động lực mỗi ngày"
+  },
+  "nav": {
+    "blog": "Câu chuyện",
+    "affirmations": "Affirmation",
+    "about": "Giới thiệu",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu"
+  },
+  "home": {
+    "heroAlt": "Nhân vật Ổn Mà, Từ Từ - mỉm cười nhẹ nhàng",
+    "readStories": "Đọc câu chuyện",
+    "followTiktok": "Theo dõi TikTok",
+    "latestStories": "Câu chuyện mới nhất",
+    "noPosts": "Chưa có bài viết nào. Thêm file .mdx vào content/blog để bắt đầu.",
+    "pillarLabel": "Pillar {pillar}"
+  },
+  "blog": {
+    "title": "Câu chuyện",
+    "description": "Tất cả câu chuyện và bài học từ {siteName}.",
+    "noPosts": "Chưa có bài viết nào.",
+    "pillarLabel": "Pillar {pillar}",
+    "relatedStories": "Câu chuyện cùng pillar",
+    "seriesLabel": "Mini-series · Pillar D",
+    "seriesEpisodes": "Các phần trong series"
+  },
+  "affirmations": {
+    "title": "Affirmation mỗi ngày",
+    "description": "Tổng hợp những lời nhắc nhẹ nhàng buổi sáng từ {siteName}.",
+    "intro": "Những lời nhắc nhẹ nhàng, không sáo rỗng — gắn với một tình huống cụ thể, để bạn bắt đầu ngày mới dễ chịu hơn.",
+    "noPosts": "Chưa có affirmation nào. Thêm bài viết Pillar C trong content/blog."
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "description": "Câu chuyện về {siteName} và nhân vật đồng hành.",
+    "heading": "Về {siteName}",
+    "charAlt": "Nhân vật đồng hành của Ổn Mà, Từ Từ",
+    "p1": "là một kênh hoạt hình ngắn dành cho những ai đang đi làm, đi học, và đôi khi cảm thấy mọi thứ hơi quá nhiều.",
+    "p2": "Nhân vật chính của kênh không phải một \"huấn luyện viên động lực\" — mà giống một người bạn ngồi cạnh bạn, nói: \"không sao đâu, từ từ rồi cũng ổn\".",
+    "p3": "Mỗi video là một tình huống nhỏ trong đời thường — thất bại, so sánh bản thân, mệt mỏi, burnout — và một góc nhìn tích cực, không giáo điều, không quote sáo rỗng.",
+    "p4": "Theo dõi kênh trên TikTok, YouTube Shorts, Facebook & Instagram Reels để không bỏ lỡ câu chuyện mới mỗi tuần."
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "description": "Trang bạn tìm kiếm không tồn tại.",
+    "heading": "Trang không tìm thấy",
+    "body": "Ổn mà — trang này chỉ là đi lạc thôi, không phải bạn.",
+    "backHome": "Về trang chủ"
+  },
+  "footer": {
+    "copyright": "© {year} {siteName} — {hashtag}"
+  },
+  "theme": {
+    "switchToLight": "Chuyển sang chế độ sáng",
+    "switchToDark": "Chuyển sang chế độ tối"
+  },
+  "langSwitcher": {
+    "label": "Ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "pillars": {
+    "A": "Câu chuyện ngụ ngôn ngắn",
+    "B": "Nhân vật phản ứng tình huống",
+    "C": "Affirmation / Lời nhắc buổi sáng",
+    "D": "Mini-series theo chủ đề"
+  },
+  "og": {
+    "subtitle": "Câu chuyện hoạt hình về động lực, mindset và sự tử tế với chính mình."
+  },
+  "meta": {
+    "keywords": ["động lực", "hoạt hình ngắn", "mindset", "tự tử tế với bản thân", "ổn mà từ từ", "OnMaTuTu", "TikTok hoạt hình", "câu chuyện ngắn", "affirmation tiếng Việt"]
+  }
+}

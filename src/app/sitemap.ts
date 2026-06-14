@@ -1,48 +1,59 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts, getAllSeries } from "@/lib/content";
+import { getAllPosts, getAllSeries, getAllPostSlugs, getAllSeriesSlugs } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
+import { routing } from "@/i18n/routing";
+
+const locales = routing.locales;
+
+function altLanguages(path: string) {
+  return Object.fromEntries(locales.map((l) => [l, `${siteConfig.url}/${l}${path}`]));
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: siteConfig.url,
+  const staticPaths = ["", "/blog", "/affirmations", "/about"];
+
+  const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((p) =>
+    locales.map((locale) => ({
+      url: `${siteConfig.url}/${locale}${p}`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${siteConfig.url}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/affirmations`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteConfig.url}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
+      changeFrequency: "weekly" as const,
+      priority: p === "" ? 1.0 : p === "/blog" ? 0.9 : 0.7,
+      alternates: { languages: altLanguages(p) },
+    }))
+  );
+
+  const allSlugs = [
+    ...new Set([...getAllPostSlugs("vi"), ...getAllPostSlugs("en")]),
   ];
 
-  const blogRoutes: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${siteConfig.url}/blog/${post.slug}`,
-    lastModified: new Date(post.frontmatter.date),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const blogRoutes: MetadataRoute.Sitemap = allSlugs.flatMap((slug) =>
+    locales.map((locale) => {
+      const post =
+        getAllPosts(locale).find((p) => p.slug === slug) ??
+        getAllPosts("vi").find((p) => p.slug === slug);
+      return {
+        url: `${siteConfig.url}/${locale}/blog/${slug}`,
+        lastModified: post ? new Date(post.frontmatter.date) : new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+        alternates: { languages: altLanguages(`/blog/${slug}`) },
+      };
+    })
+  );
 
-  const seriesRoutes: MetadataRoute.Sitemap = getAllSeries().map((series) => ({
-    url: `${siteConfig.url}/series/${series.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const allSeriesSlugs = [
+    ...new Set([...getAllSeriesSlugs("vi"), ...getAllSeriesSlugs("en")]),
+  ];
+
+  const seriesRoutes: MetadataRoute.Sitemap = allSeriesSlugs.flatMap((slug) =>
+    locales.map((locale) => ({
+      url: `${siteConfig.url}/${locale}/series/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+      alternates: { languages: altLanguages(`/series/${slug}`) },
+    }))
+  );
 
   return [...staticRoutes, ...blogRoutes, ...seriesRoutes];
 }

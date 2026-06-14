@@ -1,0 +1,79 @@
+{
+  "site": {
+    "name": "Ổn Mà, Từ Từ",
+    "hashtag": "#OnMaTuTu",
+    "description": "Short motivational animation stories about mindset, growth, and being kind to yourself — it's okay, take it slow.",
+    "tagline": "Daily motivational stories"
+  },
+  "nav": {
+    "blog": "Stories",
+    "affirmations": "Affirmations",
+    "about": "About",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "heroAlt": "Ổn Mà, Từ Từ character — gentle smile",
+    "readStories": "Read stories",
+    "followTiktok": "Follow on TikTok",
+    "latestStories": "Latest stories",
+    "noPosts": "No posts yet. Add .mdx files to content/blog to get started.",
+    "pillarLabel": "Pillar {pillar}"
+  },
+  "blog": {
+    "title": "Stories",
+    "description": "All stories and lessons from {siteName}.",
+    "noPosts": "No posts yet.",
+    "pillarLabel": "Pillar {pillar}",
+    "relatedStories": "More from this pillar",
+    "seriesLabel": "Mini-series · Pillar D",
+    "seriesEpisodes": "Episodes in this series"
+  },
+  "affirmations": {
+    "title": "Daily Affirmations",
+    "description": "A collection of gentle morning reminders from {siteName}.",
+    "intro": "Gentle, grounded reminders — tied to real situations, to help you start your day feeling a little lighter.",
+    "noPosts": "No affirmations yet. Add Pillar C posts to content/blog."
+  },
+  "about": {
+    "title": "About",
+    "description": "The story behind {siteName} and its companion character.",
+    "heading": "About {siteName}",
+    "charAlt": "The companion character of Ổn Mà, Từ Từ",
+    "p1": "is a short animation channel for people who are working, studying, and sometimes feel like everything is a bit too much.",
+    "p2": "The main character isn't a \"motivational coach\" — more like a friend sitting next to you, saying: \"it's okay, take it slow, you'll be fine\".",
+    "p3": "Each video covers a small, everyday situation — failure, self-comparison, exhaustion, burnout — with a positive perspective that isn't preachy or clichéd.",
+    "p4": "Follow the channel on TikTok, YouTube Shorts, Facebook & Instagram Reels so you don't miss a new story each week."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist.",
+    "heading": "Page not found",
+    "body": "It's okay — this page just got a little lost, not you.",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "copyright": "© {year} {siteName} — {hashtag}"
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "langSwitcher": {
+    "label": "Language",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "pillars": {
+    "A": "Short fable stories",
+    "B": "Character reactions to situations",
+    "C": "Affirmations / Morning reminders",
+    "D": "Mini-series by theme"
+  },
+  "og": {
+    "subtitle": "Animated stories about motivation, mindset, and being kind to yourself."
+  },
+  "meta": {
+    "keywords": ["motivation", "short animation", "mindset", "self-compassion", "onmatutu", "TikTok animation", "short stories", "affirmations", "Vietnamese animation"]
+  }
+}

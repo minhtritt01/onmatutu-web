@@ -2,13 +2,19 @@ import { ImageResponse } from "next/og";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { siteConfig } from "@/lib/site-config";
+import { getTranslations } from "next-intl/server";
 
 export const runtime = "nodejs";
 export const alt = siteConfig.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function Image({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "og" });
+
   const imgData = readFileSync(
     join(process.cwd(), "public/character/phoenix-peaceful.jpg")
   );
@@ -29,7 +35,6 @@ export default function Image() {
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        {/* Text column */}
         <div
           style={{
             display: "flex",
@@ -68,11 +73,10 @@ export default function Image() {
               lineHeight: 1.55,
             }}
           >
-            Câu chuyện hoạt hình về động lực, mindset và sự tử tế với chính mình.
+            {t("subtitle")}
           </span>
         </div>
 
-        {/* Character image */}
         <div
           style={{
             display: "flex",
@@ -84,12 +88,8 @@ export default function Image() {
             flexShrink: 0,
           }}
         >
-          <img
-            src={src}
-            width={260}
-            height={260}
-            style={{ objectFit: "cover" }}
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} width={260} height={260} style={{ objectFit: "cover" }} alt="" />
         </div>
       </div>
     ),

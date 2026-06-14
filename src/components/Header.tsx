@@ -1,15 +1,19 @@
-import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { MobileNav } from "@/components/MobileNav";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
-const navItems = [
-  { href: "/blog", label: "Câu chuyện" },
-  { href: "/affirmations", label: "Affirmation" },
-  { href: "/about", label: "Giới thiệu" },
-];
+export async function Header() {
+  const t = await getTranslations("nav");
 
-export function Header() {
+  const navItems = [
+    { href: "/blog" as const, label: t("blog") },
+    { href: "/affirmations" as const, label: t("affirmations") },
+    { href: "/about" as const, label: t("about") },
+  ];
+
   return (
     <header className="relative border-b border-brand-gray bg-background">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
@@ -30,9 +34,10 @@ export function Header() {
               </Link>
             ))}
           </nav>
+          <LanguageSwitcher />
           <ThemeToggle />
           {/* Mobile hamburger */}
-          <MobileNav />
+          <MobileNav navItems={navItems} />
         </div>
       </div>
     </header>

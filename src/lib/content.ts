@@ -2,8 +2,13 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const BLOG_DIR = path.join(process.cwd(), "content/blog");
-const SERIES_DIR = path.join(process.cwd(), "content/series");
+function blogDir(locale: string) {
+  return path.join(process.cwd(), "content/blog", locale);
+}
+
+function seriesDir(locale: string) {
+  return path.join(process.cwd(), "content/series", locale);
+}
 
 export type PostFrontmatter = {
   title: string;
@@ -36,36 +41,44 @@ function readMdxDir(dir: string): Post[] {
     });
 }
 
-export function getAllPosts(): Post[] {
-  return readMdxDir(BLOG_DIR).sort(
+export function getAllPosts(locale = "vi"): Post[] {
+  const dir = blogDir(locale);
+  const posts = readMdxDir(dir);
+  // Fallback: if locale dir is empty, try vi
+  const source = posts.length > 0 ? posts : locale !== "vi" ? readMdxDir(blogDir("vi")) : [];
+  return source.sort(
     (a, b) =>
       new Date(b.frontmatter.date).getTime() -
       new Date(a.frontmatter.date).getTime()
   );
 }
 
-export function getPostBySlug(slug: string): Post | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
+export function getPostBySlug(slug: string, locale = "vi"): Post | null {
+  const filePath = path.join(blogDir(locale), `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) {
+    if (locale !== "vi") return getPostBySlug(slug, "vi");
+    return null;
+  }
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   return { slug, frontmatter: data as PostFrontmatter, content };
 }
 
-export function getAllPostSlugs(): string[] {
-  if (!fs.existsSync(BLOG_DIR)) return [];
+export function getAllPostSlugs(locale = "vi"): string[] {
+  const dir = blogDir(locale);
+  if (!fs.existsSync(dir)) return [];
   return fs
-    .readdirSync(BLOG_DIR)
+    .readdirSync(dir)
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx$/, ""));
 }
 
-export function getPostsByPillar(pillar: PostFrontmatter["pillar"]): Post[] {
-  return getAllPosts().filter((p) => p.frontmatter.pillar === pillar);
+export function getPostsByPillar(pillar: PostFrontmatter["pillar"], locale = "vi"): Post[] {
+  return getAllPosts(locale).filter((p) => p.frontmatter.pillar === pillar);
 }
 
-export function getPostsBySeries(seriesSlug: string): Post[] {
-  return getAllPosts().filter((p) => p.frontmatter.series === seriesSlug);
+export function getPostsBySeries(seriesSlug: string, locale = "vi"): Post[] {
+  return getAllPosts(locale).filter((p) => p.frontmatter.series === seriesSlug);
 }
 
 // --- Series ---
@@ -82,26 +95,42 @@ export type Series = {
   content: string;
 };
 
-export function getAllSeries(): Series[] {
-  return readMdxDir(SERIES_DIR).map((p) => ({
-    slug: p.slug,
-    frontmatter: p.frontmatter as unknown as SeriesFrontmatter,
-    content: p.content,
-  }));
+function readSeriesMdxDir(dir: string): Series[] {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => {
+      const slug = file.replace(/\.mdx$/, "");
+      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
+      const { data, content } = matter(raw);
+      return { slug, frontmatter: data as SeriesFrontmatter, content };
+    });
 }
 
-export function getSeriesBySlug(slug: string): Series | null {
-  const filePath = path.join(SERIES_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
+export function getAllSeries(locale = "vi"): Series[] {
+  const items = readSeriesMdxDir(seriesDir(locale));
+  if (items.length > 0) return items;
+  if (locale !== "vi") return readSeriesMdxDir(seriesDir("vi"));
+  return [];
+}
+
+export function getSeriesBySlug(slug: string, locale = "vi"): Series | null {
+  const filePath = path.join(seriesDir(locale), `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) {
+    if (locale !== "vi") return getSeriesBySlug(slug, "vi");
+    return null;
+  }
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   return { slug, frontmatter: data as SeriesFrontmatter, content };
 }
 
-export function getAllSeriesSlugs(): string[] {
-  if (!fs.existsSync(SERIES_DIR)) return [];
+export function getAllSeriesSlugs(locale = "vi"): string[] {
+  const dir = seriesDir(locale);
+  if (!fs.existsSync(dir)) return [];
   return fs
-    .readdirSync(SERIES_DIR)
+    .readdirSync(dir)
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx$/, ""));
 }

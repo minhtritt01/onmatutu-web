@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 function SunIcon() {
   return (
@@ -21,6 +22,7 @@ function MoonIcon() {
 export function ThemeToggle() {
   const [dark, setDark] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations("theme");
 
   useEffect(() => {
     setMounted(true);
@@ -36,7 +38,6 @@ export function ThemeToggle() {
     localStorage.setItem("theme", next ? "dark" : "light");
   };
 
-  // Prevent layout shift while hydrating — render same-size placeholder
   if (!mounted) {
     return <div className="h-8 w-8" aria-hidden="true" />;
   }
@@ -44,7 +45,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      aria-label={dark ? "Chuyển sang chế độ sáng" : "Chuyển sang chế độ tối"}
+      aria-label={dark ? t("switchToLight") : t("switchToDark")}
       className="flex h-8 w-8 items-center justify-center rounded-full text-foreground/70 transition hover:bg-brand-gray/30 hover:text-foreground"
     >
       {dark ? <SunIcon /> : <MoonIcon />}

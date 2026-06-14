@@ -1,12 +1,9 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
-const navItems = [
-  { href: "/blog", label: "Câu chuyện" },
-  { href: "/affirmations", label: "Affirmation" },
-  { href: "/about", label: "Giới thiệu" },
-];
+type NavItem = { href: string; label: string };
 
 function MenuIcon() {
   return (
@@ -27,14 +24,15 @@ function CloseIcon() {
   );
 }
 
-export function MobileNav() {
+export function MobileNav({ navItems }: { navItems: NavItem[] }) {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("nav");
 
   return (
     <div className="sm:hidden">
       <button
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Đóng menu" : "Mở menu"}
+        aria-label={open ? t("closeMenu") : t("openMenu")}
         className="flex h-8 w-8 items-center justify-center rounded-full text-foreground/70 transition hover:bg-brand-gray/30 hover:text-foreground"
       >
         {open ? <CloseIcon /> : <MenuIcon />}
