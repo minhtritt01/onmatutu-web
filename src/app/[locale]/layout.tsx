@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import "../globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/lib/site-config";
@@ -22,6 +21,12 @@ const geistMono = Geist_Mono({
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID!;
 
+// Dark-mode anti-FOUC: runs before React hydrates to apply the saved theme class.
+// This is a Server-Component-rendered inline script; React will warn in dev that
+// inline scripts won't re-execute on client navigation — that's intentional here,
+// the class persists across navigations without re-running.
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})()`;
+
 type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -42,7 +47,6 @@ export async function generateMetadata({
 
   const ogLocale = locale === "vi" ? "vi_VN" : "en_US";
   const altLocale = locale === "vi" ? "en_US" : "vi_VN";
-  const altLang = locale === "vi" ? "en" : "vi";
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -103,21 +107,21 @@ export default async function LocaleLayout({ children, params }: Props) {
   };
 
   return (
+    // suppressHydrationWarning: the THEME_SCRIPT may add "dark" to <html>
+    // before React hydrates, causing an intentional class mismatch we allow.
     <html
       lang={locale}
       className={`h-full antialiased ${poppins.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        {/* Runs synchronously before paint — prevents dark-mode flash on reload */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
-          }}
-        />
+        {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
         <NextIntlClientProvider messages={messages}>
           <Header />
