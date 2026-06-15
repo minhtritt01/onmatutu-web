@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { MDXRemote } from "@/components/MDXRemote";
 import { getAllPostSlugs, getPostBySlug, getPostsByPillar } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
-import { routing } from "@/i18n/routing";
+import { routing, localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug, locale);
   if (!post) return {};
 
-  const url = `${siteConfig.url}/${locale}/blog/${slug}`;
+  const url = `${siteConfig.url}${localePath(locale, `/blog/${slug}`)}`;
   const ogLocale = locale === "vi" ? "vi_VN" : "en_US";
 
   return {
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: url,
       languages: {
-        vi: `${siteConfig.url}/vi/blog/${slug}`,
+        vi: `${siteConfig.url}/blog/${slug}`,
         en: `${siteConfig.url}/en/blog/${slug}`,
       },
     },

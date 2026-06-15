@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPostsByPillar } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
+import { localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
@@ -13,9 +14,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("description", { siteName: siteConfig.name }),
     alternates: {
-      canonical: `${siteConfig.url}/${locale}/affirmations`,
+      canonical: `${siteConfig.url}${localePath(locale, "/affirmations")}`,
       languages: {
-        vi: `${siteConfig.url}/vi/affirmations`,
+        vi: `${siteConfig.url}/affirmations`,
         en: `${siteConfig.url}/en/affirmations`,
       },
     },

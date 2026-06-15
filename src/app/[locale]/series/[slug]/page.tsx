@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllSeriesSlugs, getSeriesBySlug, getPostsBySeries } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
-import { routing } from "@/i18n/routing";
+import { routing, localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { MDXRemote } from "@/components/MDXRemote";
 import { Link } from "@/i18n/navigation";
@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: series.frontmatter.title,
     description: series.frontmatter.description,
     alternates: {
-      canonical: `${siteConfig.url}/${locale}/series/${slug}`,
+      canonical: `${siteConfig.url}${localePath(locale, `/series/${slug}`)}`,
       languages: {
-        vi: `${siteConfig.url}/vi/series/${slug}`,
+        vi: `${siteConfig.url}/series/${slug}`,
         en: `${siteConfig.url}/en/series/${slug}`,
       },
     },

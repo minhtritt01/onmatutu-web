@@ -29,7 +29,8 @@ parent docs (`01-brand-identity.md` – `06-episode-backlog.md`).
 - Server components: `getTranslations(namespace)` + `setRequestLocale(locale)` before any i18n call
 - Client components: `useTranslations(namespace)`
 - Language switcher: `LanguageSwitcher.tsx` (VI/EN toggle in header)
-- Routing config: `src/i18n/routing.ts` — locales `['vi', 'en']`, default `vi`, prefix `always`
+- Routing config: `src/i18n/routing.ts` — locales `['vi', 'en']`, default `vi`, prefix `as-needed` (vi has no prefix, en uses `/en/`)
+- URL helper: `localePath(locale, path)` from `@/i18n/routing` — use this for canonical/hreflang URLs (vi → `/path`, en → `/en/path`)
 
 **Brand colors** — defined as CSS vars in `globals.css`, exposed as Tailwind tokens.
 Use tokens only (`brand-yellow`, `brand-navy`, `brand-gray`), never hex.

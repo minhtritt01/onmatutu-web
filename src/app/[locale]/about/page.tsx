@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
+import { localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -12,9 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("description", { siteName: siteConfig.name }),
     alternates: {
-      canonical: `${siteConfig.url}/${locale}/about`,
+      canonical: `${siteConfig.url}${localePath(locale, "/about")}`,
       languages: {
-        vi: `${siteConfig.url}/vi/about`,
+        vi: `${siteConfig.url}/about`,
         en: `${siteConfig.url}/en/about`,
       },
     },

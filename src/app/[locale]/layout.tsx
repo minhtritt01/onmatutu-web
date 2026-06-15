@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HtmlLang } from "@/components/HtmlLang";
 import { siteConfig } from "@/lib/site-config";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing, localePath, type Locale } from "@/i18n/routing";
 import { getTranslations, getMessages, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
@@ -45,18 +45,18 @@ export async function generateMetadata({
     publisher: siteConfig.name,
     robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
     alternates: {
-      canonical: `${siteConfig.url}/${locale}`,
+      canonical: `${siteConfig.url}${localePath(locale)}`,
       languages: {
-        vi: `${siteConfig.url}/vi`,
+        vi: siteConfig.url,
         en: `${siteConfig.url}/en`,
-        "x-default": `${siteConfig.url}/vi`,
+        "x-default": siteConfig.url,
       },
     },
     openGraph: {
       type: "website",
       locale: ogLocale,
       alternateLocale: [altLocale],
-      url: `${siteConfig.url}/${locale}`,
+      url: `${siteConfig.url}${localePath(locale)}`,
       siteName: siteConfig.name,
       title: `${siteConfig.name} | ${t("tagline")}`,
       description: t("description"),
