@@ -3,7 +3,11 @@ import path from "path";
 import matter from "gray-matter";
 
 export function readingTime(content: string): number {
-  const words = content.trim().split(/\s+/).length;
+  const stripped = content
+    .replace(/```[\s\S]*?```/g, "")    // fenced code blocks
+    .replace(/<[^>]+>/g, " ")          // HTML/JSX tags
+    .replace(/[#*_`>~\-\[\]()!]/g, " "); // Markdown syntax chars
+  const words = stripped.trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 200));
 }
 

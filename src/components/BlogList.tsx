@@ -4,8 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import type { Post } from "@/lib/content";
-
-type Pillar = "A" | "B" | "C" | "D";
+import type { Pillar } from "@/lib/site-config";
 
 type Props = {
   posts: Post[];
@@ -16,10 +15,10 @@ type Props = {
 export default function BlogList({ posts, allLabel, pillarLabels }: Props) {
   const t = useTranslations("blog");
   const searchParams = useSearchParams();
-  const activePillar = searchParams.get("pillar") as Pillar | null;
+  const activePillar = searchParams.get("pillar");
 
   const validPillars: Pillar[] = ["A", "B", "C", "D"];
-  const isValidPillar = activePillar && validPillars.includes(activePillar);
+  const isValidPillar = activePillar && (validPillars as string[]).includes(activePillar);
   const filteredPosts = isValidPillar
     ? posts.filter((p) => p.frontmatter.pillar === activePillar)
     : posts;

@@ -20,9 +20,13 @@ export function PostShareButtons() {
         // user cancelled or error — ignore
       }
     } else {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {
+        // clipboard unavailable — silently ignore
+      }
     }
   }
 

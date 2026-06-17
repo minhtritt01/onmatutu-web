@@ -52,7 +52,6 @@ export default async function PillarPage({ params }: Props) {
         Pillar {pillar}
       </span>
       <h1 className="mt-2 text-2xl font-semibold">{pillarName}</h1>
-      <p className="mt-2 text-foreground/70">{pillarName}</p>
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
         {posts.map((post) => (
           <Link
