@@ -102,6 +102,19 @@ export default async function BlogPostPage({ params }: Props) {
       <PostShareButtons />
 
       {post.frontmatter.videoUrl && (
+        <p className="mt-3 text-sm">
+          <a
+            href={post.frontmatter.videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-navy underline-offset-2 hover:underline"
+          >
+            {t("watchFirst")}
+          </a>
+        </p>
+      )}
+
+      {post.frontmatter.videoUrl && (
         <div className="mt-6 aspect-[9/16] max-w-sm overflow-hidden rounded-2xl border border-brand-gray">
           <iframe
             src={post.frontmatter.videoUrl}
