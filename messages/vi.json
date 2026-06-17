@@ -29,7 +29,8 @@
     "seriesLabel": "Mini-series · Pillar D",
     "seriesEpisodes": "Các phần trong series",
     "watchFirst": "→ Xem hoạt hình trước khi đọc",
-    "readingTime": "{n} phút đọc"
+    "readingTime": "{n} phút đọc",
+    "filterAll": "Tất cả"
   },
   "affirmations": {
     "title": "Affirmation mỗi ngày",

@@ -29,7 +29,8 @@
     "seriesLabel": "Mini-series · Pillar D",
     "seriesEpisodes": "Episodes in this series",
     "watchFirst": "→ Watch the animation before reading",
-    "readingTime": "{n} min read"
+    "readingTime": "{n} min read",
+    "filterAll": "All"
   },
   "affirmations": {
     "title": "Daily Affirmations",
