@@ -86,5 +86,8 @@
     "button": "Share",
     "copy": "Copy link",
     "copied": "Copied!"
+  },
+  "mobileStrip": {
+    "follow": "Follow us"
   }
 }

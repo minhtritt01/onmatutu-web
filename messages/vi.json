@@ -86,5 +86,8 @@
     "button": "Chia sẻ",
     "copy": "Sao chép link",
     "copied": "Đã sao chép!"
+  },
+  "mobileStrip": {
+    "follow": "Theo dõi chúng mình"
   }
 }

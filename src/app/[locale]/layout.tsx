@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HtmlLang } from "@/components/HtmlLang";
 import { SocialSidebar } from "@/components/SocialSidebar";
+import { MobileSocialStrip } from "@/components/MobileSocialStrip";
 import { siteConfig } from "@/lib/site-config";
 import { routing, localePath, type Locale } from "@/i18n/routing";
 import { getTranslations, getMessages, setRequestLocale } from "next-intl/server";
@@ -105,6 +106,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <SocialSidebar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileSocialStrip />
       </NextIntlClientProvider>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
