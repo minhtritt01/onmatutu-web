@@ -7,6 +7,7 @@ import { routing, localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PostSocialCTA } from "@/components/PostSocialCTA";
+import { PostShareButtons } from "@/components/PostShareButtons";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -97,6 +98,8 @@ export default async function BlogPostPage({ params }: Props) {
       <p className="mt-2 text-sm text-foreground/60">
         {new Date(post.frontmatter.date).toLocaleDateString(dateLocale)}
       </p>
+
+      <PostShareButtons />
 
       {post.frontmatter.videoUrl && (
         <div className="mt-6 aspect-[9/16] max-w-sm overflow-hidden rounded-2xl border border-brand-gray">

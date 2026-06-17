@@ -81,5 +81,10 @@
     "body": "Xem hoạt hình đầy đủ trên TikTok nhé!",
     "watchTikTok": "Xem trên TikTok",
     "followYouTube": "Theo dõi YouTube"
+  },
+  "share": {
+    "button": "Chia sẻ",
+    "copy": "Sao chép link",
+    "copied": "Đã sao chép!"
   }
 }

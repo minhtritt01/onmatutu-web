@@ -81,5 +81,10 @@
     "body": "Watch the full animation on TikTok!",
     "watchTikTok": "Watch on TikTok",
     "followYouTube": "Follow on YouTube"
+  },
+  "share": {
+    "button": "Share",
+    "copy": "Copy link",
+    "copied": "Copied!"
   }
 }
