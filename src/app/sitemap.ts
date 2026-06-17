@@ -59,5 +59,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticRoutes, ...blogRoutes, ...seriesRoutes];
+  const pillars = ["A", "B", "C", "D"] as const;
+
+  const pillarRoutes: MetadataRoute.Sitemap = pillars.flatMap((pillar) =>
+    locales.map((locale) => ({
+      url: localeUrl(locale, `/pillar/${pillar}`),
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+      alternates: { languages: altLanguages(`/pillar/${pillar}`) },
+    }))
+  );
+
+  return [...staticRoutes, ...blogRoutes, ...seriesRoutes, ...pillarRoutes];
 }
