@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 import { routing, localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { MDXRemote } from "@/components/MDXRemote";
-import { Link } from "@/i18n/navigation";
+import { SeriesEpisodeList } from "@/components/SeriesEpisodeList";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -55,21 +55,7 @@ export default async function SeriesPage({ params }: Props) {
       </div>
 
       {episodes.length > 0 && (
-        <section className="mt-10 border-t border-brand-gray pt-6">
-          <h2 className="mb-4 text-lg font-semibold">{t("seriesEpisodes")}</h2>
-          <ol className="list-decimal space-y-2 pl-5">
-            {episodes.map((ep) => (
-              <li key={ep.slug}>
-                <Link
-                  href={`/blog/${ep.slug}`}
-                  className="text-brand-navy hover:underline"
-                >
-                  {ep.frontmatter.title}
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </section>
+        <SeriesEpisodeList episodes={episodes} heading={t("seriesEpisodes")} />
       )}
     </div>
   );

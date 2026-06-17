@@ -1,13 +1,14 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "@/components/MDXRemote";
-import { getAllPostSlugs, getPostBySlug, getPostsByPillar } from "@/lib/content";
+import { getAllPostSlugs, getPostBySlug, getPostsByPillar, getPostsBySeries } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
 import { routing, localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PostSocialCTA } from "@/components/PostSocialCTA";
 import { PostShareButtons } from "@/components/PostShareButtons";
+import { SeriesEpisodeList } from "@/components/SeriesEpisodeList";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -60,6 +61,10 @@ export default async function BlogPostPage({ params }: Props) {
   const related = getPostsByPillar(post.frontmatter.pillar, locale)
     .filter((p) => p.slug !== slug)
     .slice(0, 3);
+
+  const seriesEpisodes = post.frontmatter.series
+    ? getPostsBySeries(post.frontmatter.series, locale).filter((p) => p.slug !== slug)
+    : [];
 
   const dateLocale = locale === "vi" ? "vi-VN" : "en-US";
 
@@ -130,6 +135,13 @@ export default async function BlogPostPage({ params }: Props) {
       <div className="prose prose-neutral mt-8 max-w-none dark:prose-invert">
         <MDXRemote source={post.content} />
       </div>
+
+      {seriesEpisodes.length > 0 && (
+        <SeriesEpisodeList
+          episodes={seriesEpisodes}
+          heading={t("seriesEpisodes")}
+        />
+      )}
 
       <div className="mt-12">
         <PostSocialCTA videoUrl={post.frontmatter.videoUrl} locale={locale} />
