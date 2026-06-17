@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 import { routing, localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { PostSocialCTA } from "@/components/PostSocialCTA";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -111,6 +112,10 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="prose prose-neutral mt-8 max-w-none dark:prose-invert">
         <MDXRemote source={post.content} />
+      </div>
+
+      <div className="mt-12">
+        <PostSocialCTA videoUrl={post.frontmatter.videoUrl} locale={locale} />
       </div>
 
       {related.length > 0 && (
