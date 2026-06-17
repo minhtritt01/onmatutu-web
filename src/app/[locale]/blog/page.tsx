@@ -48,6 +48,7 @@ export default async function BlogIndexPage({ params }: Props) {
               </span>
               <h2 className="mt-2 text-lg font-medium">{post.frontmatter.title}</h2>
               <p className="mt-1 text-sm text-foreground/60">{post.frontmatter.description}</p>
+              <p className="mt-2 text-xs text-foreground/40">{t("readingTime", { n: post.readingTime })}</p>
             </Link>
           ))}
         </div>

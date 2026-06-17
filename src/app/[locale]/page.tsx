@@ -11,6 +11,7 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
+  const tBlog = await getTranslations("blog");
   const posts = getAllPosts(locale).slice(0, 6);
 
   return (
@@ -67,6 +68,7 @@ export default async function Home({ params }: Props) {
                 </span>
                 <h3 className="mt-2 text-lg font-medium">{post.frontmatter.title}</h3>
                 <p className="mt-1 text-sm text-foreground/60">{post.frontmatter.description}</p>
+                <p className="mt-2 text-xs text-foreground/40">{tBlog("readingTime", { n: post.readingTime })}</p>
               </Link>
             ))}
           </div>

@@ -98,6 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
       <p className="mt-2 text-sm text-foreground/60">
         {new Date(post.frontmatter.date).toLocaleDateString(dateLocale)}
       </p>
+      <p className="mt-1 text-xs text-foreground/40">{t("readingTime", { n: post.readingTime })}</p>
 
       <PostShareButtons />
 

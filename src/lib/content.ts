@@ -2,6 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export function readingTime(content: string): number {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
 function blogDir(locale: string) {
   return path.join(process.cwd(), "content/blog", locale);
 }
@@ -26,6 +31,7 @@ export type Post = {
   slug: string;
   frontmatter: PostFrontmatter;
   content: string;
+  readingTime: number;
 };
 
 function readMdxDir(dir: string): Post[] {
@@ -37,7 +43,7 @@ function readMdxDir(dir: string): Post[] {
       const slug = file.replace(/\.mdx$/, "");
       const raw = fs.readFileSync(path.join(dir, file), "utf-8");
       const { data, content } = matter(raw);
-      return { slug, frontmatter: data as PostFrontmatter, content };
+      return { slug, frontmatter: data as PostFrontmatter, content, readingTime: readingTime(content) };
     });
 }
 
@@ -61,7 +67,7 @@ export function getPostBySlug(slug: string, locale = "vi"): Post | null {
   }
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
-  return { slug, frontmatter: data as PostFrontmatter, content };
+  return { slug, frontmatter: data as PostFrontmatter, content, readingTime: readingTime(content) };
 }
 
 export function getAllPostSlugs(locale = "vi"): string[] {

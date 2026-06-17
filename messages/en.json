@@ -28,7 +28,8 @@
     "relatedStories": "More from this pillar",
     "seriesLabel": "Mini-series · Pillar D",
     "seriesEpisodes": "Episodes in this series",
-    "watchFirst": "→ Watch the animation before reading"
+    "watchFirst": "→ Watch the animation before reading",
+    "readingTime": "{n} min read"
   },
   "affirmations": {
     "title": "Daily Affirmations",
