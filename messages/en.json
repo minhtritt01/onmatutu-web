@@ -7,6 +7,7 @@
   },
   "nav": {
     "blog": "Stories",
+    "videos": "Videos",
     "affirmations": "Affirmations",
     "about": "About",
     "openMenu": "Open menu",
@@ -92,5 +93,11 @@
   },
   "mobileStrip": {
     "follow": "Follow us"
+  },
+  "videos": {
+    "title": "Videos",
+    "description": "Short videos by @onmatutu — each moment tells a real story.",
+    "noPosts": "No videos yet.",
+    "watchOn": "Watch on"
   }
 }

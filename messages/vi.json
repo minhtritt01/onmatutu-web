@@ -7,6 +7,7 @@
   },
   "nav": {
     "blog": "Câu chuyện",
+    "videos": "Video",
     "affirmations": "Affirmation",
     "about": "Giới thiệu",
     "openMenu": "Mở menu",
@@ -92,5 +93,11 @@
   },
   "mobileStrip": {
     "follow": "Theo dõi chúng mình"
+  },
+  "videos": {
+    "title": "Video",
+    "description": "Các video ngắn của @onmatutu — mỗi khoảnh khắc là một câu chuyện thật.",
+    "noPosts": "Chưa có video nào.",
+    "watchOn": "Xem trên"
   }
 }
