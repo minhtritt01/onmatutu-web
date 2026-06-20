@@ -65,7 +65,10 @@ export function ShareStoryForm({ t }: Props) {
 
       <textarea
         value={story}
-        onChange={(e) => setStory(e.target.value)}
+        onChange={(e) => {
+          setStory(e.target.value);
+          if (status === "too_short" || status === "error") setStatus("idle");
+        }}
         placeholder={t.placeholder}
         rows={8}
         required
@@ -83,7 +86,7 @@ export function ShareStoryForm({ t }: Props) {
       <button
         type="submit"
         disabled={isPending || story.trim().length === 0}
-        className="w-full rounded-xl bg-brand-yellow px-6 py-3 font-semibold text-brand-navy transition hover:opacity-90 disabled:opacity-50"
+        className="w-full rounded-xl bg-brand-yellow px-6 py-3 font-semibold text-[#2b2b2b] transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
       >
         {isPending ? t.submitting : t.submit}
       </button>
