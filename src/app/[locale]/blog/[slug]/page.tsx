@@ -9,6 +9,9 @@ import { Link } from "@/i18n/navigation";
 import { PostSocialCTA } from "@/components/PostSocialCTA";
 import { PostShareButtons } from "@/components/PostShareButtons";
 import { SeriesEpisodeList } from "@/components/SeriesEpisodeList";
+import { ReadingProgress } from "@/components/ReadingProgress";
+import { EmojiReactions } from "@/components/EmojiReactions";
+import { QuoteCard } from "@/components/QuoteCard";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -89,81 +92,92 @@ export default async function BlogPostPage({ params }: Props) {
       : {}),
   };
 
+  const quoteText = post.frontmatter.quote ?? post.frontmatter.description;
+
   return (
-    <article className="mx-auto max-w-2xl px-4 py-12">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
-
-      <span className="text-xs font-medium uppercase tracking-wide text-brand-navy">
-        {t("pillarLabel", { pillar: post.frontmatter.pillar })} · {post.frontmatter.episodeId}
-      </span>
-      <h1 className="mt-2 text-3xl font-semibold">{post.frontmatter.title}</h1>
-      <p className="mt-2 text-sm text-foreground/60">
-        {new Date(post.frontmatter.date).toLocaleDateString(dateLocale)}
-      </p>
-      <p className="mt-1 text-xs text-foreground/40">{t("readingTime", { n: post.readingTime })}</p>
-
-      <PostShareButtons />
-
-      {post.frontmatter.videoUrl && (
-        <p className="mt-3 text-sm">
-          <a
-            href={post.frontmatter.videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-navy underline-offset-2 hover:underline"
-          >
-            {t("watchFirst")}
-          </a>
-        </p>
-      )}
-
-      {post.frontmatter.videoUrl && (
-        <div className="mt-6 aspect-[9/16] max-w-sm overflow-hidden rounded-2xl border border-brand-gray">
-          <iframe
-            src={post.frontmatter.videoUrl}
-            className="h-full w-full"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            title={post.frontmatter.title}
-          />
-        </div>
-      )}
-
-      <div className="prose prose-neutral mt-8 max-w-none dark:prose-invert">
-        <MDXRemote source={post.content} />
-      </div>
-
-      {seriesEpisodes.length > 0 && (
-        <SeriesEpisodeList
-          episodes={seriesEpisodes}
-          heading={t("seriesEpisodes")}
+    <>
+      <ReadingProgress />
+      <article className="mx-auto max-w-2xl px-4 py-12">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
-      )}
 
-      <div className="mt-12">
-        <PostSocialCTA videoUrl={post.frontmatter.videoUrl} locale={locale} />
-      </div>
+        <span className="text-xs font-medium uppercase tracking-wide text-brand-navy">
+          {t("pillarLabel", { pillar: post.frontmatter.pillar })} · {post.frontmatter.episodeId}
+        </span>
+        <h1 className="mt-2 text-3xl font-semibold">{post.frontmatter.title}</h1>
+        <p className="mt-2 text-sm text-foreground/60">
+          {new Date(post.frontmatter.date).toLocaleDateString(dateLocale)}
+        </p>
+        <p className="mt-1 text-xs text-foreground/40">{t("readingTime", { n: post.readingTime })}</p>
 
-      {related.length > 0 && (
-        <section className="mt-12 border-t border-brand-gray pt-6">
-          <h2 className="mb-4 text-lg font-semibold">{t("relatedStories")}</h2>
-          <ul className="space-y-2">
-            {related.map((p) => (
-              <li key={p.slug}>
-                <Link
-                  href={`/blog/${p.slug}`}
-                  className="text-brand-navy underline-offset-2 hover:underline"
-                >
-                  {p.frontmatter.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </article>
+        <PostShareButtons />
+
+        {quoteText && (
+          <QuoteCard quote={quoteText} title={post.frontmatter.title} />
+        )}
+
+        {post.frontmatter.videoUrl && (
+          <p className="mt-3 text-sm">
+            <a
+              href={post.frontmatter.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-navy underline-offset-2 hover:underline"
+            >
+              {t("watchFirst")}
+            </a>
+          </p>
+        )}
+
+        {post.frontmatter.videoUrl && (
+          <div className="mt-6 aspect-[9/16] max-w-sm overflow-hidden rounded-2xl border border-brand-gray">
+            <iframe
+              src={post.frontmatter.videoUrl}
+              className="h-full w-full"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              title={post.frontmatter.title}
+            />
+          </div>
+        )}
+
+        <div className="prose prose-neutral mt-8 max-w-none dark:prose-invert">
+          <MDXRemote source={post.content} />
+        </div>
+
+        <EmojiReactions slug={slug} />
+
+        {seriesEpisodes.length > 0 && (
+          <SeriesEpisodeList
+            episodes={seriesEpisodes}
+            heading={t("seriesEpisodes")}
+          />
+        )}
+
+        <div className="mt-12">
+          <PostSocialCTA videoUrl={post.frontmatter.videoUrl} locale={locale} />
+        </div>
+
+        {related.length > 0 && (
+          <section className="mt-12 border-t border-brand-gray pt-6">
+            <h2 className="mb-4 text-lg font-semibold">{t("relatedStories")}</h2>
+            <ul className="space-y-2">
+              {related.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    href={`/blog/${p.slug}`}
+                    className="text-brand-navy underline-offset-2 hover:underline"
+                  >
+                    {p.frontmatter.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </article>
+    </>
   );
 }

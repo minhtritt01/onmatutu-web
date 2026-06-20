@@ -31,10 +31,61 @@
   --color-brand-gray: var(--color-brand-gray);
   --font-sans: var(--font-poppins, "Poppins"), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono, ui-monospace), monospace;
+  --animate-fade-in-up: fade-in-up 0.6s ease both;
+  --animate-fade-in: fade-in 0.5s ease both;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-glow {
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(244,201,93,0.12) 0%, transparent 70%);
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--color-brand-yellow);
+  background: rgba(244, 201, 93, 0.05);
+  border-radius: 0 0.75rem 0.75rem 0;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--foreground);
+  margin: 1.5rem 0;
+  quotes: none;
+}
+
+.dark .prose blockquote {
+  background: rgba(244, 201, 93, 0.08);
+}
+
+.prose blockquote::before,
+.prose blockquote::after {
+  content: none;
+}
+
+.prose a {
+  color: var(--color-brand-navy);
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--color-brand-yellow);
 }

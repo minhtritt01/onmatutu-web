@@ -29,6 +29,7 @@ export type PostFrontmatter = {
   series?: string; // series slug, if part of one
   tags?: string[];
   coverImage?: string;
+  quote?: string; // shareable quote for QuoteCard
 };
 
 export type Post = {

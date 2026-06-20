@@ -5,6 +5,14 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import type { Post } from "@/lib/content";
 import type { Pillar } from "@/lib/site-config";
+import { PostCard } from "@/components/PostCard";
+
+const PILLAR_HEX: Record<Pillar, string> = {
+  A: "#f4c95d",
+  B: "#a8c5d6",
+  C: "#5dd4d4",
+  D: "#f0a0c0",
+};
 
 type Props = {
   posts: Post[];
@@ -13,7 +21,6 @@ type Props = {
 };
 
 export default function BlogList({ posts, allLabel, pillarLabels }: Props) {
-  const t = useTranslations("blog");
   const searchParams = useSearchParams();
   const activePillar = searchParams.get("pillar");
 
@@ -26,13 +33,13 @@ export default function BlogList({ posts, allLabel, pillarLabels }: Props) {
   return (
     <>
       {/* Filter tabs */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="mb-8 flex flex-wrap gap-2">
         <Link
           href="/blog"
-          className={`px-4 py-1.5 text-sm transition rounded-full ${
+          className={`flex items-center rounded-full px-4 py-1.5 text-sm transition ${
             !isValidPillar
               ? "bg-brand-yellow text-foreground"
-              : "border border-brand-gray text-foreground/70"
+              : "border border-brand-gray text-foreground/70 hover:border-brand-yellow/60"
           }`}
         >
           {allLabel}
@@ -41,13 +48,17 @@ export default function BlogList({ posts, allLabel, pillarLabels }: Props) {
           <Link
             key={pillar}
             href={`/blog?pillar=${pillar}`}
-            className={`px-4 py-1.5 text-sm transition rounded-full ${
+            className={`flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm transition ${
               activePillar === pillar
                 ? "bg-brand-yellow text-foreground"
-                : "border border-brand-gray text-foreground/70"
+                : "border border-brand-gray text-foreground/70 hover:border-brand-yellow/60"
             }`}
           >
-            {pillar} · {pillarLabels[pillar]}
+            <span
+              className="inline-block h-2 w-2 shrink-0 rounded-full"
+              style={{ background: PILLAR_HEX[pillar] }}
+            />
+            {pillarLabels[pillar]}
           </Link>
         ))}
       </div>
@@ -55,18 +66,7 @@ export default function BlogList({ posts, allLabel, pillarLabels }: Props) {
       {/* Post grid */}
       <div className="grid gap-6 sm:grid-cols-2">
         {filteredPosts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="rounded-2xl border border-brand-gray p-5 transition hover:border-brand-yellow hover:shadow-sm"
-          >
-            <span className="text-xs font-medium uppercase tracking-wide text-brand-navy">
-              {t("pillarLabel", { pillar: post.frontmatter.pillar })}
-            </span>
-            <h2 className="mt-2 text-lg font-medium">{post.frontmatter.title}</h2>
-            <p className="mt-1 text-sm text-foreground/60">{post.frontmatter.description}</p>
-            <p className="mt-2 text-xs text-foreground/40">{t("readingTime", { n: post.readingTime })}</p>
-          </Link>
+          <PostCard key={post.slug} post={post} />
         ))}
       </div>
     </>

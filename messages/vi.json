@@ -58,7 +58,10 @@
     "backHome": "Về trang chủ"
   },
   "footer": {
-    "copyright": "© {year} {siteName} — {hashtag}"
+    "copyright": "© {year} {siteName} — {hashtag}",
+    "tagline": "Những câu chuyện nhỏ, ổn mà từ từ.",
+    "quickLinks": "Khám phá",
+    "social": "Theo dõi kênh"
   },
   "theme": {
     "switchToLight": "Chuyển sang chế độ sáng",
@@ -100,6 +103,15 @@
     "description": "Các video ngắn của @onmatutu — mỗi khoảnh khắc là một câu chuyện thật.",
     "noPosts": "Chưa có video nào.",
     "watchOn": "Xem trên"
+  },
+  "reactions": {
+    "prompt": "Câu chuyện này khiến bạn cảm thấy thế nào?",
+    "count": "{n} người đồng cảm"
+  },
+  "quoteCard": {
+    "shareQuote": "Chia sẻ câu nói này",
+    "copied": "Đã sao chép!",
+    "screenshotHint": "Chụp màn hình để chia sẻ lên Story"
   },
   "shareStory": {
     "title": "Trút lòng",

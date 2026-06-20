@@ -58,7 +58,10 @@
     "backHome": "Back to home"
   },
   "footer": {
-    "copyright": "© {year} {siteName} — {hashtag}"
+    "copyright": "© {year} {siteName} — {hashtag}",
+    "tagline": "Small stories, gently motivating.",
+    "quickLinks": "Explore",
+    "social": "Follow us"
   },
   "theme": {
     "switchToLight": "Switch to light mode",
@@ -100,6 +103,15 @@
     "description": "Short videos by @onmatutu — each moment tells a real story.",
     "noPosts": "No videos yet.",
     "watchOn": "Watch on"
+  },
+  "reactions": {
+    "prompt": "How did this story make you feel?",
+    "count": "{n} people connected"
+  },
+  "quoteCard": {
+    "shareQuote": "Share this quote",
+    "copied": "Copied!",
+    "screenshotHint": "Screenshot to share on your Story"
   },
   "shareStory": {
     "title": "Share your story",
