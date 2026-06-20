@@ -13,6 +13,7 @@ export async function Header() {
     { href: "/videos" as const, label: t("videos") },
     { href: "/affirmations" as const, label: t("affirmations") },
     { href: "/about" as const, label: t("about") },
+    { href: "/share-story" as const, label: t("share") },
   ];
 
   return (

@@ -10,6 +10,7 @@
     "videos": "Videos",
     "affirmations": "Affirmations",
     "about": "About",
+    "share": "Share",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
@@ -99,5 +100,20 @@
     "description": "Short videos by @onmatutu — each moment tells a real story.",
     "noPosts": "No videos yet.",
     "watchOn": "Watch on"
+  },
+  "shareStory": {
+    "title": "Share your story",
+    "subtitle": "No one knows who you are. Just write.",
+    "metaDescription": "Share a painful story, a sadness, or something weighing on your heart — completely anonymous, no one knows who you are.",
+    "notice": "This is a space to let it out.",
+    "noticeDetail": "Your story is completely anonymous — we don't collect your name, email, or any information about you.",
+    "placeholder": "Tell us something that's been weighing on your heart...",
+    "submit": "Send my story",
+    "submitting": "Sending...",
+    "successTitle": "Your story has been sent.",
+    "successMessage": "We read every story. You are not alone.",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "minLength": "Your story needs to be at least 10 characters.",
+    "footer": "Only we will read this. No one else."
   }
 }

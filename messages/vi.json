@@ -10,6 +10,7 @@
     "videos": "Video",
     "affirmations": "Affirmation",
     "about": "Giới thiệu",
+    "share": "Trút lòng",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu"
   },
@@ -99,5 +100,20 @@
     "description": "Các video ngắn của @onmatutu — mỗi khoảnh khắc là một câu chuyện thật.",
     "noPosts": "Chưa có video nào.",
     "watchOn": "Xem trên"
+  },
+  "shareStory": {
+    "title": "Trút lòng",
+    "subtitle": "Không ai biết bạn là ai. Chỉ cần viết.",
+    "metaDescription": "Chia sẻ câu chuyện buồn, nỗi đau hoặc điều đang làm bạn nặng lòng — hoàn toàn ẩn danh, không ai biết bạn là ai.",
+    "notice": "Đây là không gian để bạn trút lòng.",
+    "noticeDetail": "Câu chuyện của bạn hoàn toàn ẩn danh — chúng tôi không thu thập tên, email, hay bất kỳ thông tin nào về bạn.",
+    "placeholder": "Hãy kể điều gì đó đang làm bạn nặng lòng...",
+    "submit": "Gửi câu chuyện",
+    "submitting": "Đang gửi...",
+    "successTitle": "Câu chuyện của bạn đã được gửi.",
+    "successMessage": "Chúng tôi đọc mọi câu chuyện. Bạn không đơn độc.",
+    "errorMessage": "Có lỗi xảy ra. Hãy thử lại sau.",
+    "minLength": "Câu chuyện cần ít nhất 10 ký tự.",
+    "footer": "Câu chuyện này chỉ có chúng tôi đọc. Không ai khác."
   }
 }
