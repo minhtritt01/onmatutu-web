@@ -107,7 +107,14 @@
     "metaDescription": "Share a painful story, a sadness, or something weighing on your heart — completely anonymous, no one knows who you are.",
     "notice": "This is a space to let it out.",
     "noticeDetail": "Your story is completely anonymous — we don't collect your name, email, or any information about you.",
-    "placeholder": "Tell us something that's been weighing on your heart...",
+    "guideHeading": "You don't need to write perfectly — just talk like you're texting a friend.",
+    "guideItems": [
+      "What happened? (the more specific the better — time, place, situation)",
+      "How did you feel in that moment?",
+      "What's weighing on you the most right now?"
+    ],
+    "guideOptional": "Optional: was there a moment that made you see things differently?",
+    "placeholder": "e.g. Today on the way home from work, my boss called me in and said...",
     "submit": "Send my story",
     "submitting": "Sending...",
     "successTitle": "Your story has been sent.",

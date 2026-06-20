@@ -107,7 +107,14 @@
     "metaDescription": "Chia sẻ câu chuyện buồn, nỗi đau hoặc điều đang làm bạn nặng lòng — hoàn toàn ẩn danh, không ai biết bạn là ai.",
     "notice": "Đây là không gian để bạn trút lòng.",
     "noticeDetail": "Câu chuyện của bạn hoàn toàn ẩn danh — chúng tôi không thu thập tên, email, hay bất kỳ thông tin nào về bạn.",
-    "placeholder": "Hãy kể điều gì đó đang làm bạn nặng lòng...",
+    "guideHeading": "Bạn không cần viết hoàn hảo — cứ kể như đang nhắn tin cho một người bạn.",
+    "guideItems": [
+      "Chuyện gì đã xảy ra? (càng cụ thể càng tốt — thời gian, nơi chốn, tình huống)",
+      "Bạn cảm thấy thế nào khi đó?",
+      "Điều gì đang làm bạn nặng lòng nhất?"
+    ],
+    "guideOptional": "Nếu có: có khoảnh khắc nào khiến bạn nhìn lại mọi thứ khác đi không?",
+    "placeholder": "Ví dụ: Hôm nay đi làm về, sếp gọi lên phòng và nói rằng...",
     "submit": "Gửi câu chuyện",
     "submitting": "Đang gửi...",
     "successTitle": "Câu chuyện của bạn đã được gửi.",
