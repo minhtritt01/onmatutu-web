@@ -39,14 +39,14 @@ export function MobileNav({ navItems }: { navItems: NavItem[] }) {
       </button>
 
       {open && (
-        <div className="absolute left-0 right-0 top-[57px] border-b border-brand-gray bg-background px-4 py-3 shadow-sm">
-          <nav className="flex flex-col gap-3 text-sm">
+        <div className="absolute left-0 right-0 top-full z-50 border-b border-brand-gray bg-background px-4 py-3 shadow-lg">
+          <nav className="flex flex-col text-base">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="py-1 text-foreground/70 transition hover:text-foreground"
+                className="block py-3 text-foreground/80 transition hover:text-foreground"
               >
                 {item.label}
               </Link>

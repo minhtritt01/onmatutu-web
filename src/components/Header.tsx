@@ -17,7 +17,7 @@ export async function Header() {
   ];
 
   return (
-    <header className="relative border-b border-brand-gray bg-background">
+    <header className="sticky top-0 z-50 border-b border-brand-gray bg-background">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
         <Link href="/" className="text-base font-semibold tracking-tight sm:text-lg">
           {siteConfig.name}{" "}
