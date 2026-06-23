@@ -50,7 +50,7 @@ export default async function VideosPage({ params }: Props) {
               <Link
                 key={video.slug}
                 href={`/videos/${video.slug}`}
-                className="group flex flex-col gap-2"
+                className="group flex min-w-0 flex-col gap-2"
               >
                 {thumb && (
                   <div className="relative aspect-[9/16] w-full overflow-hidden rounded-2xl bg-brand-gray/20">
