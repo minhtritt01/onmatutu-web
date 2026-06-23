@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "@/components/MDXRemote";
-import { getAllPostSlugs, getPostBySlug, getPostsByPillar, getPostsBySeries } from "@/lib/content";
+import {
+  getAllPostSlugs,
+  getPostBySlug,
+  getPostsByPillar,
+  getPostsBySeries,
+} from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
 import { routing, localePath } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -19,7 +24,7 @@ type Props = {
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    getAllPostSlugs(locale).map((slug) => ({ locale, slug }))
+    getAllPostSlugs(locale).map((slug) => ({ locale, slug })),
   );
 }
 
@@ -48,7 +53,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
       publishedTime: post.frontmatter.date,
-      images: post.frontmatter.coverImage ? [{ url: post.frontmatter.coverImage }] : undefined,
+      images: post.frontmatter.coverImage
+        ? [{ url: post.frontmatter.coverImage }]
+        : undefined,
     },
   };
 }
@@ -66,7 +73,9 @@ export default async function BlogPostPage({ params }: Props) {
     .slice(0, 3);
 
   const seriesEpisodes = post.frontmatter.series
-    ? getPostsBySeries(post.frontmatter.series, locale).filter((p) => p.slug !== slug)
+    ? getPostsBySeries(post.frontmatter.series, locale).filter(
+        (p) => p.slug !== slug,
+      )
     : [];
 
   const dateLocale = locale === "vi" ? "vi-VN" : "en-US";
@@ -100,17 +109,24 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="mx-auto max-w-2xl px-4 py-12">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
 
         <span className="text-xs font-medium uppercase tracking-wide text-brand-navy">
-          {t("pillarLabel", { pillar: post.frontmatter.pillar })} · {post.frontmatter.episodeId}
+          {t("pillarLabel", { pillar: post.frontmatter.pillar })} ·{" "}
+          {post.frontmatter.episodeId}
         </span>
-        <h1 className="mt-2 text-3xl font-semibold">{post.frontmatter.title}</h1>
+        <h1 className="mt-2 text-3xl font-semibold">
+          {post.frontmatter.title}
+        </h1>
         <p className="mt-2 text-sm text-foreground/60">
           {new Date(post.frontmatter.date).toLocaleDateString(dateLocale)}
         </p>
-        <p className="mt-1 text-xs text-foreground/40">{t("readingTime", { n: post.readingTime })}</p>
+        <p className="mt-1 text-xs text-foreground/40">
+          {t("readingTime", { n: post.readingTime })}
+        </p>
 
         <PostShareButtons />
 
@@ -157,12 +173,14 @@ export default async function BlogPostPage({ params }: Props) {
         )}
 
         <div className="mt-12">
-          <PostSocialCTA videoUrl={post.frontmatter.videoUrl} locale={locale} />
+          <PostSocialCTA locale={locale} />
         </div>
 
         {related.length > 0 && (
           <section className="mt-12 border-t border-brand-gray pt-6">
-            <h2 className="mb-4 text-lg font-semibold">{t("relatedStories")}</h2>
+            <h2 className="mb-4 text-lg font-semibold">
+              {t("relatedStories")}
+            </h2>
             <ul className="space-y-2">
               {related.map((p) => (
                 <li key={p.slug}>
