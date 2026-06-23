@@ -53,14 +53,18 @@ function readMdxDir(dir: string): Post[] {
 }
 
 export function getAllPosts(locale = "vi"): Post[] {
-  const dir = blogDir(locale);
-  const posts = readMdxDir(dir);
-  // Fallback: if locale dir is empty, try vi
-  const source = posts.length > 0 ? posts : locale !== "vi" ? readMdxDir(blogDir("vi")) : [];
-  return source.sort(
-    (a, b) =>
-      new Date(b.frontmatter.date).getTime() -
-      new Date(a.frontmatter.date).getTime()
+  if (locale === "vi") {
+    return readMdxDir(blogDir("vi")).sort(
+      (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+    );
+  }
+  // For non-vi: merge — use locale version if it exists, fall back to vi per slug
+  const viPosts = readMdxDir(blogDir("vi"));
+  const localePosts = readMdxDir(blogDir(locale));
+  const localeMap = new Map(localePosts.map((p) => [p.slug, p]));
+  const merged = viPosts.map((viPost) => localeMap.get(viPost.slug) ?? viPost);
+  return merged.sort(
+    (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
   );
 }
 
