@@ -52,6 +52,31 @@ npm run build    # verify before deploying
 vercel --prod    # deploy to onmatutu.com
 ```
 
+## Daily workflow — publishing a new video
+
+After posting a video to all platforms, run this to update the MDX files (both `vi` and `en`) in one command:
+
+```bash
+node scripts/set-video-urls.mjs "url1;url2;url3"
+```
+
+Platform is auto-detected from each URL's domain. Pass URLs in any order, separated by `;` or `,`.
+
+| Domain | Platform |
+|---|---|
+| `tiktok.com` | tiktok |
+| `youtube.com` / `youtu.be` | youtube |
+| `facebook.com` / `fb.com` / `fb.watch` | facebook |
+| `instagram.com` | instagram |
+
+**For a past date** (default is today):
+
+```bash
+node scripts/set-video-urls.mjs "url1;url2" --date 23-06-2026
+```
+
+---
+
 ## Adding a new post
 
 1. Create `content/blog/<slug>.mdx`:
