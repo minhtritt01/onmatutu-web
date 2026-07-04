@@ -191,7 +191,12 @@
         "lofi": "Lo-fi music"
       },
       "volumeLabel": "Volume",
-      "playing": "Playing"
+      "playing": "Playing",
+      "youtubeTitle": "YouTube music",
+      "pasteLabel": "Paste a YouTube link",
+      "pastePlaceholder": "https://youtube.com/watch?v=...",
+      "pastePlay": "Play",
+      "pasteInvalid": "That doesn't look like a valid YouTube link"
     },
     "background": {
       "label": "Background:",
@@ -200,7 +205,8 @@
         "blue": "Blue",
         "purple": "Purple",
         "green": "Green"
-      }
+      },
+      "imageLabel": "Background image"
     }
   },
   "quotesPage": {

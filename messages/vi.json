@@ -191,7 +191,12 @@
         "lofi": "Nhạc lo-fi"
       },
       "volumeLabel": "Âm lượng",
-      "playing": "Đang phát"
+      "playing": "Đang phát",
+      "youtubeTitle": "Nhạc YouTube",
+      "pasteLabel": "Dán link YouTube",
+      "pastePlaceholder": "https://youtube.com/watch?v=...",
+      "pastePlay": "Phát",
+      "pasteInvalid": "Link YouTube không hợp lệ"
     },
     "background": {
       "label": "Nền:",
@@ -200,7 +205,8 @@
         "blue": "Xanh dương",
         "purple": "Tím",
         "green": "Xanh lá"
-      }
+      },
+      "imageLabel": "Ảnh nền"
     }
   },
   "quotesPage": {

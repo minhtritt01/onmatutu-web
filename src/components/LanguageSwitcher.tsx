@@ -4,11 +4,6 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { useTransition } from "react";
 
-const FLAG: Record<Locale, string> = {
-  vi: "🇻🇳",
-  en: "🇺🇸",
-};
-
 const LABEL: Record<Locale, string> = {
   vi: "VI",
   en: "EN",
@@ -28,7 +23,12 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex items-center gap-1" aria-label="Language">
+    <div
+      className={`flex items-center gap-0.5 rounded-full border border-brand-gray p-0.5 text-xs font-semibold ${
+        isPending ? "opacity-60" : ""
+      }`}
+      aria-label="Language"
+    >
       {routing.locales.map((l) => {
         const isActive = l === locale;
         return (
@@ -38,15 +38,10 @@ export function LanguageSwitcher() {
             disabled={isPending}
             aria-pressed={isActive}
             aria-label={l === "vi" ? "Tiếng Việt" : "English"}
-            className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold transition-all
-              ${isActive
-                ? "bg-brand-yellow text-foreground shadow-sm"
-                : "text-foreground/50 hover:text-foreground/80"
-              }
-              ${isPending ? "opacity-60" : ""}
-            `}
+            className={`rounded-full px-2.5 py-1 transition-all ${
+              isActive ? "bg-brand-yellow text-foreground" : "text-foreground/50 hover:text-foreground/80"
+            }`}
           >
-            <span aria-hidden="true">{FLAG[l as Locale]}</span>
             {LABEL[l as Locale]}
           </button>
         );

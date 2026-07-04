@@ -26,12 +26,12 @@ export async function Header() {
         </Link>
         <div className="flex items-center gap-3">
           {/* Desktop nav */}
-          <nav className="hidden gap-5 text-sm sm:flex">
+          <nav className="hidden items-center gap-6 text-sm sm:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-foreground/70 transition hover:text-foreground"
+                className="whitespace-nowrap text-foreground/70 transition hover:text-foreground"
               >
                 {item.label}
               </Link>
