@@ -16,6 +16,7 @@ const THEMES: { id: ThemeId; swatch: string }[] = [
 
 const STORAGE_KEY = "relax-breathing-theme";
 const IMAGE_STORAGE_KEY = "relax-breathing-image-bg";
+const FULLSCREEN_HINT_KEY = "relax-breathing-fullscreen-hint-seen";
 
 export function BreathingBackground({ children }: { children: ReactNode }) {
   const t = useTranslations("breathingTool.background");
@@ -23,6 +24,7 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
   const [backgrounds, setBackgrounds] = useState<RelaxBackground[]>([]);
   const [imageBg, setImageBg] = useState<RelaxBackground | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showFullscreenHint, setShowFullscreenHint] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -33,7 +35,15 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
     return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, []);
 
+  useEffect(() => {
+    if (!window.localStorage.getItem(FULLSCREEN_HINT_KEY)) {
+      setShowFullscreenHint(true);
+    }
+  }, []);
+
   function toggleFullscreen() {
+    setShowFullscreenHint(false);
+    window.localStorage.setItem(FULLSCREEN_HINT_KEY, "1");
     if (document.fullscreenElement) {
       document.exitFullscreen();
     } else {
@@ -92,7 +102,9 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
       <button
         onClick={toggleFullscreen}
         aria-label={isFullscreen ? t("collapseFullscreen") : t("expandFullscreen")}
-        className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-brand-gray bg-background/60 text-foreground/70 backdrop-blur-sm transition hover:text-foreground"
+        className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-brand-gray bg-background/60 text-foreground/70 backdrop-blur-sm transition hover:text-foreground ${
+          showFullscreenHint && !isFullscreen ? "fullscreen-hint" : ""
+        }`}
       >
         {isFullscreen ? (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
