@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { getRelaxBackgrounds, type RelaxBackground } from "@/lib/relax-content";
+import { FullscreenContext } from "@/lib/fullscreen-context";
 
 type ThemeId = "yellow" | "blue" | "purple" | "green";
 
@@ -21,6 +22,24 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
   const [themeId, setThemeId] = useState<ThemeId>("yellow");
   const [backgrounds, setBackgrounds] = useState<RelaxBackground[]>([]);
   const [imageBg, setImageBg] = useState<RelaxBackground | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleFullscreenChange() {
+      setIsFullscreen(document.fullscreenElement === containerRef.current);
+    }
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  function toggleFullscreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      containerRef.current?.requestFullscreen();
+    }
+  }
 
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY) as ThemeId | null;
@@ -54,7 +73,12 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={`relax-bg-${themeId} relative -mx-4 overflow-hidden rounded-3xl px-4 py-6 transition-colors sm:-mx-6 sm:px-6`}
+      ref={containerRef}
+      className={`relax-bg-${themeId} relative overflow-hidden transition-colors ${
+        isFullscreen
+          ? "flex h-full w-full flex-col items-center justify-center overflow-y-auto bg-background px-4 py-8"
+          : "-mx-4 rounded-3xl px-4 py-6 sm:-mx-6 sm:px-6"
+      }`}
       style={
         imageBg
           ? ({
@@ -65,6 +89,21 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
           : undefined
       }
     >
+      <button
+        onClick={toggleFullscreen}
+        aria-label={isFullscreen ? t("collapseFullscreen") : t("expandFullscreen")}
+        className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-brand-gray bg-background/60 text-foreground/70 backdrop-blur-sm transition hover:text-foreground"
+      >
+        {isFullscreen ? (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+            <path d="M9 3v4a2 2 0 0 1-2 2H3M21 8h-4a2 2 0 0 1-2-2V3M3 16h4a2 2 0 0 1 2 2v4M16 21v-4a2 2 0 0 1 2-2h4" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+            <path d="M3 9V5a2 2 0 0 1 2-2h4M21 9V5a2 2 0 0 0-2-2h-4M3 15v4a2 2 0 0 0 2 2h4M21 15v4a2 2 0 0 1-2 2h-4" />
+          </svg>
+        )}
+      </button>
       {imageBg && (
         <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -110,7 +149,7 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
           </>
         )}
       </div>
-      {children}
+      <FullscreenContext.Provider value={isFullscreen}>{children}</FullscreenContext.Provider>
     </div>
   );
 }

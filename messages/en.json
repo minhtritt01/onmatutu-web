@@ -206,7 +206,9 @@
         "purple": "Purple",
         "green": "Green"
       },
-      "imageLabel": "Background image"
+      "imageLabel": "Background image",
+      "expandFullscreen": "Fullscreen",
+      "collapseFullscreen": "Exit fullscreen"
     }
   },
   "quotesPage": {

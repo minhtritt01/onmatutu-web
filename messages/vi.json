@@ -206,7 +206,9 @@
         "purple": "Tím",
         "green": "Xanh lá"
       },
-      "imageLabel": "Ảnh nền"
+      "imageLabel": "Ảnh nền",
+      "expandFullscreen": "Toàn màn hình",
+      "collapseFullscreen": "Thoát toàn màn hình"
     }
   },
   "quotesPage": {
