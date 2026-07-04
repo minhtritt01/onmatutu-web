@@ -18,6 +18,7 @@ export async function Footer() {
   const navLinks = [
     { label: tNav("blog"), href: "/blog" as const },
     { label: tNav("videos"), href: "/videos" as const },
+    { label: tNav("relax"), href: "/relax" as const },
     { label: tNav("affirmations"), href: "/affirmations" as const },
     { label: tNav("about"), href: "/about" as const },
     { label: tNav("share"), href: "/share-story" as const },

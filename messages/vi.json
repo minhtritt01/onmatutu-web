@@ -8,6 +8,7 @@
   "nav": {
     "blog": "Câu chuyện",
     "videos": "Video",
+    "relax": "Thư giãn",
     "affirmations": "Affirmation",
     "about": "Giới thiệu",
     "share": "Trút lòng",
@@ -134,5 +135,85 @@
     "errorMessage": "Có lỗi xảy ra. Hãy thử lại sau.",
     "minLength": "Câu chuyện cần ít nhất 10 ký tự.",
     "footer": "Câu chuyện này chỉ có chúng tôi đọc. Không ai khác."
+  },
+  "relaxHub": {
+    "title": "Thư giãn",
+    "metaDescription": "Công cụ hít thở và những câu nói nhẹ nhàng giúp bạn chậm lại một chút.",
+    "intro": "Một góc nhỏ để bạn dừng lại vài phút — hít thở, đọc vài câu nói nhẹ nhàng, rồi tiếp tục ngày của mình.",
+    "cards": {
+      "breathing": {
+        "title": "Bài tập thở",
+        "description": "Công cụ hít thở tương tác — chọn nhịp thở phù hợp và làm theo."
+      },
+      "quotes": {
+        "title": "Câu nói",
+        "description": "Những câu nói ngắn, chia theo cảm xúc bạn đang có."
+      }
+    }
+  },
+  "breathingTool": {
+    "title": "Bài tập thở",
+    "metaDescription": "Công cụ hít thở tương tác — thở hộp, 4-7-8, hoặc thở nhịp đều — giúp bạn giảm căng thẳng.",
+    "intro": "Chọn một nhịp thở, bấm bắt đầu, và làm theo vòng tròn.",
+    "readyLabel": "Sẵn sàng",
+    "phaseInhale": "Hít vào",
+    "phaseHold": "Giữ",
+    "phaseExhale": "Thở ra",
+    "start": "Bắt đầu",
+    "pause": "Tạm dừng",
+    "reset": "Đặt lại",
+    "soundOn": "Bật âm thanh",
+    "soundOff": "Tắt âm thanh",
+    "reducedMotionNotice": "Thiết bị của bạn đang bật chế độ giảm chuyển động — vòng tròn sẽ không phồng/co, chỉ hiển thị chữ và số đếm.",
+    "disclaimer": "Công cụ này không thay thế tư vấn y khoa. Nếu bạn đang gặp lo âu kéo dài, hãy tìm đến chuyên gia sức khỏe tâm thần.",
+    "disclaimerLinkLabel": "Đọc thêm về bài tập thở giảm căng thẳng",
+    "patterns": {
+      "box": {
+        "label": "Thở hộp",
+        "description": "Hít vào 4s, giữ 4s, thở ra 4s, giữ 4s — lặp lại đều đặn."
+      },
+      "478": {
+        "label": "4-7-8",
+        "description": "Hít vào 4s, giữ 7s, thở ra 8s — giúp thư giãn trước khi ngủ."
+      },
+      "coherent": {
+        "label": "Thở đều",
+        "description": "Hít vào 5s, thở ra 5s — nhịp thở đều, dễ duy trì lâu."
+      }
+    },
+    "ambient": {
+      "title": "Âm thanh nền",
+      "tracks": {
+        "rain": "Mưa",
+        "forest": "Rừng",
+        "ocean": "Sóng biển",
+        "campfire": "Lửa trại",
+        "lofi": "Nhạc lo-fi"
+      },
+      "volumeLabel": "Âm lượng",
+      "playing": "Đang phát"
+    },
+    "background": {
+      "label": "Nền:",
+      "themes": {
+        "yellow": "Vàng ấm",
+        "blue": "Xanh dương",
+        "purple": "Tím",
+        "green": "Xanh lá"
+      }
+    }
+  },
+  "quotesPage": {
+    "title": "Câu nói",
+    "metaDescription": "Những câu nói ngắn, nhẹ nhàng, chia theo cảm xúc — buồn, áp lực, cô đơn, hay cần chút động lực buổi sáng.",
+    "intro": "Chọn cảm xúc bạn đang có, hoặc xem tất cả.",
+    "allCategory": "Tất cả",
+    "noQuotes": "Chưa có câu nói nào ở đây.",
+    "categories": {
+      "buon": "Buồn",
+      "ap-luc": "Áp lực",
+      "co-don": "Cô đơn",
+      "dong-luc-sang": "Động lực buổi sáng"
+    }
   }
 }

@@ -131,7 +131,7 @@ export default async function BlogPostPage({ params }: Props) {
         <PostShareButtons />
 
         {quoteText && (
-          <QuoteCard quote={quoteText} title={post.frontmatter.title} />
+          <QuoteCard quote={quoteText} attribution={post.frontmatter.title} />
         )}
 
         {post.frontmatter.videoUrl && (

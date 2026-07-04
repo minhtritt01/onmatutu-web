@@ -14,14 +14,22 @@ function altLanguages(path: string) {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ["", "/blog", "/affirmations", "/about"];
+  const staticPaths = [
+    "",
+    "/blog",
+    "/affirmations",
+    "/about",
+    "/relax",
+    "/relax/breathing",
+    "/relax/quotes",
+  ];
 
   const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((p) =>
     locales.map((locale) => ({
       url: localeUrl(locale, p),
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: p === "" ? 1.0 : p === "/blog" ? 0.9 : 0.7,
+      priority: p === "" ? 1.0 : p === "/blog" ? 0.9 : p.startsWith("/relax") ? 0.8 : 0.7,
       alternates: { languages: altLanguages(p) },
     }))
   );
@@ -71,5 +79,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticRoutes, ...blogRoutes, ...seriesRoutes, ...pillarRoutes];
+  const quoteCategories = ["buon", "ap-luc", "co-don", "dong-luc-sang"];
+
+  const quoteCategoryRoutes: MetadataRoute.Sitemap = quoteCategories.flatMap((category) =>
+    locales.map((locale) => ({
+      url: localeUrl(locale, `/relax/quotes/${category}`),
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+      alternates: { languages: altLanguages(`/relax/quotes/${category}`) },
+    }))
+  );
+
+  return [
+    ...staticRoutes,
+    ...blogRoutes,
+    ...seriesRoutes,
+    ...pillarRoutes,
+    ...quoteCategoryRoutes,
+  ];
 }

@@ -6,10 +6,10 @@ import { siteConfig } from "@/lib/site-config";
 
 type Props = {
   quote: string;
-  title: string;
+  attribution?: string;
 };
 
-export function QuoteCard({ quote, title }: Props) {
+export function QuoteCard({ quote, attribution }: Props) {
   const t = useTranslations("quoteCard");
   const [copied, setCopied] = useState(false);
 
@@ -50,7 +50,9 @@ export function QuoteCard({ quote, title }: Props) {
         <blockquote className="relative text-base font-medium italic leading-relaxed text-[#f0ede8] sm:text-lg">
           &ldquo;{quote}&rdquo;
         </blockquote>
-        <p className="relative mt-4 text-xs text-[#f0ede8]/40">— {title}</p>
+        <p className="relative mt-4 text-xs text-[#f0ede8]/40">
+          — {attribution ?? siteConfig.hashtag}
+        </p>
       </div>
       <div className="mt-3 flex flex-col items-center gap-1.5">
         <button

@@ -1,0 +1,110 @@
+- generic [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - 'link "Ổn Mà, Từ Từ #OnMaTuTu" [ref=f1e4] [cursor=pointer]':
+        - /url: /
+      - generic [ref=f1e5]:
+        - navigation [ref=f1e6]:
+          - link "Câu chuyện" [ref=f1e7] [cursor=pointer]:
+            - /url: /blog
+          - link "Video" [ref=f1e8] [cursor=pointer]:
+            - /url: /videos
+          - link "Thư giãn" [ref=f1e9] [cursor=pointer]:
+            - /url: /relax
+          - link "Affirmation" [ref=f1e10] [cursor=pointer]:
+            - /url: /affirmations
+          - link "Giới thiệu" [ref=f1e11] [cursor=pointer]:
+            - /url: /about
+          - link "Trút lòng" [ref=f1e12] [cursor=pointer]:
+            - /url: /share-story
+        - generic "Language" [ref=f1e13]:
+          - button "Tiếng Việt" [pressed] [ref=f1e14]:
+            - generic [ref=f1e15]: 🇻🇳
+            - text: VI
+          - button "English" [ref=f1e16]:
+            - generic [ref=f1e17]: 🇺🇸
+            - text: EN
+        - button "Chuyển sang chế độ tối" [ref=f1e18]:
+          - img [ref=f1e19]
+  - generic [ref=f1e21]:
+    - link "TikTok" [ref=f1e22] [cursor=pointer]:
+      - /url: https://www.tiktok.com/@onmatutu
+      - img [ref=f1e23]
+    - link "YouTube" [ref=f1e25] [cursor=pointer]:
+      - /url: https://www.youtube.com/@onmatutu
+      - img [ref=f1e26]
+    - link "Instagram" [ref=f1e28] [cursor=pointer]:
+      - /url: https://www.instagram.com/onmatutu
+      - img [ref=f1e29]
+    - link "Facebook" [ref=f1e31] [cursor=pointer]:
+      - /url: https://www.facebook.com/onmatutuofficial
+      - img [ref=f1e32]
+  - main [ref=f1e34]:
+    - generic [ref=f1e35]:
+      - heading "Bài tập thở" [level=1] [ref=f1e36]
+      - paragraph [ref=f1e37]: Chọn một nhịp thở, bấm bắt đầu, và làm theo vòng tròn.
+      - generic [ref=f1e38]:
+        - generic [ref=f1e39]:
+          - button "Thở hộp" [ref=f1e40]
+          - button "4-7-8" [active] [pressed] [ref=f1e41]
+          - button "Thở đều" [ref=f1e42]
+        - paragraph [ref=f1e43]: Hít vào 4s, giữ 7s, thở ra 8s — giúp thư giãn trước khi ngủ.
+        - generic [ref=f1e46]: Sẵn sàng
+        - generic [ref=f1e47]:
+          - button "Bắt đầu" [ref=f1e108]
+          - button "Đặt lại" [ref=f1e49]
+          - button "Bật âm thanh" [ref=f1e50]: 🔕
+        - paragraph [ref=f1e51]: Thiết bị của bạn đang bật chế độ giảm chuyển động — vòng tròn sẽ không phồng/co, chỉ hiển thị chữ và số đếm.
+        - generic [ref=f1e52]:
+          - paragraph [ref=f1e53]: Âm thanh nền
+          - generic [ref=f1e54]:
+            - button "Mưa" [ref=f1e55]
+            - button "Rừng" [ref=f1e56]
+          - generic [ref=f1e57]:
+            - generic [ref=f1e58]: Âm lượng
+            - slider "Âm lượng" [ref=f1e59]: "0.5"
+      - generic [ref=f1e60]:
+        - paragraph [ref=f1e61]: Công cụ này không thay thế tư vấn y khoa. Nếu bạn đang gặp lo âu kéo dài, hãy tìm đến chuyên gia sức khỏe tâm thần.
+        - link "Đọc thêm về bài tập thở giảm căng thẳng" [ref=f1e62] [cursor=pointer]:
+          - /url: https://www.vinmec.com/vie/bai-viet/cac-bai-tap-tho-giup-giam-cang-thang-lo-au-vi
+  - contentinfo [ref=f1e63]:
+    - generic [ref=f1e64]:
+      - generic [ref=f1e65]:
+        - generic [ref=f1e66]:
+          - generic [ref=f1e67]:
+            - img "Ổn Mà, Từ Từ" [ref=f1e69]
+            - generic [ref=f1e70]: Ổn Mà, Từ Từ
+          - paragraph [ref=f1e71]: Những câu chuyện nhỏ, ổn mà từ từ.
+          - paragraph [ref=f1e72]: "#OnMaTuTu"
+        - generic [ref=f1e73]:
+          - paragraph [ref=f1e74]: Khám phá
+          - navigation [ref=f1e75]:
+            - link "Câu chuyện" [ref=f1e76] [cursor=pointer]:
+              - /url: /blog
+            - link "Video" [ref=f1e77] [cursor=pointer]:
+              - /url: /videos
+            - link "Affirmation" [ref=f1e78] [cursor=pointer]:
+              - /url: /affirmations
+            - link "Giới thiệu" [ref=f1e79] [cursor=pointer]:
+              - /url: /about
+            - link "Trút lòng" [ref=f1e80] [cursor=pointer]:
+              - /url: /share-story
+        - generic [ref=f1e81]:
+          - paragraph [ref=f1e82]: Theo dõi kênh
+          - generic [ref=f1e83]:
+            - link "TikTok" [ref=f1e84] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@onmatutu
+              - img [ref=f1e85]
+            - link "YouTube" [ref=f1e87] [cursor=pointer]:
+              - /url: https://www.youtube.com/@onmatutu
+              - img [ref=f1e88]
+            - link "Instagram" [ref=f1e90] [cursor=pointer]:
+              - /url: https://www.instagram.com/onmatutu
+              - img [ref=f1e91]
+            - link "Facebook" [ref=f1e93] [cursor=pointer]:
+              - /url: https://www.facebook.com/onmatutuofficial
+              - img [ref=f1e94]
+      - generic [ref=f1e96]: "© 2026 Ổn Mà, Từ Từ — #OnMaTuTu"
+  - button "Open Next.js Dev Tools" [ref=f1e102] [cursor=pointer]:
+    - img [ref=f1e103]
+  - alert [ref=f1e106]

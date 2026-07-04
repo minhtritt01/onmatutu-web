@@ -19,6 +19,10 @@ function seriesDir(locale: string) {
   return path.join(process.cwd(), "content/series", locale);
 }
 
+function quotesDir(locale: string) {
+  return path.join(process.cwd(), "content/quotes", locale);
+}
+
 export type PostFrontmatter = {
   title: string;
   description: string;
@@ -148,4 +152,44 @@ export function getAllSeriesSlugs(locale = "vi"): string[] {
     .readdirSync(dir)
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx$/, ""));
+}
+
+// --- Quotes ---
+
+export type QuoteCategory = "buon" | "ap-luc" | "co-don" | "dong-luc-sang";
+
+export type QuoteFrontmatter = {
+  quote: string;
+  category: QuoteCategory;
+  author?: string;
+};
+
+export type Quote = {
+  slug: string;
+  frontmatter: QuoteFrontmatter;
+};
+
+function readQuotesMdxDir(dir: string): Quote[] {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => {
+      const slug = file.replace(/\.mdx$/, "");
+      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
+      const { data } = matter(raw);
+      return { slug, frontmatter: data as QuoteFrontmatter };
+    });
+}
+
+export function getAllQuotes(locale = "vi"): Quote[] {
+  if (locale === "vi") return readQuotesMdxDir(quotesDir("vi"));
+  const viQuotes = readQuotesMdxDir(quotesDir("vi"));
+  const localeQuotes = readQuotesMdxDir(quotesDir(locale));
+  const localeMap = new Map(localeQuotes.map((q) => [q.slug, q]));
+  return viQuotes.map((viQuote) => localeMap.get(viQuote.slug) ?? viQuote);
+}
+
+export function getQuotesByCategory(category: QuoteCategory, locale = "vi"): Quote[] {
+  return getAllQuotes(locale).filter((q) => q.frontmatter.category === category);
 }

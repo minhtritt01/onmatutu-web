@@ -8,6 +8,7 @@
   "nav": {
     "blog": "Stories",
     "videos": "Videos",
+    "relax": "Relax",
     "affirmations": "Affirmations",
     "about": "About",
     "share": "Share",
@@ -134,5 +135,85 @@
     "errorMessage": "Something went wrong. Please try again later.",
     "minLength": "Your story needs to be at least 10 characters.",
     "footer": "Only we will read this. No one else."
+  },
+  "relaxHub": {
+    "title": "Relax",
+    "metaDescription": "A breathing tool and gentle quotes to help you slow down for a moment.",
+    "intro": "A small corner to pause for a few minutes — breathe, read a few gentle words, then carry on with your day.",
+    "cards": {
+      "breathing": {
+        "title": "Breathing exercise",
+        "description": "An interactive breathing tool — pick a rhythm and follow along."
+      },
+      "quotes": {
+        "title": "Quotes",
+        "description": "Short quotes, sorted by how you're feeling right now."
+      }
+    }
+  },
+  "breathingTool": {
+    "title": "Breathing exercise",
+    "metaDescription": "An interactive breathing tool — box breathing, 4-7-8, or coherent breathing — to help you feel less stressed.",
+    "intro": "Pick a breathing pattern, hit start, and follow the circle.",
+    "readyLabel": "Ready",
+    "phaseInhale": "Breathe in",
+    "phaseHold": "Hold",
+    "phaseExhale": "Breathe out",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "soundOn": "Turn sound on",
+    "soundOff": "Turn sound off",
+    "reducedMotionNotice": "Your device has reduced motion enabled — the circle won't scale, only text and a countdown will show.",
+    "disclaimer": "This tool doesn't replace medical advice. If you're dealing with ongoing anxiety, please reach out to a mental health professional.",
+    "disclaimerLinkLabel": "Read more about breathing exercises for stress",
+    "patterns": {
+      "box": {
+        "label": "Box breathing",
+        "description": "Breathe in 4s, hold 4s, breathe out 4s, hold 4s — repeat steadily."
+      },
+      "478": {
+        "label": "4-7-8",
+        "description": "Breathe in 4s, hold 7s, breathe out 8s — good for winding down before sleep."
+      },
+      "coherent": {
+        "label": "Coherent breathing",
+        "description": "Breathe in 5s, breathe out 5s — an even rhythm that's easy to sustain."
+      }
+    },
+    "ambient": {
+      "title": "Background sound",
+      "tracks": {
+        "rain": "Rain",
+        "forest": "Forest",
+        "ocean": "Ocean waves",
+        "campfire": "Campfire",
+        "lofi": "Lo-fi music"
+      },
+      "volumeLabel": "Volume",
+      "playing": "Playing"
+    },
+    "background": {
+      "label": "Background:",
+      "themes": {
+        "yellow": "Warm yellow",
+        "blue": "Blue",
+        "purple": "Purple",
+        "green": "Green"
+      }
+    }
+  },
+  "quotesPage": {
+    "title": "Quotes",
+    "metaDescription": "Short, gentle quotes sorted by feeling — sadness, pressure, loneliness, or a bit of morning motivation.",
+    "intro": "Pick how you're feeling, or see all of them.",
+    "allCategory": "All",
+    "noQuotes": "No quotes here yet.",
+    "categories": {
+      "buon": "Sadness",
+      "ap-luc": "Pressure",
+      "co-don": "Loneliness",
+      "dong-luc-sang": "Morning motivation"
+    }
   }
 }

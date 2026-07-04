@@ -89,3 +89,36 @@ html {
 .prose a:hover {
   color: var(--color-brand-yellow);
 }
+
+@keyframes breathe-inhale {
+  from { transform: scale(0.6); }
+  to   { transform: scale(1); }
+}
+
+@keyframes breathe-exhale {
+  from { transform: scale(1); }
+  to   { transform: scale(0.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breathing-circle {
+    animation: none !important;
+    transform: scale(0.85) !important;
+  }
+}
+
+.relax-bg-yellow {
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(244, 201, 93, 0.28) 0%, transparent 70%);
+}
+
+.relax-bg-blue {
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(122, 190, 232, 0.28) 0%, transparent 70%);
+}
+
+.relax-bg-purple {
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(200, 122, 176, 0.28) 0%, transparent 70%);
+}
+
+.relax-bg-green {
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(122, 232, 184, 0.28) 0%, transparent 70%);
+}
