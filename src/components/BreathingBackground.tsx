@@ -91,7 +91,7 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
   return (
     <div
       ref={containerRef}
-      className={`relax-bg-${themeId} relative overflow-hidden transition-colors ${
+      className={`relax-bg-${themeId} relative isolate overflow-hidden transition-colors ${
         isFullscreen
           ? "relax-fullscreen flex h-full w-full flex-col items-center justify-center overflow-y-auto bg-background px-4 py-8"
           : "-mx-4 rounded-3xl px-4 py-6 sm:-mx-6 sm:px-6"
