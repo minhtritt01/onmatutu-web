@@ -109,7 +109,7 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
       <button
         onClick={toggleFullscreen}
         aria-label={isFullscreen ? t("collapseFullscreen") : t("expandFullscreen")}
-        className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-brand-gray bg-background/60 text-foreground/70 backdrop-blur-sm transition hover:text-foreground ${
+        className={`absolute top-3 right-3 z-10 hidden h-8 w-8 items-center justify-center rounded-full border border-brand-gray bg-background/60 text-foreground/70 backdrop-blur-sm transition hover:text-foreground sm:flex ${
           showFullscreenHint && !isFullscreen ? "fullscreen-hint" : ""
         }`}
       >
@@ -135,7 +135,83 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
           <div className="absolute inset-0 -z-10 bg-black/60" />
         </>
       )}
-      <div className="mb-6 flex flex-wrap items-center justify-center gap-2 pr-12">
+      {/* Mobile: compact card with icon groups + larger tap targets */}
+      <div className="mb-6 flex flex-col items-center gap-3 rounded-2xl border border-white/15 bg-black/15 px-4 py-3 shadow-sm backdrop-blur-md sm:hidden">
+        <div className="flex items-center gap-2.5">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden="true"
+            className="h-4 w-4 shrink-0 text-foreground/45"
+          >
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+            <path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.4-.3-.4-.5-.9-.5-1.4 0-1.1.9-2 2-2h2.4c1.7 0 3.1-1.4 3.1-3.1C20.5 6.6 16.7 2 12 2Z" />
+          </svg>
+          <span className="sr-only">{t("label")}</span>
+          <div className="flex items-center gap-2">
+            {THEMES.map((theme) => (
+              <button
+                key={theme.id}
+                onClick={() => handleSelect(theme.id)}
+                aria-label={t(`themes.${theme.id}`)}
+                aria-pressed={!imageBg && themeId === theme.id}
+                className={`h-8 w-8 rounded-full ring-2 ring-offset-2 ring-offset-transparent transition active:scale-95 ${
+                  !imageBg && themeId === theme.id ? "ring-foreground" : "ring-transparent"
+                }`}
+                style={{ background: theme.swatch }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {backgrounds.length > 0 && (
+          <>
+            <span className="block h-px w-16 bg-white/20" aria-hidden="true" />
+            <div className="flex items-center gap-2.5">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+                className="h-4 w-4 shrink-0 text-foreground/45"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor" stroke="none" />
+                <path d="m21 15-5-5-11 9" />
+              </svg>
+              <span className="sr-only">{t("imageLabel")}</span>
+              <div className="flex items-center gap-2">
+                {backgrounds.map((bg) => (
+                  <button
+                    key={bg.id}
+                    onClick={() => handleSelectImage(bg)}
+                    aria-label={bg.labelVi || bg.labelEn}
+                    aria-pressed={imageBg?.id === bg.id}
+                    style={{ WebkitTouchCallout: "none" }}
+                    className={`h-8 w-8 overflow-hidden rounded-full bg-cover bg-center ring-2 ring-offset-2 ring-offset-transparent transition active:scale-95 ${
+                      imageBg?.id === bg.id ? "ring-foreground" : "ring-transparent"
+                    }`}
+                  >
+                    <span
+                      className="block h-full w-full bg-cover bg-center"
+                      style={{ backgroundImage: `url(${bg.imageUrl})` }}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Desktop/tablet: original compact inline row */}
+      <div className="mb-6 hidden flex-wrap items-center justify-center gap-2 sm:flex sm:pr-12">
         <span className="text-xs text-foreground/50">{t("label")}</span>
         {THEMES.map((theme) => (
           <button
