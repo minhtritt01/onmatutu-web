@@ -122,18 +122,58 @@ html {
   }
 }
 
+/* background-color (not the `background` shorthand) so it survives alongside
+   background-image below — the shorthand would silently reset the container's
+   background-color to transparent, letting the browser's black fullscreen
+   backdrop show through and swallow the text. */
 .relax-bg-yellow {
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(244, 201, 93, 0.28) 0%, transparent 70%);
+  background-color: var(--background);
+  background-image: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(244, 201, 93, 0.28) 0%, transparent 70%);
 }
 
 .relax-bg-blue {
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(122, 190, 232, 0.28) 0%, transparent 70%);
+  background-color: var(--background);
+  background-image: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(122, 190, 232, 0.28) 0%, transparent 70%);
 }
 
 .relax-bg-purple {
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(200, 122, 176, 0.28) 0%, transparent 70%);
+  background-color: var(--background);
+  background-image: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(200, 122, 176, 0.28) 0%, transparent 70%);
 }
 
 .relax-bg-green {
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(122, 232, 184, 0.28) 0%, transparent 70%);
+  background-color: var(--background);
+  background-image: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(122, 232, 184, 0.28) 0%, transparent 70%);
+}
+
+/* Fullscreen is much taller than the compact card, so the single top-anchored
+   glow above fades out long before the bottom of the screen, leaving a flat
+   black void. Add a matching glow at the bottom so the whole viewport reads
+   as one continuous gradient. */
+.relax-fullscreen.relax-bg-yellow {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% 0%, rgba(244, 201, 93, 0.26) 0%, transparent 65%),
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(244, 201, 93, 0.16) 0%, transparent 65%);
+}
+
+.relax-fullscreen.relax-bg-blue {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% 0%, rgba(122, 190, 232, 0.26) 0%, transparent 65%),
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(122, 190, 232, 0.16) 0%, transparent 65%);
+}
+
+.relax-fullscreen.relax-bg-purple {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% 0%, rgba(200, 122, 176, 0.26) 0%, transparent 65%),
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(200, 122, 176, 0.16) 0%, transparent 65%);
+}
+
+.relax-fullscreen.relax-bg-green {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% 0%, rgba(122, 232, 184, 0.26) 0%, transparent 65%),
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(122, 232, 184, 0.16) 0%, transparent 65%);
 }
