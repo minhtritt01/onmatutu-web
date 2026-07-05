@@ -25,6 +25,7 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
   const [imageBg, setImageBg] = useState<RelaxBackground | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showFullscreenHint, setShowFullscreenHint] = useState(false);
+  const [fullscreenSupported, setFullscreenSupported] = useState(true);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -33,6 +34,12 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
     }
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document.documentElement.requestFullscreen !== "function") {
+      setFullscreenSupported(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -128,7 +135,7 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
           <div className="absolute inset-0 -z-10 bg-black/60" />
         </>
       )}
-      <div className="mb-6 flex flex-wrap items-center justify-center gap-2">
+      <div className="mb-6 flex flex-wrap items-center justify-center gap-2 pr-12">
         <span className="text-xs text-foreground/50">{t("label")}</span>
         {THEMES.map((theme) => (
           <button
