@@ -90,16 +90,6 @@ html {
   color: var(--color-brand-yellow);
 }
 
-@keyframes breathe-inhale {
-  from { transform: scale(0.6); }
-  to   { transform: scale(1); }
-}
-
-@keyframes breathe-exhale {
-  from { transform: scale(1); }
-  to   { transform: scale(0.6); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .breathing-circle {
     animation: none !important;

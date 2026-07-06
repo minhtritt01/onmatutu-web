@@ -7,10 +7,10 @@ import {
   BREATHING_PATTERNS,
   DEFAULT_PATTERN_ID,
   getPattern,
-  nextPhase,
   type BreathPhase,
   type PatternId,
 } from "@/lib/breathing-patterns";
+import { useBreathingClock } from "@/lib/use-breathing-clock";
 import { BreathingCircle } from "@/components/BreathingCircle";
 import { AmbientPlayer } from "@/components/AmbientPlayer";
 import { useIsFullscreen } from "@/lib/fullscreen-context";
@@ -34,31 +34,14 @@ export function BreathingTool() {
   );
   const pattern = getPattern(patternId);
 
-  const [phase, setPhase] = useState<BreathPhase>("inhale");
-  const [running, setRunning] = useState(false);
-  const [secondsLeft, setSecondsLeft] = useState(pattern.durations.inhale);
+  const { phase, secondsLeft, running, progressRef, cycleId, start, pause, reset } =
+    useBreathingClock(pattern);
   const [soundOn, setSoundOn] = useState(false);
 
   const chimeRef = useRef<HTMLAudioElement | null>(null);
-  const phaseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const tickIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  function clearTimers() {
-    if (phaseTimeoutRef.current) clearTimeout(phaseTimeoutRef.current);
-    if (tickIntervalRef.current) clearInterval(tickIntervalRef.current);
-    phaseTimeoutRef.current = null;
-    tickIntervalRef.current = null;
-  }
 
   useEffect(() => {
-    if (!running) {
-      clearTimers();
-      return;
-    }
-
-    const durationSec = pattern.durations[phase];
-    setSecondsLeft(durationSec);
-
+    if (!running) return;
     if (soundOn) {
       const audio = chimeRef.current;
       if (audio) {
@@ -66,40 +49,23 @@ export function BreathingTool() {
         audio.play().catch(() => {});
       }
     }
-
-    tickIntervalRef.current = setInterval(() => {
-      setSecondsLeft((s) => Math.max(0, s - 1));
-    }, 1000);
-
-    phaseTimeoutRef.current = setTimeout(() => {
-      setPhase((p) => nextPhase(pattern, p));
-    }, durationSec * 1000);
-
-    return clearTimers;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [running, phase, patternId]);
+  }, [cycleId]);
 
   function handleStart() {
-    setPhase("inhale");
-    setRunning(true);
+    start();
   }
 
   function handlePause() {
-    setRunning(false);
+    pause();
   }
 
   function handleReset() {
-    setRunning(false);
-    setPhase("inhale");
-    setSecondsLeft(pattern.durations.inhale);
+    reset();
   }
 
   function handlePatternChange(id: PatternId) {
-    setRunning(false);
     setPatternId(id);
-    setPhase("inhale");
-    const next = getPattern(id);
-    setSecondsLeft(next.durations.inhale);
   }
 
   const patternPicker = (
@@ -127,6 +93,8 @@ export function BreathingTool() {
       durationSec={pattern.durations[phase]}
       running={running}
       label={running ? `${t(PHASE_LABEL_KEY[phase])} · ${secondsLeft}s` : t("readyLabel")}
+      progressRef={progressRef}
+      cycleId={cycleId}
     />
   );
 
