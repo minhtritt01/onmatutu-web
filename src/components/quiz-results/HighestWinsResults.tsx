@@ -1,19 +1,21 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { CategoryScore } from "@/lib/quiz-engine";
+import type { CategoryScore, QuizDefinition } from "@/lib/quiz-engine";
 import { ResultActions } from "@/components/quiz-results/ResultActions";
+import { IconBadge } from "@/components/result-icons/icon-system";
+import { getResultIcon } from "@/components/result-icons";
 
 export function HighestWinsResults({
-  namespace,
+  definition,
   scores,
   onRetake,
 }: {
-  namespace: string;
+  definition: QuizDefinition;
   scores: CategoryScore[];
   onRetake: () => void;
 }) {
-  const t = useTranslations(namespace);
+  const t = useTranslations(definition.namespace);
 
   const [top, ...rest] = scores;
   const runnerUps = rest.filter((s) => top.percent - s.percent <= 10);
@@ -25,12 +27,23 @@ export function HighestWinsResults({
       <h2 className="mb-1 text-xl font-semibold">{t("results.heading")}</h2>
       <p className="mb-8 text-sm text-foreground/60">{t("results.resultDisclaimer")}</p>
 
-      {topResults.map((score) => (
-        <div key={score.category} className="mb-6 rounded-2xl border border-brand-yellow/40 bg-brand-yellow/10 p-5">
-          <h3 className="mb-2 text-lg font-semibold">{t(`categories.${score.category}.name`)}</h3>
-          <p className="text-sm text-foreground/70">{t(`categories.${score.category}.blurb`)}</p>
-        </div>
-      ))}
+      {topResults.map((score) => {
+        const Icon = getResultIcon(definition.id, score.category);
+        return (
+          <div
+            key={score.category}
+            className="mb-6 flex gap-4 rounded-2xl border border-brand-yellow/40 bg-brand-yellow/10 p-5"
+          >
+            <IconBadge size="lg">
+              <Icon />
+            </IconBadge>
+            <div>
+              <h3 className="mb-2 text-lg font-semibold">{t(`categories.${score.category}.name`)}</h3>
+              <p className="text-sm text-foreground/70">{t(`categories.${score.category}.blurb`)}</p>
+            </div>
+          </div>
+        );
+      })}
 
       {others.length > 0 && (
         <div className="mt-8">
@@ -53,7 +66,7 @@ export function HighestWinsResults({
         </div>
       )}
 
-      <ResultActions namespace={namespace} onRetake={onRetake} />
+      <ResultActions namespace={definition.namespace} onRetake={onRetake} />
     </div>
   );
 }

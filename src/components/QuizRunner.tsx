@@ -21,17 +21,17 @@ export function QuizRunner({ definition }: { definition: QuizDefinition }) {
   if (view === "results" && result) {
     if (result.mode === "domain-percent") {
       return (
-        <DomainPercentResults namespace={definition.namespace} scores={result.scores} onRetake={retake} />
+        <DomainPercentResults definition={definition} scores={result.scores} onRetake={retake} />
       );
     }
     if (result.mode === "highest-wins") {
       return (
-        <HighestWinsResults namespace={definition.namespace} scores={result.scores} onRetake={retake} />
+        <HighestWinsResults definition={definition} scores={result.scores} onRetake={retake} />
       );
     }
     if (result.mode === "dichotomy") {
       return (
-        <DichotomyResults namespace={definition.namespace} result={result.result} onRetake={retake} />
+        <DichotomyResults definition={definition} result={result.result} onRetake={retake} />
       );
     }
     if (result.result.crisis) {

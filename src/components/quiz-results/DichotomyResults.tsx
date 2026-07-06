@@ -1,26 +1,32 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { DichotomyResult } from "@/lib/quiz-engine";
+import type { DichotomyResult, QuizDefinition } from "@/lib/quiz-engine";
 import { ResultActions } from "@/components/quiz-results/ResultActions";
+import { IconBadge } from "@/components/result-icons/icon-system";
+import { getResultIcon } from "@/components/result-icons";
 
 export function DichotomyResults({
-  namespace,
+  definition,
   result,
   onRetake,
 }: {
-  namespace: string;
+  definition: QuizDefinition;
   result: DichotomyResult;
   onRetake: () => void;
 }) {
-  const t = useTranslations(namespace);
+  const t = useTranslations(definition.namespace);
+  const Icon = getResultIcon(definition.id, result.code);
 
   return (
     <div>
       <h2 className="mb-1 text-xl font-semibold">{t("results.heading")}</h2>
       <p className="mb-6 text-sm text-foreground/60">{t("results.resultDisclaimer")}</p>
 
-      <div className="mb-6 rounded-2xl border border-brand-yellow/40 bg-brand-yellow/10 p-6 text-center">
+      <div className="mb-6 flex flex-col items-center gap-3 rounded-2xl border border-brand-yellow/40 bg-brand-yellow/10 p-6 text-center">
+        <IconBadge size="lg">
+          <Icon />
+        </IconBadge>
         <p className="mb-1 text-4xl font-bold tracking-wide text-brand-navy">{result.code}</p>
         <h3 className="mb-2 text-lg font-semibold">{t(`types.${result.code}.name`)}</h3>
         <p className="text-sm text-foreground/70">{t(`types.${result.code}.blurb`)}</p>
@@ -51,7 +57,7 @@ export function DichotomyResults({
         ))}
       </div>
 
-      <ResultActions namespace={namespace} onRetake={onRetake} />
+      <ResultActions namespace={definition.namespace} onRetake={onRetake} />
     </div>
   );
 }
