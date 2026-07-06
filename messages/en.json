@@ -13,7 +13,8 @@
     "about": "About",
     "share": "Share",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "quiz": "Quizzes"
   },
   "home": {
     "heroAlt": "Ổn Mà, Từ Từ character — gentle smile",
@@ -83,7 +84,17 @@
     "subtitle": "Animated stories about motivation, mindset, and being kind to yourself."
   },
   "meta": {
-    "keywords": ["motivation", "short animation", "mindset", "self-compassion", "onmatutu", "TikTok animation", "short stories", "affirmations", "Vietnamese animation"]
+    "keywords": [
+      "motivation",
+      "short animation",
+      "mindset",
+      "self-compassion",
+      "onmatutu",
+      "TikTok animation",
+      "short stories",
+      "affirmations",
+      "Vietnamese animation"
+    ]
   },
   "postCTA": {
     "heading": "Enjoyed this story?",
@@ -222,6 +233,132 @@
       "ap-luc": "Pressure",
       "co-don": "Loneliness",
       "dong-luc-sang": "Morning motivation"
+    }
+  },
+  "bigFive": {
+    "title": "Big Five Personality Test",
+    "metaDescription": "Discover your 5 core personality traits with the Big Five (IPIP-NEO) test — free, right in your browser, no sign-up needed.",
+    "intro": {
+      "heading": "Big Five Personality Test",
+      "body": "The Big Five is the most widely researched personality model in psychology, measuring 5 core traits: Openness, Conscientiousness, Extraversion, Agreeableness, and Emotional Stability. This test has 60 questions and takes about 8-10 minutes.",
+      "disclaimer": "This is a self-discovery tool for reference only, not a medical or psychological diagnostic instrument. Your results reflect tendencies, not a fixed conclusion about who you are.",
+      "startCta": "Start the test"
+    },
+    "likert": {
+      "1": "Strongly disagree",
+      "2": "Disagree",
+      "3": "Neutral",
+      "4": "Agree",
+      "5": "Strongly agree"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "domains": {
+      "openness": {
+        "name": "Openness",
+        "highBlurb": "You tend to be curious, drawn to new ideas, and excited by unfamiliar experiences. You're often drawn to art, different perspectives, and change.",
+        "lowBlurb": "You tend to prefer familiarity, practicality, and stability over novelty. You feel most at ease when things are clear, concrete, and predictable."
+      },
+      "conscientiousness": {
+        "name": "Conscientiousness",
+        "highBlurb": "You tend to be organized, disciplined, and reliable at work. You usually plan ahead and try to follow through carefully on what you start.",
+        "lowBlurb": "You tend to be flexible and easygoing rather than tied to rigid plans. You're comfortable letting things unfold naturally instead of tightly controlling them."
+      },
+      "extraversion": {
+        "name": "Extraversion",
+        "highBlurb": "You tend to feel energized around other people, enjoy socializing, and feel comfortable being the center of attention.",
+        "lowBlurb": "You tend to recharge by spending time alone and prefer deeper one-on-one conversations over large, noisy gatherings."
+      },
+      "agreeableness": {
+        "name": "Agreeableness",
+        "highBlurb": "You tend to be caring, empathetic, and quick to help others. You usually prioritize harmony in your relationships.",
+        "lowBlurb": "You tend to be direct, independent, and confident in your own views. You don't shy away from saying what you think, even when it's not easy to hear."
+      },
+      "neuroticism": {
+        "name": "Emotional Stability",
+        "highBlurb": "You tend to be sensitive to stress and more likely to experience feelings like anxiety or sadness. This also means you experience the world quite deeply.",
+        "lowBlurb": "You tend to stay calm and emotionally steady even under pressure. You're rarely shaken by life's small ups and downs."
+      }
+    },
+    "items": {
+      "item1": "I have a vivid imagination.",
+      "item2": "I am interested in abstract ideas.",
+      "item3": "I like to try new things.",
+      "item4": "I have a rich vocabulary.",
+      "item5": "I enjoy art, music, or literature.",
+      "item6": "I am full of curiosity about the world around me.",
+      "item7": "I am not interested in abstract ideas.",
+      "item8": "I prefer routine over new experiences.",
+      "item9": "I have difficulty imagining things that aren't real.",
+      "item10": "I rarely notice art or beauty around me.",
+      "item11": "I prefer practical, concrete thinking over daydreaming.",
+      "item12": "I often come up with new ideas at work.",
+      "item13": "I am always prepared before starting a task.",
+      "item14": "I pay attention to details.",
+      "item15": "I get chores done right away.",
+      "item16": "I like things to be organized.",
+      "item17": "I follow a schedule.",
+      "item18": "I work carefully to reach my goals.",
+      "item19": "I leave my belongings around.",
+      "item20": "I often put off tasks I need to do.",
+      "item21": "I often forget to put things back in their place.",
+      "item22": "I avoid responsibilities when I can.",
+      "item23": "I get distracted easily from what I'm doing.",
+      "item24": "I try to do more than what's expected of me.",
+      "item25": "I am the life of the party.",
+      "item26": "I feel comfortable around people.",
+      "item27": "I start conversations easily.",
+      "item28": "I like talking to many different people at gatherings.",
+      "item29": "I don't mind being the center of attention.",
+      "item30": "I feel energized when I'm around other people.",
+      "item31": "I am quiet around strangers.",
+      "item32": "I like to stay in the background.",
+      "item33": "I don't like to draw attention to myself.",
+      "item34": "I find it hard to approach people first.",
+      "item35": "I need a lot of alone time to recharge.",
+      "item36": "I usually don't have much to say in group conversations.",
+      "item37": "I care about other people's feelings.",
+      "item38": "I easily sympathize with others' difficulties.",
+      "item39": "I make time to help others.",
+      "item40": "I believe in the goodness of people.",
+      "item41": "I feel for people who are less fortunate.",
+      "item42": "I forgive others easily.",
+      "item43": "I'm not very interested in other people's problems.",
+      "item44": "I find it hard to put myself in someone else's shoes.",
+      "item45": "I usually look out for my own interests first.",
+      "item46": "I tend to suspect other people's motives.",
+      "item47": "I can be blunt enough to hurt people's feelings.",
+      "item48": "I rarely check in on someone who seems upset.",
+      "item49": "I get stressed out easily, even over small things.",
+      "item50": "I worry about things that might happen.",
+      "item51": "My mood changes a lot.",
+      "item52": "I get irritated or annoyed easily.",
+      "item53": "I often feel down without a clear reason.",
+      "item54": "I get angry easily when things don't go my way.",
+      "item55": "I rarely feel anxious.",
+      "item56": "I stay calm even under pressure.",
+      "item57": "I'm not easily bothered by stress around me.",
+      "item58": "I feel emotionally stable in most situations.",
+      "item59": "I'm not easily shaken by what others say.",
+      "item60": "I stay composed even in difficult situations."
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "These are relative tendencies, not a diagnosis or a fixed conclusion. People can change over time and across situations.",
+      "retake": "Retake the test",
+      "shareCta": "Share",
+      "shareCopied": "Link copied!"
+    }
+  },
+  "quizHub": {
+    "title": "Quizzes",
+    "metaDescription": "Short quizzes to help you understand yourself better — free, right in your browser.",
+    "intro": "Take a few minutes to discover more about yourself through short quizzes grounded in well-researched psychology models.",
+    "cards": {
+      "bigFive": {
+        "title": "Big Five Personality Test",
+        "description": "60 questions to help you discover your 5 core personality traits."
+      }
     }
   }
 }

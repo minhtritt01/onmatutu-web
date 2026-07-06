@@ -13,7 +13,8 @@
     "about": "Giới thiệu",
     "share": "Trút lòng",
     "openMenu": "Mở menu",
-    "closeMenu": "Đóng menu"
+    "closeMenu": "Đóng menu",
+    "quiz": "Trắc nghiệm"
   },
   "home": {
     "heroAlt": "Nhân vật Ổn Mà, Từ Từ - mỉm cười nhẹ nhàng",
@@ -83,7 +84,17 @@
     "subtitle": "Câu chuyện hoạt hình về động lực, mindset và sự tử tế với chính mình."
   },
   "meta": {
-    "keywords": ["động lực", "hoạt hình ngắn", "mindset", "tự tử tế với bản thân", "ổn mà từ từ", "OnMaTuTu", "TikTok hoạt hình", "câu chuyện ngắn", "affirmation tiếng Việt"]
+    "keywords": [
+      "động lực",
+      "hoạt hình ngắn",
+      "mindset",
+      "tự tử tế với bản thân",
+      "ổn mà từ từ",
+      "OnMaTuTu",
+      "TikTok hoạt hình",
+      "câu chuyện ngắn",
+      "affirmation tiếng Việt"
+    ]
   },
   "postCTA": {
     "heading": "Bạn thích câu chuyện này?",
@@ -222,6 +233,132 @@
       "ap-luc": "Áp lực",
       "co-don": "Cô đơn",
       "dong-luc-sang": "Động lực buổi sáng"
+    }
+  },
+  "bigFive": {
+    "title": "Trắc nghiệm tính cách Big Five",
+    "metaDescription": "Khám phá 5 nét tính cách cốt lõi của bạn qua bài trắc nghiệm Big Five (IPIP-NEO) — miễn phí, làm ngay trên trình duyệt, không cần đăng ký.",
+    "intro": {
+      "heading": "Trắc nghiệm tính cách Big Five",
+      "body": "Big Five là mô hình tính cách được nghiên cứu tâm lý học sử dụng rộng rãi nhất hiện nay, đo lường 5 nét tính cách cốt lõi: Sự cởi mở, Sự tận tâm, Hướng ngoại, Dễ chịu và Sự ổn định cảm xúc. Bài test gồm 60 câu, mất khoảng 8-10 phút để hoàn thành.",
+      "disclaimer": "Đây là công cụ tự khám phá bản thân mang tính tham khảo, không phải công cụ chẩn đoán y khoa hay tâm lý. Kết quả chỉ phản ánh xu hướng, không phải một kết luận cố định về con người bạn.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "likert": {
+      "1": "Rất không đồng ý",
+      "2": "Không đồng ý",
+      "3": "Trung lập",
+      "4": "Đồng ý",
+      "5": "Rất đồng ý"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "domains": {
+      "openness": {
+        "name": "Sự cởi mở",
+        "highBlurb": "Bạn có xu hướng tò mò, thích khám phá ý tưởng mới và cảm thấy hứng thú với những trải nghiệm chưa quen thuộc. Bạn dễ bị thu hút bởi nghệ thuật, những cách nhìn khác biệt và sự thay đổi.",
+        "lowBlurb": "Bạn có xu hướng thích sự quen thuộc, thực tế và ổn định hơn là những điều mới lạ. Bạn cảm thấy an tâm khi mọi thứ rõ ràng, cụ thể và ít bất ngờ."
+      },
+      "conscientiousness": {
+        "name": "Sự tận tâm",
+        "highBlurb": "Bạn có xu hướng có tổ chức, kỷ luật và đáng tin cậy trong công việc. Bạn thường lên kế hoạch trước và cố gắng hoàn thành mọi thứ một cách chỉn chu.",
+        "lowBlurb": "Bạn có xu hướng linh hoạt, thoải mái hơn là gò bó theo kế hoạch cứng nhắc. Đôi khi bạn để mọi thứ diễn ra tự nhiên thay vì kiểm soát chặt chẽ."
+      },
+      "extraversion": {
+        "name": "Hướng ngoại",
+        "highBlurb": "Bạn có xu hướng tràn đầy năng lượng khi ở bên người khác, thích giao tiếp và cảm thấy thoải mái khi trở thành tâm điểm chú ý.",
+        "lowBlurb": "Bạn có xu hướng nạp lại năng lượng khi ở một mình và thích những cuộc trò chuyện sâu sắc với ít người hơn là đám đông ồn ào."
+      },
+      "agreeableness": {
+        "name": "Dễ chịu",
+        "highBlurb": "Bạn có xu hướng quan tâm, thấu cảm và sẵn lòng giúp đỡ người khác. Bạn thường đặt sự hài hòa trong các mối quan hệ lên hàng đầu.",
+        "lowBlurb": "Bạn có xu hướng thẳng thắn, độc lập và ưu tiên quan điểm của riêng mình. Bạn không ngại nói ra điều mình nghĩ, kể cả khi điều đó không dễ nghe."
+      },
+      "neuroticism": {
+        "name": "Sự ổn định cảm xúc",
+        "highBlurb": "Bạn có xu hướng nhạy cảm với căng thẳng và dễ trải qua những cảm xúc như lo âu hay buồn bã. Điều này cũng có nghĩa là bạn cảm nhận thế giới xung quanh một cách sâu sắc.",
+        "lowBlurb": "Bạn có xu hướng bình tĩnh và ổn định cảm xúc ngay cả trong những tình huống áp lực. Bạn ít khi bị dao động bởi những biến động nhỏ trong cuộc sống."
+      }
+    },
+    "items": {
+      "item1": "Tôi có trí tưởng tượng phong phú.",
+      "item2": "Tôi quan tâm đến những ý tưởng trừu tượng.",
+      "item3": "Tôi thích thử những điều mới mẻ.",
+      "item4": "Tôi có vốn từ vựng phong phú.",
+      "item5": "Tôi thích khám phá nghệ thuật, âm nhạc hoặc văn học.",
+      "item6": "Tôi luôn tò mò về mọi thứ xung quanh.",
+      "item7": "Tôi không mấy hứng thú với những ý tưởng trừu tượng.",
+      "item8": "Tôi thích sự quen thuộc hơn là những điều mới lạ.",
+      "item9": "Tôi thấy khó hình dung những điều không có thật.",
+      "item10": "Tôi ít khi để ý đến nghệ thuật hay cái đẹp xung quanh.",
+      "item11": "Tôi thích suy nghĩ thực tế, cụ thể hơn là mơ mộng.",
+      "item12": "Tôi thường nảy ra ý tưởng mới trong công việc.",
+      "item13": "Tôi luôn chuẩn bị kỹ trước khi làm việc gì.",
+      "item14": "Tôi chú ý đến từng chi tiết nhỏ.",
+      "item15": "Tôi hoàn thành công việc đúng hạn.",
+      "item16": "Tôi thích mọi thứ có trật tự, ngăn nắp.",
+      "item17": "Tôi tuân thủ lịch trình đã đặt ra.",
+      "item18": "Tôi làm việc kỹ lưỡng để đạt được mục tiêu.",
+      "item19": "Tôi hay để đồ đạc bừa bộn.",
+      "item20": "Tôi thường trì hoãn công việc.",
+      "item21": "Tôi hay quên trả đồ về đúng chỗ.",
+      "item22": "Tôi né tránh trách nhiệm khi có thể.",
+      "item23": "Tôi dễ bị xao nhãng khỏi việc đang làm.",
+      "item24": "Tôi cố gắng làm nhiều hơn những gì được yêu cầu.",
+      "item25": "Tôi là linh hồn của mọi buổi tụ họp.",
+      "item26": "Tôi cảm thấy thoải mái khi ở giữa đám đông.",
+      "item27": "Tôi dễ dàng bắt chuyện với người lạ.",
+      "item28": "Tôi thích nói chuyện với nhiều người khác nhau tại các buổi gặp mặt.",
+      "item29": "Tôi không ngại trở thành tâm điểm chú ý.",
+      "item30": "Tôi tràn đầy năng lượng khi ở bên người khác.",
+      "item31": "Tôi ít nói khi ở gần người lạ.",
+      "item32": "Tôi thích đứng phía sau, tránh sự chú ý.",
+      "item33": "Tôi không thích trở thành trung tâm của sự chú ý.",
+      "item34": "Tôi thấy khó khăn khi phải chủ động bắt chuyện với người khác.",
+      "item35": "Tôi cần nhiều thời gian ở một mình để nạp lại năng lượng.",
+      "item36": "Tôi thường không có nhiều điều để nói trong các cuộc trò chuyện nhóm.",
+      "item37": "Tôi quan tâm đến cảm xúc của người khác.",
+      "item38": "Tôi dễ đồng cảm với những khó khăn của người khác.",
+      "item39": "Tôi sẵn sàng dành thời gian để giúp đỡ người khác.",
+      "item40": "Tôi tin vào sự tốt đẹp của con người.",
+      "item41": "Tôi cảm thông với những người kém may mắn hơn mình.",
+      "item42": "Tôi dễ tha thứ cho lỗi lầm của người khác.",
+      "item43": "Tôi ít quan tâm đến vấn đề của người khác.",
+      "item44": "Tôi thấy khó đặt mình vào vị trí của người khác.",
+      "item45": "Tôi thường nghĩ đến lợi ích của bản thân trước tiên.",
+      "item46": "Tôi hay nghi ngờ ý định của người khác.",
+      "item47": "Tôi có thể thẳng thắn đến mức làm người khác tổn thương.",
+      "item48": "Tôi ít khi chủ động hỏi han khi ai đó gặp chuyện buồn.",
+      "item49": "Tôi dễ cảm thấy căng thẳng dù chỉ vì chuyện nhỏ.",
+      "item50": "Tôi hay lo lắng về những điều có thể xảy ra.",
+      "item51": "Tâm trạng của tôi thay đổi thất thường.",
+      "item52": "Tôi dễ cảm thấy khó chịu hoặc bực bội.",
+      "item53": "Tôi thường cảm thấy buồn bã mà không rõ lý do.",
+      "item54": "Tôi dễ nổi cáu khi mọi việc không như ý.",
+      "item55": "Tôi hiếm khi cảm thấy lo âu.",
+      "item56": "Tôi giữ được bình tĩnh ngay cả khi áp lực.",
+      "item57": "Tôi ít khi bị ảnh hưởng bởi căng thẳng xung quanh.",
+      "item58": "Tôi cảm thấy ổn định về cảm xúc trong hầu hết tình huống.",
+      "item59": "Tôi không dễ bị dao động bởi lời nói của người khác.",
+      "item60": "Tôi luôn giữ được sự bình thản dù gặp khó khăn."
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là những xu hướng tương đối, không phải một chẩn đoán hay kết luận cố định. Con người có thể thay đổi theo thời gian và hoàn cảnh.",
+      "retake": "Làm lại test",
+      "shareCta": "Chia sẻ",
+      "shareCopied": "Đã sao chép liên kết!"
+    }
+  },
+  "quizHub": {
+    "title": "Trắc nghiệm",
+    "metaDescription": "Những bài trắc nghiệm ngắn giúp bạn hiểu thêm về bản thân — miễn phí, làm ngay trên trình duyệt.",
+    "intro": "Dành vài phút để khám phá thêm về chính mình qua những bài trắc nghiệm ngắn gọn, dựa trên các mô hình tâm lý học được nghiên cứu kỹ lưỡng.",
+    "cards": {
+      "bigFive": {
+        "title": "Trắc nghiệm tính cách Big Five",
+        "description": "60 câu hỏi giúp bạn khám phá 5 nét tính cách cốt lõi của mình."
+      }
     }
   }
 }
