@@ -3,6 +3,7 @@ import {
   scoreDomainPercent,
   scoreHighestWins,
   scoreDichotomy,
+  scoreSeveritySum,
   type Answers,
   type QuizDefinition,
 } from "@/lib/quiz-engine";
@@ -46,6 +47,8 @@ export function useQuizRunner(definition: QuizDefinition) {
         return { mode: "highest-wins" as const, scores: scoreHighestWins(definition, answers) };
       case "dichotomy":
         return { mode: "dichotomy" as const, result: scoreDichotomy(definition, answers) };
+      case "severity-sum":
+        return { mode: "severity-sum" as const, result: scoreSeveritySum(definition, answers) };
     }
   }, [definition, answers]);
 

@@ -26,12 +26,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const CARDS = [
-  { slug: "bigFive", href: "/quiz/big-five" as const },
-  { slug: "mbti", href: "/quiz/mbti" as const },
-  { slug: "enneagram", href: "/quiz/enneagram" as const },
-  { slug: "disc", href: "/quiz/disc" as const },
-  { slug: "loveLanguages", href: "/quiz/love-languages" as const },
-  { slug: "attachmentStyle", href: "/quiz/attachment-style" as const },
+  { slug: "bigFive", href: "/quiz/big-five" as const, screening: false },
+  { slug: "mbti", href: "/quiz/mbti" as const, screening: false },
+  { slug: "enneagram", href: "/quiz/enneagram" as const, screening: false },
+  { slug: "disc", href: "/quiz/disc" as const, screening: false },
+  { slug: "loveLanguages", href: "/quiz/love-languages" as const, screening: false },
+  { slug: "attachmentStyle", href: "/quiz/attachment-style" as const, screening: false },
+  { slug: "phq9", href: "/quiz/phq-9" as const, screening: true },
+  { slug: "gad7", href: "/quiz/gad-7" as const, screening: true },
 ];
 
 export default async function QuizHubPage({ params }: Props) {
@@ -52,6 +54,11 @@ export default async function QuizHubPage({ params }: Props) {
             href={card.href}
             className="rounded-2xl border border-brand-gray p-6 transition hover:border-brand-yellow"
           >
+            {card.screening && (
+              <span className="mb-2 inline-block rounded-full bg-brand-navy/10 px-2 py-0.5 text-xs font-medium text-brand-navy">
+                {t("screeningBadge")}
+              </span>
+            )}
             <h2 className="mb-1 text-lg font-semibold">{t(`cards.${card.slug}.title`)}</h2>
             <p className="text-sm text-foreground/60">{t(`cards.${card.slug}.description`)}</p>
           </Link>

@@ -378,8 +378,17 @@
       "attachmentStyle": {
         "title": "Attachment Style Test",
         "description": "24 questions to help you discover your attachment style in relationships."
+      },
+      "phq9": {
+        "title": "Depression Screening (PHQ-9)",
+        "description": "9 screening questions based on the widely used PHQ-9 clinical scale."
+      },
+      "gad7": {
+        "title": "Anxiety Screening (GAD-7)",
+        "description": "7 screening questions based on the widely used GAD-7 clinical scale."
       }
-    }
+    },
+    "screeningBadge": "Mental health screening"
   },
   "mbti": {
     "title": "MBTI-style Personality Test",
@@ -873,6 +882,145 @@
       "retake": "Retake the test",
       "shareCta": "Share",
       "shareCopied": "Link copied!"
+    }
+  },
+  "phq9": {
+    "title": "Depression Screening (PHQ-9)",
+    "metaDescription": "PHQ-9 depression screening — a free reference tool, right in your browser, your answers are never stored.",
+    "intro": {
+      "heading": "Depression Screening (PHQ-9)",
+      "body": "PHQ-9 is a widely used depression screening tool with 9 questions about what you've experienced over the past 2 weeks. It takes about 3 minutes.",
+      "disclaimer": "This is not a medical diagnostic tool — only a healthcare professional can provide an official diagnosis.",
+      "startCta": "Start the test"
+    },
+    "disclaimerGate": {
+      "heading": "Before you start",
+      "body": "This is a self-screening tool based on the PHQ-9 scale. It does not replace a diagnosis from a doctor or mental health professional. Results are for reference only. If you're in crisis or having thoughts of harming yourself, please contact the Ngày Mai hotline (096 306 1414) right away or reach out to someone you trust.",
+      "ackCta": "I understand, start"
+    },
+    "likert": {
+      "0": "Not at all",
+      "1": "Several days",
+      "2": "More than half the days",
+      "3": "Nearly every day"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "items": {
+      "item1": "Little interest or pleasure in doing things",
+      "item2": "Feeling down, depressed, or hopeless",
+      "item3": "Trouble falling or staying asleep, or sleeping too much",
+      "item4": "Feeling tired or having little energy",
+      "item5": "Poor appetite or overeating",
+      "item6": "Feeling bad about yourself — or that you are a failure, or have let yourself or your family down",
+      "item7": "Trouble concentrating on things, such as reading the newspaper or watching television",
+      "item8": "Moving or speaking so slowly that other people could have noticed — or the opposite, being so fidgety or restless that you've been moving around a lot more than usual",
+      "item9": "Thoughts that you would be better off dead, or of hurting yourself in some way"
+    },
+    "bands": {
+      "minimal": {
+        "label": "Minimal",
+        "blurb": "Your score shows very few related signs over the past 2 weeks. This is a reference tool only, not a medical conclusion."
+      },
+      "mild": {
+        "label": "Mild",
+        "blurb": "Your score is in the mild range. If these feelings continue, consider talking to someone you trust or a mental health professional."
+      },
+      "moderate": {
+        "label": "Moderate",
+        "blurb": "Your score is in the moderate range — this can be a sign that talking to a mental health professional would help."
+      },
+      "moderatelySevere": {
+        "label": "Moderately severe",
+        "blurb": "Your score is fairly high. We encourage you to reach out to a mental health professional soon."
+      },
+      "severe": {
+        "label": "Severe",
+        "blurb": "Your score is high — this is a clear sign you should talk to a mental health professional as soon as possible. You don't have to go through this alone."
+      }
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "This is a self-screening tool for reference only, not a medical diagnostic tool. Only a healthcare professional can provide an official diagnosis.",
+      "retake": "Retake",
+      "supportHeading": "You don't have to do this alone",
+      "supportBody": "If you'd like to talk to someone, the Ngày Mai hotline (096 306 1414) is available to listen, free and confidential."
+    },
+    "crisis": {
+      "heading": "You're not alone",
+      "body": "Some of your answers suggest you may be going through a very difficult time. Before seeing your results, please take a moment to look at the support resources below — someone is ready to listen.",
+      "ackCta": "I've read this, show my results",
+      "hotlines": [
+        {
+          "label": "Ngày Mai — Psychological & crisis support",
+          "phone": "096 306 1414"
+        },
+        {
+          "label": "Free mental health consultation",
+          "phone": "0909 65 80 35"
+        },
+        {
+          "label": "National child protection hotline (24/7)",
+          "phone": "111"
+        }
+      ]
+    }
+  },
+  "gad7": {
+    "title": "Anxiety Screening (GAD-7)",
+    "metaDescription": "GAD-7 anxiety screening — a free reference tool, right in your browser, your answers are never stored.",
+    "intro": {
+      "heading": "Anxiety Screening (GAD-7)",
+      "body": "GAD-7 is a widely used anxiety screening tool with 7 questions about what you've experienced over the past 2 weeks. It takes about 2 minutes.",
+      "disclaimer": "This is not a medical diagnostic tool — only a healthcare professional can provide an official diagnosis.",
+      "startCta": "Start the test"
+    },
+    "disclaimerGate": {
+      "heading": "Before you start",
+      "body": "This is a self-screening tool based on the GAD-7 scale. It does not replace a diagnosis from a doctor or mental health professional. Results are for reference only. If you're in crisis, please contact the Ngày Mai hotline (096 306 1414) right away or reach out to someone you trust.",
+      "ackCta": "I understand, start"
+    },
+    "likert": {
+      "0": "Not at all",
+      "1": "Several days",
+      "2": "More than half the days",
+      "3": "Nearly every day"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "items": {
+      "item1": "Feeling nervous, anxious, or on edge",
+      "item2": "Not being able to stop or control worrying",
+      "item3": "Worrying too much about different things",
+      "item4": "Trouble relaxing",
+      "item5": "Being so restless that it's hard to sit still",
+      "item6": "Becoming easily annoyed or irritable",
+      "item7": "Feeling afraid as if something awful might happen"
+    },
+    "bands": {
+      "minimal": {
+        "label": "Minimal",
+        "blurb": "Your score shows very few signs of anxiety over the past 2 weeks. This is a reference tool only, not a medical conclusion."
+      },
+      "mild": {
+        "label": "Mild",
+        "blurb": "Your score is in the mild range. If the worrying continues, consider talking to someone you trust or a mental health professional."
+      },
+      "moderate": {
+        "label": "Moderate",
+        "blurb": "Your score is in the moderate range — this can be a sign that talking to a mental health professional would help."
+      },
+      "severe": {
+        "label": "Severe",
+        "blurb": "Your score is high. We encourage you to reach out to a mental health professional soon."
+      }
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "This is a self-screening tool for reference only, not a medical diagnostic tool. Only a healthcare professional can provide an official diagnosis.",
+      "retake": "Retake",
+      "supportHeading": "You don't have to do this alone",
+      "supportBody": "If you'd like to talk to someone, the Ngày Mai hotline (096 306 1414) is available to listen, free and confidential."
     }
   }
 }

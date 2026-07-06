@@ -6,8 +6,13 @@ import { useQuizRunner } from "@/lib/use-quiz-runner";
 import { DomainPercentResults } from "@/components/quiz-results/DomainPercentResults";
 import { HighestWinsResults } from "@/components/quiz-results/HighestWinsResults";
 import { DichotomyResults } from "@/components/quiz-results/DichotomyResults";
+import { SeveritySumResults } from "@/components/quiz-results/SeveritySumResults";
+import { CrisisResourceBanner } from "@/components/quiz-results/CrisisResourceBanner";
 
-const LIKERT_VALUES = [1, 2, 3, 4, 5];
+function likertValues(definition: QuizDefinition): number[] {
+  const { min, max } = definition.answerScale ?? { min: 1, max: 5 };
+  return Array.from({ length: max - min + 1 }, (_, i) => min + i);
+}
 
 export function QuizRunner({ definition }: { definition: QuizDefinition }) {
   const t = useTranslations(definition.namespace);
@@ -24,8 +29,22 @@ export function QuizRunner({ definition }: { definition: QuizDefinition }) {
         <HighestWinsResults namespace={definition.namespace} scores={result.scores} onRetake={retake} />
       );
     }
+    if (result.mode === "dichotomy") {
+      return (
+        <DichotomyResults namespace={definition.namespace} result={result.result} onRetake={retake} />
+      );
+    }
+    if (result.result.crisis) {
+      return (
+        <CrisisResourceBanner
+          namespace={definition.namespace}
+          result={result.result}
+          onRetake={retake}
+        />
+      );
+    }
     return (
-      <DichotomyResults namespace={definition.namespace} result={result.result} onRetake={retake} />
+      <SeveritySumResults namespace={definition.namespace} result={result.result} onRetake={retake} />
     );
   }
 
@@ -59,7 +78,7 @@ export function QuizRunner({ definition }: { definition: QuizDefinition }) {
       <h2 className="mb-8 text-xl font-semibold">{t(`items.item${item.id}`)}</h2>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        {LIKERT_VALUES.map((value) => (
+        {likertValues(definition).map((value) => (
           <button
             key={value}
             onClick={() => answer(value)}

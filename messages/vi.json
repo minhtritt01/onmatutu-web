@@ -378,8 +378,17 @@
       "attachmentStyle": {
         "title": "Trắc nghiệm Phong cách gắn bó",
         "description": "24 câu hỏi giúp bạn khám phá phong cách gắn bó của mình trong các mối quan hệ."
+      },
+      "phq9": {
+        "title": "Sàng lọc trầm cảm (PHQ-9)",
+        "description": "9 câu hỏi sàng lọc, dựa trên thang đo PHQ-9 được sử dụng rộng rãi trong y tế."
+      },
+      "gad7": {
+        "title": "Sàng lọc lo âu (GAD-7)",
+        "description": "7 câu hỏi sàng lọc, dựa trên thang đo GAD-7 được sử dụng rộng rãi trong y tế."
       }
-    }
+    },
+    "screeningBadge": "Sàng lọc sức khỏe tâm thần"
   },
   "mbti": {
     "title": "Trắc nghiệm tính cách MBTI",
@@ -873,6 +882,145 @@
       "retake": "Làm lại test",
       "shareCta": "Chia sẻ",
       "shareCopied": "Đã sao chép liên kết!"
+    }
+  },
+  "phq9": {
+    "title": "Sàng lọc trầm cảm (PHQ-9)",
+    "metaDescription": "Bài sàng lọc trầm cảm PHQ-9 — công cụ tham khảo miễn phí, làm ngay trên trình duyệt, không lưu trữ câu trả lời của bạn.",
+    "intro": {
+      "heading": "Sàng lọc trầm cảm (PHQ-9)",
+      "body": "PHQ-9 là công cụ sàng lọc trầm cảm được sử dụng rộng rãi trong y tế, gồm 9 câu hỏi về những gì bạn đã trải qua trong 2 tuần gần đây. Mất khoảng 3 phút.",
+      "disclaimer": "Đây không phải công cụ chẩn đoán y khoa — chỉ có chuyên gia y tế mới có thể đưa ra chẩn đoán chính thức.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "disclaimerGate": {
+      "heading": "Trước khi bắt đầu",
+      "body": "Đây là công cụ tự sàng lọc dựa trên thang đo PHQ-9, không thay thế cho chẩn đoán của bác sĩ hoặc chuyên gia tâm lý. Kết quả chỉ mang tính tham khảo. Nếu bạn đang gặp khủng hoảng hoặc có ý nghĩ tự làm hại bản thân, hãy liên hệ ngay đường dây nóng Ngày Mai (096 306 1414) hoặc tìm đến người bạn tin tưởng.",
+      "ackCta": "Tôi hiểu, bắt đầu"
+    },
+    "likert": {
+      "0": "Không ngày nào",
+      "1": "Vài ngày",
+      "2": "Hơn một nửa số ngày",
+      "3": "Gần như mỗi ngày"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "items": {
+      "item1": "Ít hứng thú hoặc không còn thấy vui thích khi làm việc gì",
+      "item2": "Cảm thấy buồn bã, chán nản hoặc tuyệt vọng",
+      "item3": "Khó ngủ, ngủ không yên giấc, hoặc ngủ quá nhiều",
+      "item4": "Cảm thấy mệt mỏi hoặc có ít năng lượng",
+      "item5": "Ăn không ngon miệng hoặc ăn quá nhiều",
+      "item6": "Cảm thấy bản thân tệ — hoặc cảm thấy mình là người thất bại, hoặc đã làm bản thân/gia đình thất vọng",
+      "item7": "Khó tập trung vào việc gì đó, ví dụ như đọc báo hoặc xem tivi",
+      "item8": "Di chuyển hoặc nói chuyện chậm chạp đến mức người khác có thể nhận thấy, hoặc ngược lại — bồn chồn, đứng ngồi không yên hơn bình thường",
+      "item9": "Có ý nghĩ rằng thà chết đi còn hơn, hoặc muốn tự làm hại bản thân theo cách nào đó"
+    },
+    "bands": {
+      "minimal": {
+        "label": "Ở mức tối thiểu",
+        "blurb": "Điểm số của bạn cho thấy rất ít dấu hiệu liên quan trong 2 tuần qua. Đây chỉ là công cụ tham khảo, không phải kết luận y khoa."
+      },
+      "mild": {
+        "label": "Ở mức nhẹ",
+        "blurb": "Điểm số của bạn ở mức nhẹ. Nếu những cảm giác này kéo dài, hãy thử chia sẻ với người bạn tin tưởng hoặc một chuyên gia tâm lý."
+      },
+      "moderate": {
+        "label": "Ở mức trung bình",
+        "blurb": "Điểm số của bạn ở mức trung bình — đây có thể là dấu hiệu bạn nên trò chuyện với chuyên gia tâm lý để được hỗ trợ đúng cách."
+      },
+      "moderatelySevere": {
+        "label": "Ở mức trung bình - nặng",
+        "blurb": "Điểm số của bạn khá cao. Chúng tôi khuyến khích bạn tìm đến một chuyên gia sức khỏe tâm thần trong thời gian sớm nhất."
+      },
+      "severe": {
+        "label": "Ở mức cao",
+        "blurb": "Điểm số của bạn ở mức cao — đây là dấu hiệu rõ ràng bạn nên trò chuyện với chuyên gia tâm lý càng sớm càng tốt. Bạn không cần phải trải qua điều này một mình."
+      }
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là công cụ tự sàng lọc mang tính tham khảo, không phải công cụ chẩn đoán y khoa. Chỉ có chuyên gia y tế mới có thể đưa ra chẩn đoán chính thức.",
+      "retake": "Làm lại",
+      "supportHeading": "Bạn không cần phải một mình",
+      "supportBody": "Nếu bạn muốn trò chuyện với ai đó, đường dây Ngày Mai (096 306 1414) luôn sẵn sàng lắng nghe, miễn phí và bảo mật."
+    },
+    "crisis": {
+      "heading": "Bạn không đơn độc",
+      "body": "Một số câu trả lời của bạn cho thấy bạn có thể đang trải qua giai đoạn rất khó khăn. Trước khi xem kết quả, hãy dành chút thời gian xem những nguồn hỗ trợ dưới đây — luôn có người sẵn sàng lắng nghe bạn.",
+      "ackCta": "Tôi đã đọc, xem kết quả của tôi",
+      "hotlines": [
+        {
+          "label": "Ngày Mai — Hỗ trợ tâm lý & khủng hoảng",
+          "phone": "096 306 1414"
+        },
+        {
+          "label": "Tư vấn sức khỏe tâm thần miễn phí",
+          "phone": "0909 65 80 35"
+        },
+        {
+          "label": "Tổng đài quốc gia bảo vệ trẻ em (24/7)",
+          "phone": "111"
+        }
+      ]
+    }
+  },
+  "gad7": {
+    "title": "Sàng lọc lo âu (GAD-7)",
+    "metaDescription": "Bài sàng lọc lo âu GAD-7 — công cụ tham khảo miễn phí, làm ngay trên trình duyệt, không lưu trữ câu trả lời của bạn.",
+    "intro": {
+      "heading": "Sàng lọc lo âu (GAD-7)",
+      "body": "GAD-7 là công cụ sàng lọc lo âu được sử dụng rộng rãi trong y tế, gồm 7 câu hỏi về những gì bạn đã trải qua trong 2 tuần gần đây. Mất khoảng 2 phút.",
+      "disclaimer": "Đây không phải công cụ chẩn đoán y khoa — chỉ có chuyên gia y tế mới có thể đưa ra chẩn đoán chính thức.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "disclaimerGate": {
+      "heading": "Trước khi bắt đầu",
+      "body": "Đây là công cụ tự sàng lọc dựa trên thang đo GAD-7, không thay thế cho chẩn đoán của bác sĩ hoặc chuyên gia tâm lý. Kết quả chỉ mang tính tham khảo. Nếu bạn đang gặp khủng hoảng, hãy liên hệ ngay đường dây nóng Ngày Mai (096 306 1414) hoặc tìm đến người bạn tin tưởng.",
+      "ackCta": "Tôi hiểu, bắt đầu"
+    },
+    "likert": {
+      "0": "Không ngày nào",
+      "1": "Vài ngày",
+      "2": "Hơn một nửa số ngày",
+      "3": "Gần như mỗi ngày"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "items": {
+      "item1": "Cảm thấy lo lắng, bồn chồn hoặc căng thẳng",
+      "item2": "Không thể ngừng lo lắng hoặc kiểm soát được sự lo lắng",
+      "item3": "Lo lắng quá nhiều về những chuyện khác nhau",
+      "item4": "Khó thư giãn",
+      "item5": "Bồn chồn đến mức khó ngồi yên",
+      "item6": "Dễ bực bội hoặc cáu gắt",
+      "item7": "Cảm thấy sợ hãi như thể điều gì tồi tệ sắp xảy ra"
+    },
+    "bands": {
+      "minimal": {
+        "label": "Ở mức tối thiểu",
+        "blurb": "Điểm số của bạn cho thấy rất ít dấu hiệu lo âu trong 2 tuần qua. Đây chỉ là công cụ tham khảo, không phải kết luận y khoa."
+      },
+      "mild": {
+        "label": "Ở mức nhẹ",
+        "blurb": "Điểm số của bạn ở mức nhẹ. Nếu cảm giác lo lắng kéo dài, hãy thử chia sẻ với người bạn tin tưởng hoặc một chuyên gia tâm lý."
+      },
+      "moderate": {
+        "label": "Ở mức trung bình",
+        "blurb": "Điểm số của bạn ở mức trung bình — đây có thể là dấu hiệu bạn nên trò chuyện với chuyên gia tâm lý để được hỗ trợ đúng cách."
+      },
+      "severe": {
+        "label": "Ở mức cao",
+        "blurb": "Điểm số của bạn ở mức cao. Chúng tôi khuyến khích bạn tìm đến một chuyên gia sức khỏe tâm thần trong thời gian sớm nhất."
+      }
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là công cụ tự sàng lọc mang tính tham khảo, không phải công cụ chẩn đoán y khoa. Chỉ có chuyên gia y tế mới có thể đưa ra chẩn đoán chính thức.",
+      "retake": "Làm lại",
+      "supportHeading": "Bạn không cần phải một mình",
+      "supportBody": "Nếu bạn muốn trò chuyện với ai đó, đường dây Ngày Mai (096 306 1414) luôn sẵn sàng lắng nghe, miễn phí và bảo mật."
     }
   }
 }

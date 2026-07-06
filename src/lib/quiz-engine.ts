@@ -1,9 +1,14 @@
-export type ScoringMode = "domain-percent" | "highest-wins" | "dichotomy";
+export type ScoringMode = "domain-percent" | "highest-wins" | "dichotomy" | "severity-sum";
 
 export type QuizItem = {
   id: number;
   category: string;
   reverseScored?: boolean;
+};
+
+export type SeverityBand = {
+  max: number;
+  key: string;
 };
 
 export type QuizDefinition = {
@@ -13,6 +18,10 @@ export type QuizDefinition = {
   categories: string[];
   items: QuizItem[];
   dichotomies?: [string, string][];
+  answerScale?: { min: number; max: number };
+  severityBands?: SeverityBand[];
+  crisisItemId?: number;
+  crisisThreshold?: number;
 };
 
 export type Answers = Partial<Record<number, number>>;
@@ -82,6 +91,24 @@ export function scoreDichotomy(def: QuizDefinition, answers: Answers): Dichotomy
   });
 
   return { pairs, code: pairs.map((p) => p.winner).join("") };
+}
+
+export type SeveritySumResult = {
+  total: number;
+  band: string;
+  crisis: boolean;
+};
+
+export function scoreSeveritySum(def: QuizDefinition, answers: Answers): SeveritySumResult {
+  const total = def.items.reduce((sum, item) => sum + (answers[item.id] ?? 0), 0);
+
+  const bands = def.severityBands ?? [];
+  const band = bands.find((b) => total <= b.max)?.key ?? bands[bands.length - 1]?.key ?? "";
+
+  const crisisFromItem = def.crisisItemId != null && (answers[def.crisisItemId] ?? 0) > 0;
+  const crisisFromThreshold = def.crisisThreshold != null && total >= def.crisisThreshold;
+
+  return { total, band, crisis: crisisFromItem || crisisFromThreshold };
 }
 
 export function isComplete(def: QuizDefinition, answers: Answers): boolean {
