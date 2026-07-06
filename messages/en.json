@@ -358,7 +358,521 @@
       "bigFive": {
         "title": "Big Five Personality Test",
         "description": "60 questions to help you discover your 5 core personality traits."
+      },
+      "mbti": {
+        "title": "MBTI-style Personality Test",
+        "description": "40 questions to help you find your fit among 16 personality types."
+      },
+      "enneagram": {
+        "title": "Enneagram Test",
+        "description": "45 questions to help you discover your type among the 9 Enneagram types."
+      },
+      "disc": {
+        "title": "DISC Test",
+        "description": "28 questions to help you discover your behavioral style."
+      },
+      "loveLanguages": {
+        "title": "Love Languages Test",
+        "description": "25 questions to help you discover how you feel love most clearly."
+      },
+      "attachmentStyle": {
+        "title": "Attachment Style Test",
+        "description": "24 questions to help you discover your attachment style in relationships."
       }
+    }
+  },
+  "mbti": {
+    "title": "MBTI-style Personality Test",
+    "metaDescription": "Discover which of the 16 personality types fits you best with this short, free test — right in your browser.",
+    "intro": {
+      "heading": "MBTI-style Personality Test",
+      "body": "This test uses 4 pairs of opposite personality tendencies — Extraversion/Introversion, Sensing/Intuition, Thinking/Feeling, Judging/Perceiving — to suggest which of the 16 personality types fits you best. It has 40 questions and takes about 6-8 minutes.",
+      "disclaimer": "This is a self-discovery tool for reference only, not a formal psychological assessment. Your results reflect tendencies, not a fixed label.",
+      "startCta": "Start the test"
+    },
+    "likert": {
+      "1": "Strongly disagree",
+      "2": "Disagree",
+      "3": "Neutral",
+      "4": "Agree",
+      "5": "Strongly agree"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "types": {
+      "INTJ": {
+        "name": "The Planner",
+        "blurb": "You tend to think strategically, work independently, and stay focused on long-term goals. You'd rather find your own optimal solution than follow the crowd."
+      },
+      "INTP": {
+        "name": "The Thinker",
+        "blurb": "You tend to be curious about how things work, enjoy analyzing ideas logically, and prefer working independently."
+      },
+      "ENTJ": {
+        "name": "The Leader",
+        "blurb": "You tend to be decisive, enjoy organizing things efficiently, and naturally guide others toward a shared goal."
+      },
+      "ENTP": {
+        "name": "The Debater",
+        "blurb": "You tend to enjoy debating ideas, thinking creatively, and constantly seeking new possibilities."
+      },
+      "INFJ": {
+        "name": "The Empath",
+        "blurb": "You tend to be thoughtful, idealistic, and drawn to the deeper meaning behind things."
+      },
+      "INFP": {
+        "name": "The Idealist",
+        "blurb": "You tend to live by your personal values, feel things deeply, and always seek authenticity."
+      },
+      "ENFJ": {
+        "name": "The Motivator",
+        "blurb": "You tend to care about others, connect easily, and inspire the people around you."
+      },
+      "ENFP": {
+        "name": "The Enthusiast",
+        "blurb": "You tend to be enthusiastic, creative, and love exploring new possibilities in life."
+      },
+      "ISTJ": {
+        "name": "The Realist",
+        "blurb": "You tend to be reliable, responsible, and work according to clear principles."
+      },
+      "ISFJ": {
+        "name": "The Devoted One",
+        "blurb": "You tend to be thoughtful, patient, and always ready to support the people around you."
+      },
+      "ESTJ": {
+        "name": "The Organizer",
+        "blurb": "You tend to be practical, organized, and prefer things to go according to plan."
+      },
+      "ESFJ": {
+        "name": "The Caregiver",
+        "blurb": "You tend to be sociable, considerate, and work hard to keep harmony within a group."
+      },
+      "ISTP": {
+        "name": "The Practitioner",
+        "blurb": "You tend to be hands-on, enjoy solving problems yourself, and adapt quickly to new situations."
+      },
+      "ISFP": {
+        "name": "The Artist",
+        "blurb": "You tend to be sensitive, drawn to beauty, and express yourself in your own way."
+      },
+      "ESTP": {
+        "name": "The Doer",
+        "blurb": "You tend to be energetic, enjoy hands-on experiences, and react quickly to change."
+      },
+      "ESFP": {
+        "name": "The Performer",
+        "blurb": "You tend to be cheerful, enjoy being the center of attention, and live in the moment."
+      }
+    },
+    "poles": {
+      "E": {
+        "label": "Extraversion (E)"
+      },
+      "I": {
+        "label": "Introversion (I)"
+      },
+      "S": {
+        "label": "Sensing (S)"
+      },
+      "N": {
+        "label": "Intuition (N)"
+      },
+      "T": {
+        "label": "Thinking (T)"
+      },
+      "F": {
+        "label": "Feeling (F)"
+      },
+      "J": {
+        "label": "Judging (J)"
+      },
+      "P": {
+        "label": "Perceiving (P)"
+      }
+    },
+    "items": {
+      "item1": "I feel energized after spending time with lots of people.",
+      "item2": "I like to think out loud, sharing ideas as soon as they come to me.",
+      "item3": "I easily strike up conversations with people I've just met.",
+      "item4": "I prefer group activities over working alone.",
+      "item5": "I feel excited when I'm in a crowd.",
+      "item6": "I need alone time to recharge my energy.",
+      "item7": "I like to think things through before sharing my opinion.",
+      "item8": "I feel more comfortable in one-on-one conversations.",
+      "item9": "I prefer working alone over working in a large group.",
+      "item10": "I feel a bit drained after being around crowds for too long.",
+      "item11": "I pay attention to concrete, practical details around me.",
+      "item12": "I trust real-world experience more than theory.",
+      "item13": "I like following steps that have already been proven to work.",
+      "item14": "I usually focus on the present rather than imagining the future.",
+      "item15": "I prefer clear, specific information over abstract ideas.",
+      "item16": "I enjoy exploring new possibilities and ideas.",
+      "item17": "I often think about the deeper meaning behind things.",
+      "item18": "I like imagining what could happen in the future.",
+      "item19": "I'm easily drawn to unique, unconventional ideas.",
+      "item20": "I usually see the big picture rather than small details.",
+      "item21": "I usually make decisions based on logic and analysis.",
+      "item22": "I value fairness more than making everyone happy.",
+      "item23": "I can easily spot flaws in an argument.",
+      "item24": "I prioritize facts over feelings when solving problems.",
+      "item25": "I tend to stay calm and objective when making decisions.",
+      "item26": "I usually make decisions based on feelings and personal values.",
+      "item27": "I value harmony in my relationships.",
+      "item28": "I can easily sense what others are feeling.",
+      "item29": "I prioritize people's feelings over being strictly right or wrong.",
+      "item30": "I usually consider how a decision will affect others before I decide.",
+      "item31": "I prefer to plan ahead rather than let things happen naturally.",
+      "item32": "I feel more comfortable when things are neatly organized.",
+      "item33": "I like finishing tasks well before the deadline.",
+      "item34": "I prefer certainty and clarity over ambiguity.",
+      "item35": "I usually stick to the schedule I've set.",
+      "item36": "I like keeping my options open.",
+      "item37": "I feel comfortable changing plans at the last minute.",
+      "item38": "I usually finish tasks right at the deadline.",
+      "item39": "I prefer flexibility over fixed plans.",
+      "item40": "I adapt easily when something unexpected comes up."
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "These are relative tendencies, not a fixed label. People can change over time and across situations.",
+      "retake": "Retake the test",
+      "shareCta": "Share",
+      "shareCopied": "Link copied!"
+    }
+  },
+  "enneagram": {
+    "title": "Enneagram Test",
+    "metaDescription": "Discover which of the 9 Enneagram types fits you best — free, right in your browser, no sign-up needed.",
+    "intro": {
+      "heading": "Enneagram Test",
+      "body": "The Enneagram is a 9-type model describing the deeper motivations behind how people behave and see the world. This test has 45 questions and takes about 6-8 minutes.",
+      "disclaimer": "This is a self-discovery tool for reference only, not a formal psychological assessment. Your results reflect tendencies, not a fixed label.",
+      "startCta": "Start the test"
+    },
+    "likert": {
+      "1": "Strongly disagree",
+      "2": "Disagree",
+      "3": "Neutral",
+      "4": "Agree",
+      "5": "Strongly agree"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "categories": {
+      "type1": {
+        "name": "The Reformer",
+        "blurb": "You tend to be principled, exacting, and always want to do things the right way."
+      },
+      "type2": {
+        "name": "The Helper",
+        "blurb": "You tend to be warm, thoughtful, and find meaning in helping others."
+      },
+      "type3": {
+        "name": "The Achiever",
+        "blurb": "You tend to be ambitious, image-conscious, and always working toward success."
+      },
+      "type4": {
+        "name": "The Individualist",
+        "blurb": "You tend to be emotionally rich, value authenticity, and want to express your own identity."
+      },
+      "type5": {
+        "name": "The Investigator",
+        "blurb": "You tend to be independent, enjoy deep learning, and need your own private space."
+      },
+      "type6": {
+        "name": "The Loyalist",
+        "blurb": "You tend to be cautious, value security, and stay committed to what you trust."
+      },
+      "type7": {
+        "name": "The Enthusiast",
+        "blurb": "You tend to be optimistic, love new experiences, and avoid heavy emotions."
+      },
+      "type8": {
+        "name": "The Challenger",
+        "blurb": "You tend to be strong, decisive, and fiercely protective of the people you care about."
+      },
+      "type9": {
+        "name": "The Peacemaker",
+        "blurb": "You tend to be calm, easygoing, and always looking to keep the peace around you."
+      }
+    },
+    "items": {
+      "item1": "I always try to do things the best, most correct way possible.",
+      "item2": "I notice and feel bothered when something isn't perfect.",
+      "item3": "I hold high standards for myself and others.",
+      "item4": "I often criticize myself when I make a mistake.",
+      "item5": "I believe there's a right way to do things.",
+      "item6": "I feel happy when I can help other people.",
+      "item7": "I often put others' needs ahead of my own.",
+      "item8": "I want to be loved and needed by the people around me.",
+      "item9": "I can easily tell when someone needs help.",
+      "item10": "I find it hard to say no when someone asks me for a favor.",
+      "item11": "I'm always working toward success and achievement.",
+      "item12": "I care about how others perceive me.",
+      "item13": "I like setting goals and working hard to reach them.",
+      "item14": "I often compare my achievements to other people's.",
+      "item15": "I feel more confident when my success is recognized.",
+      "item16": "I feel my emotions deeply and intensely.",
+      "item17": "I want to express myself in a unique way, different from others.",
+      "item18": "I often feel different from the people around me.",
+      "item19": "I value emotional authenticity over surface-level cheerfulness.",
+      "item20": "I can easily get pulled into sad or nostalgic feelings.",
+      "item21": "I like diving deep into topics I'm interested in.",
+      "item22": "I need private time to think and recharge.",
+      "item23": "I like observing before jumping into a situation.",
+      "item24": "I feel more comfortable relying on knowledge and understanding.",
+      "item25": "I don't like sharing too much about my personal life.",
+      "item26": "I value safety and stability in life.",
+      "item27": "I often think about risks that could happen.",
+      "item28": "I'm loyal to the people and organizations I trust.",
+      "item29": "I feel more at ease when I have a backup plan.",
+      "item30": "I usually look for reassurance before making a decision.",
+      "item31": "I enjoy experiencing lots of new and exciting things.",
+      "item32": "I tend to avoid uncomfortable or sad feelings.",
+      "item33": "I'm always looking for fun in everyday life.",
+      "item34": "I like keeping many options open so I don't miss out.",
+      "item35": "I get bored easily if I have to do one thing for too long.",
+      "item36": "I prefer being in control of a situation rather than letting others decide for me.",
+      "item37": "I speak my mind directly, even when it's controversial.",
+      "item38": "I fiercely protect the people I care about.",
+      "item39": "I don't like appearing weak in front of others.",
+      "item40": "I'm usually the one who steps up to lead when a problem arises.",
+      "item41": "I try to avoid conflict and keep the peace in relationships.",
+      "item42": "I easily go along with others' opinions to keep things calm.",
+      "item43": "I feel comfortable with a slow, steady pace of life.",
+      "item44": "I tend to put off making difficult decisions.",
+      "item45": "I can see many different perspectives on an issue."
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "These are relative tendencies, not a fixed label. People can change over time and across situations.",
+      "retake": "Retake the test",
+      "shareCta": "Share",
+      "shareCopied": "Link copied!"
+    }
+  },
+  "disc": {
+    "title": "DISC Test",
+    "metaDescription": "Discover your behavioral style with the DISC model (Dominance, Influence, Steadiness, Conscientiousness) — free, right in your browser.",
+    "intro": {
+      "heading": "DISC Test",
+      "body": "DISC is a popular model describing behavioral style across 4 groups: Dominance (D), Influence (I), Steadiness (S), and Conscientiousness (C). This test has 28 questions and takes about 5 minutes.",
+      "disclaimer": "This is a self-discovery tool for reference only, not a formal psychological assessment. Your results reflect tendencies, not a fixed label.",
+      "startCta": "Start the test"
+    },
+    "likert": {
+      "1": "Strongly disagree",
+      "2": "Disagree",
+      "3": "Neutral",
+      "4": "Agree",
+      "5": "Strongly agree"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "domains": {
+      "D": {
+        "name": "Dominance (D)",
+        "highBlurb": "You tend to be decisive, like being in control of a situation, and face challenges head-on.",
+        "lowBlurb": "You tend to be cautious, preferring to think things through rather than take charge forcefully."
+      },
+      "I": {
+        "name": "Influence (I)",
+        "highBlurb": "You tend to be outgoing, energetic, and quick to connect with and inspire others.",
+        "lowBlurb": "You tend to be reserved, preferring deep connections over wide-reaching socializing."
+      },
+      "S": {
+        "name": "Steadiness (S)",
+        "highBlurb": "You tend to be patient, reliable, and value stability and harmony.",
+        "lowBlurb": "You tend to prefer change and a fast pace over familiar routines."
+      },
+      "C": {
+        "name": "Conscientiousness (C)",
+        "highBlurb": "You tend to be meticulous, principled, and value accuracy in your work.",
+        "lowBlurb": "You tend to be flexible and easygoing rather than bound by strict processes."
+      }
+    },
+    "items": {
+      "item1": "I like making decisions quickly and decisively.",
+      "item2": "I'm comfortable competing to reach a goal.",
+      "item3": "I prefer being in control of a situation rather than letting others lead.",
+      "item4": "I say what I want directly, without beating around the bush.",
+      "item5": "I prefer big challenges over safe, familiar work.",
+      "item6": "I get impatient easily when things move slowly.",
+      "item7": "I'm usually the one who steps up when there's a problem.",
+      "item8": "I enjoy talking to and connecting with lots of people.",
+      "item9": "I can easily inspire and persuade others.",
+      "item10": "I like being the center of attention in conversations.",
+      "item11": "I'm optimistic and usually look on the bright side.",
+      "item12": "I like working in a lively, interactive environment.",
+      "item13": "I make friends with new people easily.",
+      "item14": "I express my emotions openly.",
+      "item15": "I like stability and don't enjoy sudden changes.",
+      "item16": "I'm patient and willing to listen to others.",
+      "item17": "I value cooperation over competition.",
+      "item18": "I prefer a harmonious work environment with little conflict.",
+      "item19": "I'm loyal and reliable to the people around me.",
+      "item20": "I like working at a steady, unhurried pace.",
+      "item21": "I'm cautious before agreeing to change my usual way of working.",
+      "item22": "I care about accuracy and detail in my work.",
+      "item23": "I like following clear processes and standards.",
+      "item24": "I analyze things carefully before making a decision.",
+      "item25": "I hold high standards for the quality of my work.",
+      "item26": "I like gathering complete information before acting.",
+      "item27": "I carefully double-check my work to avoid mistakes.",
+      "item28": "I like working independently according to a laid-out plan."
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "These are relative tendencies, not a fixed label. People can change over time and across situations.",
+      "retake": "Retake the test",
+      "shareCta": "Share",
+      "shareCopied": "Link copied!"
+    }
+  },
+  "loveLanguages": {
+    "title": "Love Languages Test",
+    "metaDescription": "Discover your love language among 5 categories — free, right in your browser, no sign-up needed.",
+    "intro": {
+      "heading": "Love Languages Test",
+      "body": "Love languages describe how each person most clearly feels and expresses affection, across 5 categories: Words of Affirmation, Quality Time, Receiving Gifts, Acts of Service, and Physical Touch. This test has 25 questions and takes about 4-5 minutes.",
+      "disclaimer": "This is a self-discovery tool for reference only, not a formal psychological assessment. Your results reflect tendencies, not a fixed label.",
+      "startCta": "Start the test"
+    },
+    "likert": {
+      "1": "Strongly disagree",
+      "2": "Disagree",
+      "3": "Neutral",
+      "4": "Agree",
+      "5": "Strongly agree"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "categories": {
+      "wordsOfAffirmation": {
+        "name": "Words of Affirmation",
+        "blurb": "You feel loved most clearly through words — sincere compliments, encouragement, and heartfelt expressions mean a lot to you."
+      },
+      "qualityTime": {
+        "name": "Quality Time",
+        "blurb": "You feel loved most clearly when someone gives you their full attention and time."
+      },
+      "receivingGifts": {
+        "name": "Receiving Gifts",
+        "blurb": "You feel loved most clearly through thoughtful gifts, however small — what matters is the care behind them."
+      },
+      "actsOfService": {
+        "name": "Acts of Service",
+        "blurb": "You feel loved most clearly through concrete actions, when someone steps in to help and share the load with you."
+      },
+      "physicalTouch": {
+        "name": "Physical Touch",
+        "blurb": "You feel loved most clearly through physical closeness, like a hug or holding hands."
+      }
+    },
+    "items": {
+      "item1": "I feel loved when I hear sincere compliments.",
+      "item2": "A well-timed word of encouragement can make my whole day better.",
+      "item3": "I like it when someone close to me clearly says they appreciate me.",
+      "item4": "I remember kind words people have said to me for a long time.",
+      "item5": "I feel more connected when someone thanks me or says they're proud of me.",
+      "item6": "I feel loved when someone gives me their full, undistracted attention.",
+      "item7": "I prefer deep conversations over material gifts.",
+      "item8": "I feel closer to someone when we do an activity together.",
+      "item9": "I feel sad when someone important to me is always too busy for me.",
+      "item10": "I treasure moments alone with someone, with no phones or distractions.",
+      "item11": "I'm touched when I receive a gift, even a small one, that was thoughtfully chosen.",
+      "item12": "I like keeping gifts as mementos.",
+      "item13": "I feel cared for when someone remembers my preferences when picking a gift.",
+      "item14": "I value the thoughtfulness behind a gift more than its price.",
+      "item15": "I like giving gifts to others to show I care.",
+      "item16": "I feel loved when someone proactively helps me with chores or errands.",
+      "item17": "I appreciate it when people take action instead of just saying loving words.",
+      "item18": "I feel cared for when someone takes care of something before I even get to it.",
+      "item19": "I show affection by helping others with everyday tasks.",
+      "item20": "I feel looked after when someone steps in to share my workload.",
+      "item21": "I feel at ease when I'm hugged or holding hands with someone I love.",
+      "item22": "A pat on the back or a light touch can make me feel connected.",
+      "item23": "I express affection through physical gestures like holding hands or hugging.",
+      "item24": "I feel disconnected if I go too long without physical closeness.",
+      "item25": "I like sitting close to or leaning on someone I care about."
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "These are relative tendencies, not a fixed label. People can change over time and across situations.",
+      "retake": "Retake the test",
+      "shareCta": "Share",
+      "shareCopied": "Link copied!"
+    }
+  },
+  "attachmentStyle": {
+    "title": "Attachment Style Test",
+    "metaDescription": "Discover your attachment style in relationships — free, right in your browser, no sign-up needed.",
+    "intro": {
+      "heading": "Attachment Style Test",
+      "body": "Attachment style describes how each person connects and reacts in close relationships, across 4 groups: Secure, Anxious, Avoidant, and Fearful-Avoidant. This test has 24 questions and takes about 4-5 minutes.",
+      "disclaimer": "This is a self-discovery tool for reference only, not a formal psychological assessment. Your results reflect tendencies, not a fixed label.",
+      "startCta": "Start the test"
+    },
+    "likert": {
+      "1": "Strongly disagree",
+      "2": "Disagree",
+      "3": "Neutral",
+      "4": "Agree",
+      "5": "Strongly agree"
+    },
+    "progressLabel": "Question {current}/{total}",
+    "backButton": "Back",
+    "categories": {
+      "secure": {
+        "name": "Secure",
+        "blurb": "You tend to feel comfortable with closeness, trust others easily, and maintain stable, healthy relationships."
+      },
+      "anxious": {
+        "name": "Anxious",
+        "blurb": "You tend to crave closeness but also worry easily about being abandoned or not loved enough."
+      },
+      "avoidant": {
+        "name": "Avoidant",
+        "blurb": "You tend to value independence and can feel suffocated when a relationship gets too close."
+      },
+      "fearful": {
+        "name": "Fearful-Avoidant",
+        "blurb": "You tend to want intimacy while also fearing getting hurt, which makes your feelings in relationships fluctuate."
+      }
+    },
+    "items": {
+      "item1": "I feel comfortable being close and intimate with someone I love.",
+      "item2": "I find it easy to trust my partner or the people close to me.",
+      "item3": "I can share my true feelings without fear of being judged.",
+      "item4": "I feel secure even when there's disagreement in a relationship.",
+      "item5": "I trust that the people I love will be there when I need them.",
+      "item6": "I can balance closeness with personal space in a relationship.",
+      "item7": "I often worry that my partner will stop loving me.",
+      "item8": "I need frequent reassurance that I'm loved.",
+      "item9": "I feel anxious when my partner doesn't reply to messages right away.",
+      "item10": "I tend to assume the worst when the other person seems distant.",
+      "item11": "I'm afraid of being abandoned in close relationships.",
+      "item12": "I think about my relationship often, even when things are fine.",
+      "item13": "I prefer to stay independent rather than rely on someone else.",
+      "item14": "I feel suffocated when a relationship gets too close.",
+      "item15": "I find it hard to share my deeper feelings with others.",
+      "item16": "I prefer solving problems myself rather than asking my partner for help.",
+      "item17": "I tend to keep emotional distance even in close relationships.",
+      "item18": "I feel uncomfortable when someone wants to know too much about my feelings.",
+      "item19": "I want closeness but also fear getting hurt in a relationship.",
+      "item20": "I find it hard to fully trust others, even though I want to be loved.",
+      "item21": "My feelings in a relationship often swing between wanting closeness and pulling away.",
+      "item22": "I sometimes push people away first because I'm afraid of getting hurt.",
+      "item23": "I feel torn between wanting intimacy and fearing abandonment.",
+      "item24": "I've been hurt before, so now I'm very cautious about opening up."
+    },
+    "results": {
+      "heading": "Your results",
+      "resultDisclaimer": "These are relative tendencies, not a fixed label. People can change over time and across situations.",
+      "retake": "Retake the test",
+      "shareCta": "Share",
+      "shareCopied": "Link copied!"
     }
   }
 }

@@ -25,6 +25,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const CARDS = [
+  { slug: "bigFive", href: "/quiz/big-five" as const },
+  { slug: "mbti", href: "/quiz/mbti" as const },
+  { slug: "enneagram", href: "/quiz/enneagram" as const },
+  { slug: "disc", href: "/quiz/disc" as const },
+  { slug: "loveLanguages", href: "/quiz/love-languages" as const },
+  { slug: "attachmentStyle", href: "/quiz/attachment-style" as const },
+];
+
 export default async function QuizHubPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -37,13 +46,16 @@ export default async function QuizHubPage({ params }: Props) {
       <p className="mb-10 text-sm text-foreground/60">{t("intro")}</p>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Link
-          href="/quiz/big-five"
-          className="rounded-2xl border border-brand-gray p-6 transition hover:border-brand-yellow"
-        >
-          <h2 className="mb-1 text-lg font-semibold">{t("cards.bigFive.title")}</h2>
-          <p className="text-sm text-foreground/60">{t("cards.bigFive.description")}</p>
-        </Link>
+        {CARDS.map((card) => (
+          <Link
+            key={card.slug}
+            href={card.href}
+            className="rounded-2xl border border-brand-gray p-6 transition hover:border-brand-yellow"
+          >
+            <h2 className="mb-1 text-lg font-semibold">{t(`cards.${card.slug}.title`)}</h2>
+            <p className="text-sm text-foreground/60">{t(`cards.${card.slug}.description`)}</p>
+          </Link>
+        ))}
       </div>
     </div>
   );

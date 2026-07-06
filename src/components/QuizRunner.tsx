@@ -1,18 +1,32 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { BIG_FIVE_ITEMS } from "@/lib/big-five-items";
-import { useBigFiveQuiz } from "@/lib/use-big-five-quiz";
-import { BigFiveResults } from "@/components/BigFiveResults";
+import type { QuizDefinition } from "@/lib/quiz-engine";
+import { useQuizRunner } from "@/lib/use-quiz-runner";
+import { DomainPercentResults } from "@/components/quiz-results/DomainPercentResults";
+import { HighestWinsResults } from "@/components/quiz-results/HighestWinsResults";
+import { DichotomyResults } from "@/components/quiz-results/DichotomyResults";
 
 const LIKERT_VALUES = [1, 2, 3, 4, 5];
 
-export function BigFiveQuiz() {
-  const t = useTranslations("bigFive");
-  const { view, index, answers, scores, start, answer, back, retake } = useBigFiveQuiz();
+export function QuizRunner({ definition }: { definition: QuizDefinition }) {
+  const t = useTranslations(definition.namespace);
+  const { view, index, answers, result, start, answer, back, retake } = useQuizRunner(definition);
 
-  if (view === "results") {
-    return <BigFiveResults scores={scores} onRetake={retake} />;
+  if (view === "results" && result) {
+    if (result.mode === "domain-percent") {
+      return (
+        <DomainPercentResults namespace={definition.namespace} scores={result.scores} onRetake={retake} />
+      );
+    }
+    if (result.mode === "highest-wins") {
+      return (
+        <HighestWinsResults namespace={definition.namespace} scores={result.scores} onRetake={retake} />
+      );
+    }
+    return (
+      <DichotomyResults namespace={definition.namespace} result={result.result} onRetake={retake} />
+    );
   }
 
   if (view === "intro") {
@@ -26,17 +40,15 @@ export function BigFiveQuiz() {
     );
   }
 
-  const item = BIG_FIVE_ITEMS[index];
+  const item = definition.items[index];
   const current = index + 1;
-  const total = BIG_FIVE_ITEMS.length;
+  const total = definition.items.length;
   const percent = Math.round((index / total) * 100);
   const selected = answers[item.id];
 
   return (
     <div>
-      <p className="mb-2 text-sm text-foreground/60">
-        {t("progressLabel", { current, total })}
-      </p>
+      <p className="mb-2 text-sm text-foreground/60">{t("progressLabel", { current, total })}</p>
       <div className="mb-8 h-2 w-full overflow-hidden rounded-full bg-brand-gray/30">
         <div
           className="h-full rounded-full bg-brand-yellow transition-[width] duration-300 motion-reduce:transition-none"
@@ -44,7 +56,7 @@ export function BigFiveQuiz() {
         />
       </div>
 
-      <h2 className="mb-8 text-xl font-semibold">{t(item.textKey)}</h2>
+      <h2 className="mb-8 text-xl font-semibold">{t(`items.item${item.id}`)}</h2>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         {LIKERT_VALUES.map((value) => (

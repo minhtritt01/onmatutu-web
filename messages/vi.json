@@ -358,7 +358,521 @@
       "bigFive": {
         "title": "Trắc nghiệm tính cách Big Five",
         "description": "60 câu hỏi giúp bạn khám phá 5 nét tính cách cốt lõi của mình."
+      },
+      "mbti": {
+        "title": "Trắc nghiệm tính cách MBTI",
+        "description": "40 câu hỏi giúp bạn tìm ra nhóm tính cách phù hợp trong 16 nhóm tính cách."
+      },
+      "enneagram": {
+        "title": "Trắc nghiệm Enneagram",
+        "description": "45 câu hỏi giúp bạn khám phá nhóm tính cách trong 9 nhóm Enneagram."
+      },
+      "disc": {
+        "title": "Trắc nghiệm DISC",
+        "description": "28 câu hỏi giúp bạn khám phá phong cách hành vi của mình."
+      },
+      "loveLanguages": {
+        "title": "Trắc nghiệm Ngôn ngữ tình yêu",
+        "description": "25 câu hỏi giúp bạn khám phá cách bạn cảm nhận tình yêu rõ nhất."
+      },
+      "attachmentStyle": {
+        "title": "Trắc nghiệm Phong cách gắn bó",
+        "description": "24 câu hỏi giúp bạn khám phá phong cách gắn bó của mình trong các mối quan hệ."
       }
+    }
+  },
+  "mbti": {
+    "title": "Trắc nghiệm tính cách MBTI",
+    "metaDescription": "Khám phá nhóm tính cách của bạn trong 16 nhóm tính cách qua bài trắc nghiệm ngắn gọn, miễn phí — làm ngay trên trình duyệt.",
+    "intro": {
+      "heading": "Trắc nghiệm tính cách MBTI",
+      "body": "Bài test này dựa trên 4 cặp xu hướng tính cách đối lập — Hướng ngoại/Hướng nội, Thực tế/Trực giác, Lý trí/Cảm xúc, Nguyên tắc/Linh hoạt — để gợi ý nhóm tính cách phù hợp nhất với bạn trong số 16 nhóm. Gồm 40 câu, mất khoảng 6-8 phút.",
+      "disclaimer": "Đây là công cụ tự khám phá bản thân mang tính tham khảo, không phải công cụ đánh giá tâm lý chính thức. Kết quả chỉ phản ánh xu hướng, không phải một khuôn mẫu cố định.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "likert": {
+      "1": "Rất không đồng ý",
+      "2": "Không đồng ý",
+      "3": "Trung lập",
+      "4": "Đồng ý",
+      "5": "Rất đồng ý"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "types": {
+      "INTJ": {
+        "name": "Nhà hoạch định",
+        "blurb": "Bạn có xu hướng suy nghĩ chiến lược, độc lập và luôn hướng tới những mục tiêu dài hạn. Bạn thích tự mình tìm ra giải pháp tối ưu hơn là làm theo lối mòn."
+      },
+      "INTP": {
+        "name": "Nhà tư duy",
+        "blurb": "Bạn có xu hướng tò mò về cách mọi thứ vận hành, thích phân tích ý tưởng một cách logic và làm việc độc lập."
+      },
+      "ENTJ": {
+        "name": "Người dẫn dắt",
+        "blurb": "Bạn có xu hướng quyết đoán, thích tổ chức mọi thứ hiệu quả và dẫn dắt người khác hướng tới mục tiêu chung."
+      },
+      "ENTP": {
+        "name": "Người tranh luận",
+        "blurb": "Bạn có xu hướng thích tranh luận ý tưởng, sáng tạo và luôn tìm kiếm những khả năng mới."
+      },
+      "INFJ": {
+        "name": "Người thấu cảm",
+        "blurb": "Bạn có xu hướng sâu sắc, giàu lý tưởng và quan tâm đến ý nghĩa đằng sau mọi việc."
+      },
+      "INFP": {
+        "name": "Người lý tưởng",
+        "blurb": "Bạn có xu hướng sống theo giá trị cá nhân, giàu cảm xúc và luôn tìm kiếm sự chân thật."
+      },
+      "ENFJ": {
+        "name": "Người truyền cảm hứng",
+        "blurb": "Bạn có xu hướng quan tâm đến người khác, giỏi kết nối và truyền động lực cho những người xung quanh."
+      },
+      "ENFP": {
+        "name": "Người nhiệt huyết",
+        "blurb": "Bạn có xu hướng nhiệt tình, sáng tạo và thích khám phá những khả năng mới trong cuộc sống."
+      },
+      "ISTJ": {
+        "name": "Người thực tế",
+        "blurb": "Bạn có xu hướng đáng tin cậy, có trách nhiệm và làm việc theo những nguyên tắc rõ ràng."
+      },
+      "ISFJ": {
+        "name": "Người tận tụy",
+        "blurb": "Bạn có xu hướng chu đáo, kiên nhẫn và luôn sẵn sàng hỗ trợ những người xung quanh."
+      },
+      "ESTJ": {
+        "name": "Người tổ chức",
+        "blurb": "Bạn có xu hướng thực tế, có tổ chức và thích mọi việc diễn ra theo đúng kế hoạch."
+      },
+      "ESFJ": {
+        "name": "Người quan tâm",
+        "blurb": "Bạn có xu hướng hòa đồng, chu đáo và luôn cố gắng duy trì sự hài hòa trong tập thể."
+      },
+      "ISTP": {
+        "name": "Người thực hành",
+        "blurb": "Bạn có xu hướng thực tế, thích tự tay giải quyết vấn đề và thích ứng nhanh với tình huống mới."
+      },
+      "ISFP": {
+        "name": "Người nghệ sĩ",
+        "blurb": "Bạn có xu hướng nhạy cảm, yêu cái đẹp và thích thể hiện bản thân theo cách riêng."
+      },
+      "ESTP": {
+        "name": "Người hành động",
+        "blurb": "Bạn có xu hướng năng động, thích trải nghiệm thực tế và phản ứng nhanh với thay đổi."
+      },
+      "ESFP": {
+        "name": "Người trình diễn",
+        "blurb": "Bạn có xu hướng vui vẻ, thích trở thành tâm điểm và tận hưởng khoảnh khắc hiện tại."
+      }
+    },
+    "poles": {
+      "E": {
+        "label": "Hướng ngoại (E)"
+      },
+      "I": {
+        "label": "Hướng nội (I)"
+      },
+      "S": {
+        "label": "Thực tế (S)"
+      },
+      "N": {
+        "label": "Trực giác (N)"
+      },
+      "T": {
+        "label": "Lý trí (T)"
+      },
+      "F": {
+        "label": "Cảm xúc (F)"
+      },
+      "J": {
+        "label": "Nguyên tắc (J)"
+      },
+      "P": {
+        "label": "Linh hoạt (P)"
+      }
+    },
+    "items": {
+      "item1": "Tôi thấy tràn đầy năng lượng sau khi ở bên nhiều người.",
+      "item2": "Tôi thích suy nghĩ thành tiếng, nói ra ý tưởng ngay khi chúng xuất hiện.",
+      "item3": "Tôi dễ dàng bắt chuyện với người mới quen.",
+      "item4": "Tôi thích tham gia các hoạt động nhóm hơn là làm một mình.",
+      "item5": "Tôi cảm thấy hào hứng khi ở nơi đông người.",
+      "item6": "Tôi cần thời gian ở một mình để nạp lại năng lượng.",
+      "item7": "Tôi thích suy nghĩ kỹ trước khi nói ra ý kiến của mình.",
+      "item8": "Tôi thấy thoải mái hơn khi trò chuyện riêng với một người.",
+      "item9": "Tôi thích làm việc một mình hơn là trong nhóm đông người.",
+      "item10": "Tôi cảm thấy hơi quá tải khi ở nơi đông người trong thời gian dài.",
+      "item11": "Tôi chú ý đến các chi tiết cụ thể, thực tế xung quanh mình.",
+      "item12": "Tôi tin tưởng vào kinh nghiệm thực tế hơn là lý thuyết.",
+      "item13": "Tôi thích làm theo các bước đã được kiểm chứng.",
+      "item14": "Tôi thường tập trung vào hiện tại hơn là tưởng tượng về tương lai.",
+      "item15": "Tôi thích những thông tin cụ thể, rõ ràng hơn là những ý tưởng trừu tượng.",
+      "item16": "Tôi thích khám phá các khả năng và ý tưởng mới.",
+      "item17": "Tôi hay nghĩ về ý nghĩa sâu xa đằng sau mọi việc.",
+      "item18": "Tôi thích tưởng tượng về những điều có thể xảy ra trong tương lai.",
+      "item19": "Tôi dễ bị cuốn hút bởi những ý tưởng độc đáo, khác biệt.",
+      "item20": "Tôi thường nhìn bức tranh tổng thể hơn là từng chi tiết nhỏ.",
+      "item21": "Tôi thường đưa ra quyết định dựa trên logic và phân tích.",
+      "item22": "Tôi coi trọng sự công bằng hơn là làm hài lòng mọi người.",
+      "item23": "Tôi dễ dàng chỉ ra điểm chưa hợp lý trong một lập luận.",
+      "item24": "Tôi ưu tiên sự thật hơn là cảm xúc khi giải quyết vấn đề.",
+      "item25": "Tôi thường giữ bình tĩnh, khách quan khi đưa ra quyết định.",
+      "item26": "Tôi thường đưa ra quyết định dựa trên cảm xúc và giá trị cá nhân.",
+      "item27": "Tôi coi trọng sự hòa hợp trong các mối quan hệ.",
+      "item28": "Tôi dễ dàng cảm nhận được cảm xúc của người khác.",
+      "item29": "Tôi ưu tiên cảm xúc của mọi người hơn là tính đúng-sai tuyệt đối.",
+      "item30": "Tôi thường cân nhắc ảnh hưởng đến người khác trước khi quyết định.",
+      "item31": "Tôi thích lên kế hoạch trước thay vì để mọi thứ tự nhiên diễn ra.",
+      "item32": "Tôi cảm thấy thoải mái hơn khi mọi việc đã được sắp xếp gọn gàng.",
+      "item33": "Tôi thích hoàn thành công việc sớm hơn deadline.",
+      "item34": "Tôi thích sự chắc chắn, rõ ràng hơn là sự mơ hồ.",
+      "item35": "Tôi thường tuân theo lịch trình đã đặt ra.",
+      "item36": "Tôi thích giữ các lựa chọn của mình luôn rộng mở.",
+      "item37": "Tôi cảm thấy thoải mái khi thay đổi kế hoạch vào phút chót.",
+      "item38": "Tôi thường hoàn thành công việc sát deadline.",
+      "item39": "Tôi thích sự linh hoạt hơn là những kế hoạch cố định.",
+      "item40": "Tôi dễ dàng thích nghi khi có việc bất ngờ xảy ra."
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là những xu hướng tương đối, không phải một khuôn mẫu cố định. Con người có thể thay đổi theo thời gian và hoàn cảnh.",
+      "retake": "Làm lại test",
+      "shareCta": "Chia sẻ",
+      "shareCopied": "Đã sao chép liên kết!"
+    }
+  },
+  "enneagram": {
+    "title": "Trắc nghiệm Enneagram",
+    "metaDescription": "Khám phá nhóm tính cách của bạn trong 9 nhóm Enneagram — miễn phí, làm ngay trên trình duyệt, không cần đăng ký.",
+    "intro": {
+      "heading": "Trắc nghiệm Enneagram",
+      "body": "Enneagram là mô hình 9 nhóm tính cách mô tả những động lực sâu xa đứng sau hành vi và cách nhìn nhận thế giới của mỗi người. Bài test gồm 45 câu, mất khoảng 6-8 phút.",
+      "disclaimer": "Đây là công cụ tự khám phá bản thân mang tính tham khảo, không phải công cụ đánh giá tâm lý chính thức. Kết quả chỉ phản ánh xu hướng, không phải một khuôn mẫu cố định.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "likert": {
+      "1": "Rất không đồng ý",
+      "2": "Không đồng ý",
+      "3": "Trung lập",
+      "4": "Đồng ý",
+      "5": "Rất đồng ý"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "categories": {
+      "type1": {
+        "name": "Nhà cải cách",
+        "blurb": "Bạn có xu hướng nguyên tắc, cầu toàn và luôn muốn làm mọi việc theo cách đúng đắn nhất."
+      },
+      "type2": {
+        "name": "Người trợ giúp",
+        "blurb": "Bạn có xu hướng ấm áp, chu đáo và tìm thấy ý nghĩa khi được giúp đỡ người khác."
+      },
+      "type3": {
+        "name": "Người thành đạt",
+        "blurb": "Bạn có xu hướng tham vọng, chú trọng hình ảnh và luôn hướng tới thành công."
+      },
+      "type4": {
+        "name": "Người cá tính",
+        "blurb": "Bạn có xu hướng giàu cảm xúc, coi trọng sự chân thật và muốn thể hiện bản sắc riêng."
+      },
+      "type5": {
+        "name": "Nhà quan sát",
+        "blurb": "Bạn có xu hướng độc lập, thích tìm hiểu sâu và cần không gian riêng tư."
+      },
+      "type6": {
+        "name": "Người trung thành",
+        "blurb": "Bạn có xu hướng thận trọng, coi trọng sự an toàn và gắn bó với những gì mình tin tưởng."
+      },
+      "type7": {
+        "name": "Người nhiệt thành",
+        "blurb": "Bạn có xu hướng lạc quan, thích trải nghiệm mới và tránh những cảm xúc nặng nề."
+      },
+      "type8": {
+        "name": "Người thách thức",
+        "blurb": "Bạn có xu hướng mạnh mẽ, quyết đoán và bảo vệ những người mình quan tâm."
+      },
+      "type9": {
+        "name": "Người hòa giải",
+        "blurb": "Bạn có xu hướng điềm tĩnh, dễ chịu và luôn tìm cách giữ hòa khí xung quanh."
+      }
+    },
+    "items": {
+      "item1": "Tôi luôn cố gắng làm mọi việc đúng theo cách tốt nhất có thể.",
+      "item2": "Tôi để ý và khó chịu khi thấy điều gì đó chưa hoàn hảo.",
+      "item3": "Tôi có tiêu chuẩn cao cho bản thân và người khác.",
+      "item4": "Tôi thường tự phê bình bản thân khi mắc lỗi.",
+      "item5": "Tôi tin rằng có một cách đúng đắn để làm mọi việc.",
+      "item6": "Tôi cảm thấy vui khi được giúp đỡ người khác.",
+      "item7": "Tôi thường đặt nhu cầu của người khác lên trước nhu cầu của mình.",
+      "item8": "Tôi muốn được mọi người yêu quý và cần đến.",
+      "item9": "Tôi dễ dàng nhận ra khi ai đó cần sự giúp đỡ.",
+      "item10": "Tôi cảm thấy khó từ chối khi ai đó nhờ vả.",
+      "item11": "Tôi luôn hướng tới thành công và muốn đạt được nhiều thành tựu.",
+      "item12": "Tôi quan tâm đến việc người khác nhìn nhận tôi như thế nào.",
+      "item13": "Tôi thích đặt mục tiêu và nỗ lực để đạt được chúng.",
+      "item14": "Tôi thường so sánh thành tích của mình với người khác.",
+      "item15": "Tôi cảm thấy tự tin hơn khi được công nhận thành công.",
+      "item16": "Tôi cảm nhận cảm xúc của mình một cách sâu sắc và mãnh liệt.",
+      "item17": "Tôi muốn thể hiện bản thân theo cách độc đáo, khác biệt với người khác.",
+      "item18": "Tôi thường cảm thấy mình khác biệt so với mọi người xung quanh.",
+      "item19": "Tôi coi trọng sự chân thật trong cảm xúc hơn là sự vui vẻ bề ngoài.",
+      "item20": "Tôi dễ bị cuốn vào những cảm xúc buồn hoặc hoài niệm.",
+      "item21": "Tôi thích tìm hiểu sâu về những chủ đề mình quan tâm.",
+      "item22": "Tôi cần thời gian riêng tư để suy nghĩ và nạp lại năng lượng.",
+      "item23": "Tôi thích quan sát trước khi tham gia vào một tình huống.",
+      "item24": "Tôi cảm thấy thoải mái hơn khi dựa vào kiến thức và sự hiểu biết.",
+      "item25": "Tôi không thích chia sẻ quá nhiều về đời sống cá nhân của mình.",
+      "item26": "Tôi coi trọng sự an toàn và ổn định trong cuộc sống.",
+      "item27": "Tôi thường suy nghĩ về những rủi ro có thể xảy ra.",
+      "item28": "Tôi trung thành với những người và tổ chức tôi tin tưởng.",
+      "item29": "Tôi cảm thấy an tâm hơn khi có kế hoạch dự phòng.",
+      "item30": "Tôi thường tìm kiếm sự đảm bảo trước khi đưa ra quyết định.",
+      "item31": "Tôi thích trải nghiệm nhiều điều mới mẻ và thú vị.",
+      "item32": "Tôi có xu hướng tránh né những cảm giác khó chịu hoặc buồn bã.",
+      "item33": "Tôi luôn tìm kiếm niềm vui trong cuộc sống hàng ngày.",
+      "item34": "Tôi thích giữ nhiều lựa chọn mở để không bỏ lỡ cơ hội nào.",
+      "item35": "Tôi dễ cảm thấy chán nếu phải làm một việc quá lâu.",
+      "item36": "Tôi thích kiểm soát tình huống hơn là để người khác quyết định thay mình.",
+      "item37": "Tôi thẳng thắn nói ra suy nghĩ của mình, ngay cả khi điều đó gây tranh cãi.",
+      "item38": "Tôi bảo vệ những người tôi quan tâm một cách mạnh mẽ.",
+      "item39": "Tôi không thích tỏ ra yếu đuối trước người khác.",
+      "item40": "Tôi thường là người đứng ra dẫn dắt khi có vấn đề xảy ra.",
+      "item41": "Tôi cố gắng tránh xung đột và giữ hòa khí trong các mối quan hệ.",
+      "item42": "Tôi dễ dàng đồng ý với ý kiến của người khác để giữ sự yên ổn.",
+      "item43": "Tôi cảm thấy thoải mái với nhịp sống chậm rãi, ổn định.",
+      "item44": "Tôi thường trì hoãn khi phải đưa ra quyết định khó khăn.",
+      "item45": "Tôi có thể nhìn nhận được nhiều góc nhìn khác nhau trong một vấn đề."
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là những xu hướng tương đối, không phải một khuôn mẫu cố định. Con người có thể thay đổi theo thời gian và hoàn cảnh.",
+      "retake": "Làm lại test",
+      "shareCta": "Chia sẻ",
+      "shareCopied": "Đã sao chép liên kết!"
+    }
+  },
+  "disc": {
+    "title": "Trắc nghiệm DISC",
+    "metaDescription": "Khám phá phong cách hành vi của bạn theo mô hình DISC (Thống trị, Ảnh hưởng, Kiên định, Tuân thủ) — miễn phí, làm ngay trên trình duyệt.",
+    "intro": {
+      "heading": "Trắc nghiệm DISC",
+      "body": "DISC là mô hình phổ biến mô tả phong cách hành vi qua 4 nhóm: Thống trị (D), Ảnh hưởng (I), Kiên định (S) và Tuân thủ (C). Bài test gồm 28 câu, mất khoảng 5 phút.",
+      "disclaimer": "Đây là công cụ tự khám phá bản thân mang tính tham khảo, không phải công cụ đánh giá tâm lý chính thức. Kết quả chỉ phản ánh xu hướng, không phải một khuôn mẫu cố định.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "likert": {
+      "1": "Rất không đồng ý",
+      "2": "Không đồng ý",
+      "3": "Trung lập",
+      "4": "Đồng ý",
+      "5": "Rất đồng ý"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "domains": {
+      "D": {
+        "name": "Thống trị (D)",
+        "highBlurb": "Bạn có xu hướng quyết đoán, thích kiểm soát tình huống và đối mặt trực tiếp với thử thách.",
+        "lowBlurb": "Bạn có xu hướng thận trọng, thích cân nhắc kỹ trước khi hành động hơn là dẫn đầu quyết liệt."
+      },
+      "I": {
+        "name": "Ảnh hưởng (I)",
+        "highBlurb": "Bạn có xu hướng cởi mở, giàu năng lượng và dễ dàng kết nối, truyền cảm hứng cho người khác.",
+        "lowBlurb": "Bạn có xu hướng kín đáo, thích những kết nối sâu sắc hơn là giao tiếp rộng rãi."
+      },
+      "S": {
+        "name": "Kiên định (S)",
+        "highBlurb": "Bạn có xu hướng kiên nhẫn, đáng tin cậy và coi trọng sự ổn định, hòa hợp.",
+        "lowBlurb": "Bạn có xu hướng thích sự thay đổi và nhịp độ nhanh hơn là những khuôn mẫu quen thuộc."
+      },
+      "C": {
+        "name": "Tuân thủ (C)",
+        "highBlurb": "Bạn có xu hướng tỉ mỉ, có nguyên tắc và coi trọng sự chính xác trong công việc.",
+        "lowBlurb": "Bạn có xu hướng linh hoạt, thoải mái hơn là gò bó theo quy trình chặt chẽ."
+      }
+    },
+    "items": {
+      "item1": "Tôi thích đưa ra quyết định nhanh chóng và dứt khoát.",
+      "item2": "Tôi thoải mái khi phải cạnh tranh để đạt được mục tiêu.",
+      "item3": "Tôi thích kiểm soát tình huống hơn là để người khác dẫn dắt.",
+      "item4": "Tôi trực tiếp nói ra điều mình muốn, không vòng vo.",
+      "item5": "Tôi thích những thử thách lớn hơn là công việc an toàn, quen thuộc.",
+      "item6": "Tôi dễ mất kiên nhẫn khi mọi việc diễn ra chậm.",
+      "item7": "Tôi thường là người đứng ra chịu trách nhiệm khi có vấn đề.",
+      "item8": "Tôi thích giao tiếp và kết nối với nhiều người.",
+      "item9": "Tôi dễ dàng truyền cảm hứng và thuyết phục người khác.",
+      "item10": "Tôi thích trở thành tâm điểm trong các cuộc trò chuyện.",
+      "item11": "Tôi lạc quan và thường nhìn vào mặt tích cực của vấn đề.",
+      "item12": "Tôi thích làm việc trong môi trường vui vẻ, nhiều tương tác.",
+      "item13": "Tôi dễ dàng kết bạn với người mới.",
+      "item14": "Tôi thể hiện cảm xúc của mình một cách cởi mở.",
+      "item15": "Tôi thích sự ổn định và không thích thay đổi đột ngột.",
+      "item16": "Tôi kiên nhẫn và sẵn sàng lắng nghe người khác.",
+      "item17": "Tôi coi trọng sự hợp tác hơn là cạnh tranh.",
+      "item18": "Tôi thích môi trường làm việc hòa thuận, ít xung đột.",
+      "item19": "Tôi trung thành và đáng tin cậy với những người xung quanh.",
+      "item20": "Tôi thích làm việc theo một nhịp độ đều đặn, không vội vàng.",
+      "item21": "Tôi cẩn trọng trước khi đồng ý thay đổi cách làm việc quen thuộc.",
+      "item22": "Tôi chú trọng đến độ chính xác và chi tiết trong công việc.",
+      "item23": "Tôi thích tuân theo quy trình và tiêu chuẩn rõ ràng.",
+      "item24": "Tôi phân tích kỹ lưỡng trước khi đưa ra quyết định.",
+      "item25": "Tôi đặt ra tiêu chuẩn cao cho chất lượng công việc của mình.",
+      "item26": "Tôi thích thu thập đầy đủ thông tin trước khi hành động.",
+      "item27": "Tôi cẩn thận kiểm tra lại công việc để tránh sai sót.",
+      "item28": "Tôi thích làm việc độc lập theo kế hoạch đã vạch ra."
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là những xu hướng tương đối, không phải một khuôn mẫu cố định. Con người có thể thay đổi theo thời gian và hoàn cảnh.",
+      "retake": "Làm lại test",
+      "shareCta": "Chia sẻ",
+      "shareCopied": "Đã sao chép liên kết!"
+    }
+  },
+  "loveLanguages": {
+    "title": "Trắc nghiệm Ngôn ngữ tình yêu",
+    "metaDescription": "Khám phá ngôn ngữ tình yêu của bạn trong 5 nhóm — miễn phí, làm ngay trên trình duyệt, không cần đăng ký.",
+    "intro": {
+      "heading": "Trắc nghiệm Ngôn ngữ tình yêu",
+      "body": "Ngôn ngữ tình yêu mô tả cách mỗi người cảm nhận và thể hiện tình cảm rõ ràng nhất, qua 5 nhóm: Lời khẳng định, Thời gian chất lượng, Quà tặng, Hành động thiết thực và Sự đụng chạm thân mật. Bài test gồm 25 câu, mất khoảng 4-5 phút.",
+      "disclaimer": "Đây là công cụ tự khám phá bản thân mang tính tham khảo, không phải công cụ đánh giá tâm lý chính thức. Kết quả chỉ phản ánh xu hướng, không phải một khuôn mẫu cố định.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "likert": {
+      "1": "Rất không đồng ý",
+      "2": "Không đồng ý",
+      "3": "Trung lập",
+      "4": "Đồng ý",
+      "5": "Rất đồng ý"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "categories": {
+      "wordsOfAffirmation": {
+        "name": "Lời khẳng định",
+        "blurb": "Bạn cảm nhận tình yêu thương rõ nhất qua lời nói — những lời khen, động viên và bày tỏ chân thành có ý nghĩa rất lớn với bạn."
+      },
+      "qualityTime": {
+        "name": "Thời gian chất lượng",
+        "blurb": "Bạn cảm nhận tình yêu thương rõ nhất khi được ai đó dành trọn sự chú ý và thời gian cho mình."
+      },
+      "receivingGifts": {
+        "name": "Quà tặng",
+        "blurb": "Bạn cảm nhận tình yêu thương rõ nhất qua những món quà chu đáo, dù nhỏ — điều quan trọng là sự quan tâm đằng sau món quà."
+      },
+      "actsOfService": {
+        "name": "Hành động thiết thực",
+        "blurb": "Bạn cảm nhận tình yêu thương rõ nhất qua những hành động cụ thể, khi ai đó chủ động giúp đỡ và san sẻ với bạn."
+      },
+      "physicalTouch": {
+        "name": "Sự đụng chạm thân mật",
+        "blurb": "Bạn cảm nhận tình yêu thương rõ nhất qua sự tiếp xúc gần gũi như cái ôm, cái nắm tay."
+      }
+    },
+    "items": {
+      "item1": "Tôi cảm thấy được yêu thương khi nghe những lời khen ngợi chân thành.",
+      "item2": "Một lời động viên đúng lúc có thể khiến ngày của tôi tốt hơn rất nhiều.",
+      "item3": "Tôi thích khi người thân nói rõ ràng rằng họ trân trọng tôi.",
+      "item4": "Tôi nhớ lâu những lời nói tử tế mà người khác dành cho mình.",
+      "item5": "Tôi cảm thấy gắn kết hơn khi ai đó nói lời cảm ơn hoặc bày tỏ sự tự hào về tôi.",
+      "item6": "Tôi cảm thấy được yêu thương khi ai đó dành trọn thời gian cho tôi, không bị phân tâm.",
+      "item7": "Tôi thích những cuộc trò chuyện sâu sắc hơn là những món quà vật chất.",
+      "item8": "Tôi cảm thấy gần gũi hơn khi cùng làm một việc gì đó với người mình quan tâm.",
+      "item9": "Tôi buồn khi người quan trọng với tôi luôn bận rộn, không có thời gian cho tôi.",
+      "item10": "Tôi trân trọng những khoảnh khắc chỉ có hai người, không điện thoại, không xao nhãng.",
+      "item11": "Tôi cảm động khi nhận được một món quà, dù nhỏ, được chọn kỹ càng.",
+      "item12": "Tôi thích giữ lại những món quà làm kỷ niệm.",
+      "item13": "Tôi cảm thấy được quan tâm khi ai đó nhớ đến sở thích của tôi khi tặng quà.",
+      "item14": "Tôi coi trọng sự chu đáo trong một món quà hơn giá trị vật chất của nó.",
+      "item15": "Tôi thích tặng quà cho người khác để thể hiện tình cảm.",
+      "item16": "Tôi cảm thấy được yêu thương khi ai đó chủ động giúp tôi làm việc nhà hoặc việc vặt.",
+      "item17": "Tôi đánh giá cao khi người khác hành động thay vì chỉ nói lời yêu thương suông.",
+      "item18": "Tôi cảm thấy được quan tâm khi ai đó lo trước những việc tôi chưa kịp làm.",
+      "item19": "Tôi thể hiện tình cảm bằng cách giúp đỡ người khác trong công việc hàng ngày.",
+      "item20": "Tôi cảm thấy được chăm sóc khi ai đó chủ động san sẻ gánh nặng công việc với tôi.",
+      "item21": "Tôi cảm thấy an tâm khi được ôm hoặc nắm tay người mình yêu thương.",
+      "item22": "Một cái vỗ vai hay chạm nhẹ có thể khiến tôi cảm thấy được kết nối.",
+      "item23": "Tôi thể hiện tình cảm qua những cử chỉ thân mật như nắm tay, ôm.",
+      "item24": "Tôi cảm thấy thiếu kết nối nếu lâu ngày không có sự tiếp xúc thân mật.",
+      "item25": "Tôi thích được ngồi gần, tựa vào người mình quan tâm."
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là những xu hướng tương đối, không phải một khuôn mẫu cố định. Con người có thể thay đổi theo thời gian và hoàn cảnh.",
+      "retake": "Làm lại test",
+      "shareCta": "Chia sẻ",
+      "shareCopied": "Đã sao chép liên kết!"
+    }
+  },
+  "attachmentStyle": {
+    "title": "Trắc nghiệm Phong cách gắn bó",
+    "metaDescription": "Khám phá phong cách gắn bó của bạn trong các mối quan hệ — miễn phí, làm ngay trên trình duyệt, không cần đăng ký.",
+    "intro": {
+      "heading": "Trắc nghiệm Phong cách gắn bó",
+      "body": "Phong cách gắn bó mô tả cách mỗi người kết nối và phản ứng trong các mối quan hệ thân thiết, qua 4 nhóm: An toàn, Lo âu, Né tránh và Mâu thuẫn. Bài test gồm 24 câu, mất khoảng 4-5 phút.",
+      "disclaimer": "Đây là công cụ tự khám phá bản thân mang tính tham khảo, không phải công cụ đánh giá tâm lý chính thức. Kết quả chỉ phản ánh xu hướng, không phải một khuôn mẫu cố định.",
+      "startCta": "Bắt đầu làm test"
+    },
+    "likert": {
+      "1": "Rất không đồng ý",
+      "2": "Không đồng ý",
+      "3": "Trung lập",
+      "4": "Đồng ý",
+      "5": "Rất đồng ý"
+    },
+    "progressLabel": "Câu {current}/{total}",
+    "backButton": "Quay lại",
+    "categories": {
+      "secure": {
+        "name": "An toàn",
+        "blurb": "Bạn có xu hướng cảm thấy thoải mái với sự gần gũi, tin tưởng người khác và duy trì các mối quan hệ ổn định, lành mạnh."
+      },
+      "anxious": {
+        "name": "Lo âu",
+        "blurb": "Bạn có xu hướng khao khát sự gần gũi nhưng cũng dễ lo lắng về việc bị bỏ rơi hoặc không được yêu thương đủ."
+      },
+      "avoidant": {
+        "name": "Né tránh",
+        "blurb": "Bạn có xu hướng coi trọng sự độc lập và có thể cảm thấy ngột ngạt khi mối quan hệ trở nên quá gần gũi."
+      },
+      "fearful": {
+        "name": "Mâu thuẫn",
+        "blurb": "Bạn có xu hướng vừa mong muốn thân mật vừa lo sợ bị tổn thương, khiến cảm xúc trong mối quan hệ dễ dao động."
+      }
+    },
+    "items": {
+      "item1": "Tôi cảm thấy thoải mái khi thân mật và gần gũi với người mình yêu.",
+      "item2": "Tôi dễ dàng tin tưởng bạn đời hoặc người thân của mình.",
+      "item3": "Tôi có thể chia sẻ cảm xúc thật của mình mà không sợ bị phán xét.",
+      "item4": "Tôi cảm thấy an toàn ngay cả khi có bất đồng trong mối quan hệ.",
+      "item5": "Tôi tin rằng người mình yêu thương sẽ ở bên khi tôi cần.",
+      "item6": "Tôi có thể cân bằng giữa việc gần gũi và không gian riêng trong một mối quan hệ.",
+      "item7": "Tôi thường lo lắng rằng người yêu sẽ không còn yêu tôi nữa.",
+      "item8": "Tôi cần được trấn an thường xuyên rằng mình được yêu thương.",
+      "item9": "Tôi cảm thấy bất an khi người yêu không trả lời tin nhắn ngay.",
+      "item10": "Tôi dễ suy diễn tiêu cực khi đối phương có vẻ xa cách.",
+      "item11": "Tôi sợ bị bỏ rơi trong các mối quan hệ thân thiết.",
+      "item12": "Tôi thường xuyên nghĩ về mối quan hệ của mình, kể cả khi mọi thứ ổn.",
+      "item13": "Tôi thích giữ sự độc lập hơn là phụ thuộc vào người khác.",
+      "item14": "Tôi cảm thấy ngột ngạt khi mối quan hệ trở nên quá gần gũi.",
+      "item15": "Tôi khó chia sẻ cảm xúc sâu kín của mình với người khác.",
+      "item16": "Tôi thích tự giải quyết vấn đề hơn là nhờ người yêu giúp đỡ.",
+      "item17": "Tôi thường giữ khoảng cách cảm xúc ngay cả trong mối quan hệ thân thiết.",
+      "item18": "Tôi cảm thấy khó chịu khi ai đó muốn biết quá nhiều về cảm xúc của tôi.",
+      "item19": "Tôi vừa muốn gần gũi vừa sợ bị tổn thương trong một mối quan hệ.",
+      "item20": "Tôi khó tin tưởng hoàn toàn vào người khác, dù rất muốn được yêu thương.",
+      "item21": "Cảm xúc của tôi trong một mối quan hệ thường thay đổi thất thường giữa gần gũi và xa cách.",
+      "item22": "Tôi lo sợ bị tổn thương nên đôi khi tự đẩy người khác ra xa trước.",
+      "item23": "Tôi cảm thấy mâu thuẫn giữa mong muốn thân mật và nỗi sợ bị bỏ rơi.",
+      "item24": "Tôi từng bị tổn thương trong quá khứ nên giờ tôi rất thận trọng khi mở lòng."
+    },
+    "results": {
+      "heading": "Kết quả của bạn",
+      "resultDisclaimer": "Đây là những xu hướng tương đối, không phải một khuôn mẫu cố định. Con người có thể thay đổi theo thời gian và hoàn cảnh.",
+      "retake": "Làm lại test",
+      "shareCta": "Chia sẻ",
+      "shareCopied": "Đã sao chép liên kết!"
     }
   }
 }

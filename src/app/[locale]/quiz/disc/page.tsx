@@ -4,40 +4,40 @@ import { localePath } from "@/i18n/routing";
 import { socialMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { QuizRunner } from "@/components/QuizRunner";
-import { bigFiveQuiz } from "@/lib/quizzes/big-five";
+import { discQuiz } from "@/lib/quizzes/disc";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "bigFive" });
-  const url = `${siteConfig.url}${localePath(locale, "/quiz/big-five")}`;
+  const t = await getTranslations({ locale, namespace: "disc" });
+  const url = `${siteConfig.url}${localePath(locale, "/quiz/disc")}`;
   return {
     title: t("title"),
     description: t("metaDescription"),
     alternates: {
       canonical: url,
       languages: {
-        vi: `${siteConfig.url}/quiz/big-five`,
-        en: `${siteConfig.url}/en/quiz/big-five`,
+        vi: `${siteConfig.url}/quiz/disc`,
+        en: `${siteConfig.url}/en/quiz/disc`,
       },
     },
     ...socialMetadata({ locale, url, title: t("title"), description: t("metaDescription") }),
   };
 }
 
-export default async function BigFivePage({ params }: Props) {
+export default async function DiscPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations("bigFive");
+  const t = await getTranslations("disc");
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: t("title"),
     description: t("metaDescription"),
-    url: `${siteConfig.url}${localePath(locale, "/quiz/big-five")}`,
+    url: `${siteConfig.url}${localePath(locale, "/quiz/disc")}`,
     applicationCategory: "LifestyleApplication",
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -56,7 +56,7 @@ export default async function BigFivePage({ params }: Props) {
       <p className="mb-4 text-sm text-foreground/70">{t("intro.body")}</p>
       <p className="mb-10 text-xs text-foreground/50">{t("intro.disclaimer")}</p>
 
-      <QuizRunner definition={bigFiveQuiz} />
+      <QuizRunner definition={discQuiz} />
     </div>
   );
 }
