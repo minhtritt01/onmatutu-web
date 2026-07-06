@@ -3,13 +3,25 @@
 Viết bài blog mới cho @onmatutu từ kế hoạch nội dung tháng 1.
 
 ## Cách dùng
-`/write-blog <ngày>` — ví dụ: `/write-blog 2`, `/write-blog Ngày 4`, `/write-blog 15`
+`/write-blog [ngày]` — ví dụ: `/write-blog 2`, `/write-blog Ngày 4`, `/write-blog 15`,
+hoặc chỉ `/write-blog` (không có tham số) để tự động chọn ngày tiếp theo.
 
 ## Quy trình thực hiện
 
+### Bước 0 — Xác định ngày cần viết (chỉ khi không có tham số)
+Nếu `$ARGUMENTS` rỗng:
+1. Đọc `content/blog/.write-blog-state.json` → lấy mảng `writtenDays`.
+2. Quét lần lượt ngày 1 → 30, chọn **ngày nhỏ nhất chưa có trong `writtenDays`**
+   (điều này tự động ưu tiên lấp các ngày bị bỏ sót trước khi đi tiếp).
+3. Nếu cả 30 ngày đã có trong `writtenDays`, dừng lại và báo cho người dùng
+   biết kế hoạch tháng 1 đã viết hết — không tạo file nào cả.
+4. Dùng ngày vừa chọn làm `$ARGUMENTS` cho các bước tiếp theo.
+
+Nếu `$ARGUMENTS` có giá trị, dùng trực tiếp như bình thường (bỏ qua bước này).
+
 ### Bước 1 — Đọc kế hoạch
 Đọc file `onmatutu_thang1_stories.md` (ở root của project).
-Tìm `### NGÀY $ARGUMENTS` (hoặc số tương ứng).
+Tìm `### NGÀY <ngày đã xác định ở Bước 0>` (hoặc số tương ứng).
 Lấy: **Chủ đề**, **Cảm xúc**, **nhân vật + câu chuyện**, **Quote**.
 
 ### Bước 2 — Tính episode tiếp theo
@@ -62,6 +74,11 @@ Tạo `content/blog/en/ep00N-<slug>.mdx` — **dịch và viết lại**, không
 ### Bước 6 — Kiểm tra build
 Chạy `npm run build` để xác nhận không có lỗi.
 
+### Bước 7 — Cập nhật state file
+Sau khi build pass, cập nhật `content/blog/.write-blog-state.json`:
+- Thêm ngày vừa viết vào mảng `writtenDays` (sắp xếp tăng dần, không trùng lặp).
+- Cập nhật `lastEpisode` thành episode slug vừa tạo (ví dụ `"ep007"`).
+
 ---
 
 ## Ví dụ kết quả cho Ngày 2
@@ -71,3 +88,10 @@ Chạy `npm run build` để xác nhận không có lỗi.
 
 Nhân vật: **Lan**, 19 tuổi, Cần Thơ lên Sài Gòn, tài khoản 87,000đ, gói mì thứ 3 trong ngày, thấy ảnh ba mẹ bán lúa trong nhóm chat, đặt điện thoại xuống, không gọi xin tiền.
 Quote: *"Gọi đi. Mẹ không bao giờ phiền vì con cần mẹ đâu."*
+
+## Ví dụ dùng không tham số
+
+Chạy `/write-blog` (không có ngày). Giả sử `writtenDays` hiện tại là `[1, 2, 4, 9]`
+→ hệ thống tự chọn **Ngày 3** (ngày nhỏ nhất chưa viết), viết bài như bình thường,
+rồi cập nhật `writtenDays` thành `[1, 2, 3, 4, 9]`. Lần chạy `/write-blog` kế tiếp
+sẽ tự chọn **Ngày 5**.
