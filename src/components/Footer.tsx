@@ -2,7 +2,12 @@ import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { TikTokIcon, YouTubeIcon, InstagramIcon, FacebookIcon } from "@/components/icons/SocialIcons";
+import {
+  TikTokIcon,
+  YouTubeIcon,
+  InstagramIcon,
+  FacebookIcon,
+} from "@/components/icons/SocialIcons";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -11,14 +16,23 @@ export async function Footer() {
   const socialLinks = [
     { label: "TikTok", href: siteConfig.socials.tiktok, Icon: TikTokIcon },
     { label: "YouTube", href: siteConfig.socials.youtube, Icon: YouTubeIcon },
-    { label: "Instagram", href: siteConfig.socials.instagram, Icon: InstagramIcon },
-    { label: "Facebook", href: siteConfig.socials.facebook, Icon: FacebookIcon },
+    {
+      label: "Instagram",
+      href: siteConfig.socials.instagram,
+      Icon: InstagramIcon,
+    },
+    {
+      label: "Facebook",
+      href: siteConfig.socials.facebook,
+      Icon: FacebookIcon,
+    },
   ];
 
   const navLinks = [
     { label: tNav("blog"), href: "/blog" as const },
     { label: tNav("videos"), href: "/videos" as const },
     { label: tNav("relax"), href: "/relax" as const },
+    { label: tNav("quiz"), href: "/quiz" as const },
     { label: tNav("affirmations"), href: "/affirmations" as const },
     { label: tNav("about"), href: "/about" as const },
     { label: tNav("share"), href: "/share-story" as const },
@@ -40,9 +54,13 @@ export async function Footer() {
                   className="object-cover object-top"
                 />
               </div>
-              <span className="font-semibold text-brand-yellow">{siteConfig.name}</span>
+              <span className="font-semibold text-brand-yellow">
+                {siteConfig.name}
+              </span>
             </div>
-            <p className="text-sm leading-relaxed text-foreground/60">{t("tagline")}</p>
+            <p className="text-sm leading-relaxed text-foreground/60">
+              {t("tagline")}
+            </p>
             <p className="text-xs text-foreground/40">{siteConfig.hashtag}</p>
           </div>
 
