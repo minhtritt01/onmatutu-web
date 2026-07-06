@@ -219,7 +219,15 @@
       },
       "imageLabel": "Background image",
       "expandFullscreen": "Fullscreen",
-      "collapseFullscreen": "Exit fullscreen"
+      "collapseFullscreen": "Exit fullscreen",
+      "searchLabel": "Search Unsplash for a background",
+      "searchPlaceholder": "Search photos…",
+      "searchSubmit": "Search",
+      "searchLoading": "Searching…",
+      "searchError": "Couldn't reach Unsplash. Try again later.",
+      "searchEmpty": "No photos found. Try a different search.",
+      "searchUnavailable": "Photo search is temporarily unavailable.",
+      "photoCredit": "Photo by {name}"
     }
   },
   "quotesPage": {

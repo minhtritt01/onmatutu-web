@@ -219,7 +219,15 @@
       },
       "imageLabel": "Ảnh nền",
       "expandFullscreen": "Toàn màn hình",
-      "collapseFullscreen": "Thoát toàn màn hình"
+      "collapseFullscreen": "Thoát toàn màn hình",
+      "searchLabel": "Tìm ảnh nền trên Unsplash",
+      "searchPlaceholder": "Tìm ảnh…",
+      "searchSubmit": "Tìm",
+      "searchLoading": "Đang tìm…",
+      "searchError": "Không kết nối được với Unsplash. Vui lòng thử lại sau.",
+      "searchEmpty": "Không tìm thấy ảnh nào. Hãy thử từ khóa khác.",
+      "searchUnavailable": "Tính năng tìm ảnh đang tạm thời không khả dụng.",
+      "photoCredit": "Ảnh bởi {name}"
     }
   },
   "quotesPage": {

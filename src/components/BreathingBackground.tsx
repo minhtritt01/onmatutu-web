@@ -3,9 +3,18 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { getRelaxBackgrounds, type RelaxBackground } from "@/lib/relax-content";
+import { searchUnsplash, trackUnsplashDownload, type UnsplashPhoto } from "@/lib/unsplash";
 import { FullscreenContext } from "@/lib/fullscreen-context";
 
 type ThemeId = "yellow" | "blue" | "purple" | "green";
+type SearchStatus = "idle" | "loading" | "error" | "empty" | "unavailable";
+
+interface CustomImageBg {
+  id: string;
+  imageUrl: string;
+  photographerName: string;
+  photographerProfileUrl: string;
+}
 
 const THEMES: { id: ThemeId; swatch: string }[] = [
   { id: "yellow", swatch: "#f4c95d" },
@@ -16,17 +25,94 @@ const THEMES: { id: ThemeId; swatch: string }[] = [
 
 const STORAGE_KEY = "relax-breathing-theme";
 const IMAGE_STORAGE_KEY = "relax-breathing-image-bg";
+const CUSTOM_IMAGE_STORAGE_KEY = "relax-breathing-custom-image-bg";
 const FULLSCREEN_HINT_KEY = "relax-breathing-fullscreen-hint-seen";
+const SEARCH_DEBOUNCE_MS = 400;
+const SEARCH_MIN_CHARS = 2;
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="h-4 w-4">
+      <circle cx="11" cy="11" r="7" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+  );
+}
+
+function UnsplashSearchPanel({
+  t,
+  query,
+  onQueryChange,
+  onSubmit,
+  status,
+  results,
+  onSelect,
+  className,
+}: {
+  t: ReturnType<typeof useTranslations>;
+  query: string;
+  onQueryChange: (value: string) => void;
+  onSubmit: (e: React.FormEvent) => void;
+  status: SearchStatus;
+  results: UnsplashPhoto[];
+  onSelect: (photo: UnsplashPhoto) => void;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`w-full max-w-sm rounded-2xl border border-brand-gray bg-background/95 p-4 shadow-lg backdrop-blur-sm sm:z-20 sm:w-96 ${className ?? ""}`}
+    >
+      <form onSubmit={onSubmit} className="flex gap-2">
+        <input
+          value={query}
+          onChange={(e) => onQueryChange(e.target.value)}
+          placeholder={t("searchPlaceholder")}
+          className="min-w-0 flex-1 rounded-lg border border-brand-gray bg-background/60 px-3 py-2.5 text-base text-foreground"
+        />
+        <button
+          type="submit"
+          className="shrink-0 rounded-lg border border-brand-gray px-4 py-2.5 text-base font-medium text-foreground"
+        >
+          {t("searchSubmit")}
+        </button>
+      </form>
+      {status === "loading" && <p className="mt-3 text-sm text-foreground/50">{t("searchLoading")}</p>}
+      {status === "error" && <p className="mt-3 text-sm text-red-400">{t("searchError")}</p>}
+      {status === "empty" && <p className="mt-3 text-sm text-foreground/50">{t("searchEmpty")}</p>}
+      {status === "unavailable" && <p className="mt-3 text-sm text-foreground/50">{t("searchUnavailable")}</p>}
+      {results.length > 0 && (
+        <div className="mt-3 grid grid-cols-3 gap-2">
+          {results.map((photo) => (
+            <button
+              key={photo.id}
+              onClick={() => onSelect(photo)}
+              aria-label={photo.photographerName}
+              className="h-24 overflow-hidden rounded-lg bg-cover bg-center ring-2 ring-transparent transition hover:ring-foreground/40 active:scale-95"
+              style={{ backgroundImage: `url(${photo.thumbUrl})` }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function BreathingBackground({ children }: { children: ReactNode }) {
   const t = useTranslations("breathingTool.background");
   const [themeId, setThemeId] = useState<ThemeId>("yellow");
   const [backgrounds, setBackgrounds] = useState<RelaxBackground[]>([]);
   const [imageBg, setImageBg] = useState<RelaxBackground | null>(null);
+  const [customImageBg, setCustomImageBg] = useState<CustomImageBg | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<UnsplashPhoto[]>([]);
+  const [searchStatus, setSearchStatus] = useState<SearchStatus>("idle");
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showFullscreenHint, setShowFullscreenHint] = useState(false);
   const [fullscreenSupported, setFullscreenSupported] = useState(true);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeImageUrl = customImageBg?.imageUrl ?? imageBg?.imageUrl ?? null;
 
   useEffect(() => {
     function handleFullscreenChange() {
@@ -76,17 +162,83 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
     }
   }, [backgrounds]);
 
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(CUSTOM_IMAGE_STORAGE_KEY);
+      if (raw) setCustomImageBg(JSON.parse(raw));
+    } catch {
+      window.localStorage.removeItem(CUSTOM_IMAGE_STORAGE_KEY);
+    }
+  }, []);
+
   function handleSelect(id: ThemeId) {
     setThemeId(id);
     window.localStorage.setItem(STORAGE_KEY, id);
     setImageBg(null);
     window.localStorage.removeItem(IMAGE_STORAGE_KEY);
+    setCustomImageBg(null);
+    window.localStorage.removeItem(CUSTOM_IMAGE_STORAGE_KEY);
   }
 
   function handleSelectImage(bg: RelaxBackground) {
     setImageBg(bg);
     window.localStorage.setItem(IMAGE_STORAGE_KEY, bg.id);
+    setCustomImageBg(null);
+    window.localStorage.removeItem(CUSTOM_IMAGE_STORAGE_KEY);
   }
+
+  function handleSelectCustomPhoto(photo: UnsplashPhoto) {
+    const next: CustomImageBg = {
+      id: photo.id,
+      imageUrl: photo.regularUrl,
+      photographerName: photo.photographerName,
+      photographerProfileUrl: photo.photographerProfileUrl,
+    };
+    setCustomImageBg(next);
+    window.localStorage.setItem(CUSTOM_IMAGE_STORAGE_KEY, JSON.stringify(next));
+    setImageBg(null);
+    window.localStorage.removeItem(IMAGE_STORAGE_KEY);
+    trackUnsplashDownload(photo.downloadLocation);
+    setSearchOpen(false);
+  }
+
+  function runSearch(query: string) {
+    setSearchStatus("loading");
+    searchUnsplash(query)
+      .then((results) => {
+        setSearchResults(results);
+        setSearchStatus(results.length === 0 ? "empty" : "idle");
+      })
+      .catch((err) => {
+        setSearchStatus(err instanceof Error && err.message === "not_configured" ? "unavailable" : "error");
+      });
+  }
+
+  function handleSearchQueryChange(value: string) {
+    setSearchQuery(value);
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    const trimmed = value.trim();
+    if (trimmed.length < SEARCH_MIN_CHARS) {
+      setSearchStatus("idle");
+      setSearchResults([]);
+      return;
+    }
+    searchDebounceRef.current = setTimeout(() => runSearch(trimmed), SEARCH_DEBOUNCE_MS);
+  }
+
+  function handleSearchSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    const trimmed = searchQuery.trim();
+    if (trimmed.length < SEARCH_MIN_CHARS) return;
+    runSearch(trimmed);
+  }
+
+  useEffect(() => {
+    return () => {
+      if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    };
+  }, []);
 
   return (
     <div
@@ -97,7 +249,7 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
           : "-mx-4 rounded-3xl px-4 py-6 sm:-mx-6 sm:px-6"
       }`}
       style={
-        imageBg || isFullscreen
+        activeImageUrl || isFullscreen
           ? ({
               "--foreground": "#ffffff",
               "--background": "#1a1a1a",
@@ -123,17 +275,27 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
           </svg>
         )}
       </button>
-      {imageBg && (
+      {activeImageUrl && (
         <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={imageBg.imageUrl}
+            src={activeImageUrl}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 -z-10 h-full w-full object-cover"
           />
           <div className="absolute inset-0 -z-10 bg-black/60" />
         </>
+      )}
+      {customImageBg && (
+        <a
+          href={customImageBg.photographerProfileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute right-3 bottom-3 z-10 text-[10px] text-white/70 hover:text-white/90"
+        >
+          {t("photoCredit", { name: customImageBg.photographerName })} · Unsplash
+        </a>
       )}
       {/* Mobile: compact card with icon groups + larger tap targets */}
       <div className="mb-6 flex flex-col items-center gap-3 rounded-2xl border border-white/15 bg-black/15 px-4 py-3 shadow-sm backdrop-blur-md sm:hidden">
@@ -159,9 +321,9 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
                 key={theme.id}
                 onClick={() => handleSelect(theme.id)}
                 aria-label={t(`themes.${theme.id}`)}
-                aria-pressed={!imageBg && themeId === theme.id}
+                aria-pressed={!activeImageUrl && themeId === theme.id}
                 className={`h-8 w-8 rounded-full ring-2 ring-offset-2 ring-offset-transparent transition active:scale-95 ${
-                  !imageBg && themeId === theme.id ? "ring-foreground" : "ring-transparent"
+                  !activeImageUrl && themeId === theme.id ? "ring-foreground" : "ring-transparent"
                 }`}
                 style={{ background: theme.swatch }}
               />
@@ -208,7 +370,32 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
             </div>
           </>
         )}
+
+        <span className="block h-px w-16 bg-white/20" aria-hidden="true" />
+        <button
+          onClick={() => setSearchOpen((v) => !v)}
+          aria-label={t("searchLabel")}
+          aria-pressed={searchOpen}
+          className={`flex h-9 w-9 items-center justify-center rounded-full border transition active:scale-95 ${
+            searchOpen ? "border-brand-yellow text-brand-yellow" : "border-white/20 text-foreground/70"
+          }`}
+        >
+          <SearchIcon />
+        </button>
       </div>
+
+      {searchOpen && (
+        <UnsplashSearchPanel
+          t={t}
+          query={searchQuery}
+          onQueryChange={handleSearchQueryChange}
+          onSubmit={handleSearchSubmit}
+          status={searchStatus}
+          results={searchResults}
+          onSelect={handleSelectCustomPhoto}
+          className="mb-6 sm:absolute sm:top-14 sm:right-3 sm:mb-0"
+        />
+      )}
 
       {/* Desktop/tablet: original compact inline row */}
       <div className="mb-6 hidden flex-wrap items-center justify-center gap-2 sm:flex sm:pr-12">
@@ -218,9 +405,9 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
             key={theme.id}
             onClick={() => handleSelect(theme.id)}
             aria-label={t(`themes.${theme.id}`)}
-            aria-pressed={!imageBg && themeId === theme.id}
+            aria-pressed={!activeImageUrl && themeId === theme.id}
             className={`h-6 w-6 rounded-full border-2 transition ${
-              !imageBg && themeId === theme.id ? "border-foreground" : "border-transparent"
+              !activeImageUrl && themeId === theme.id ? "border-foreground" : "border-transparent"
             }`}
             style={{ background: theme.swatch }}
           />
@@ -243,6 +430,17 @@ export function BreathingBackground({ children }: { children: ReactNode }) {
             ))}
           </>
         )}
+        <span className="mx-1 text-xs text-foreground/30">|</span>
+        <button
+          onClick={() => setSearchOpen((v) => !v)}
+          aria-label={t("searchLabel")}
+          aria-pressed={searchOpen}
+          className={`flex h-7 w-7 items-center justify-center rounded-full border-2 transition ${
+            searchOpen ? "border-brand-yellow text-brand-yellow" : "border-transparent text-foreground/60"
+          }`}
+        >
+          <SearchIcon />
+        </button>
       </div>
       <FullscreenContext.Provider value={isFullscreen}>{children}</FullscreenContext.Provider>
     </div>
