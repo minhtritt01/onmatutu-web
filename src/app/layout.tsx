@@ -1,21 +1,15 @@
 import Script from "next/script";
 import "./globals.css";
-import { Poppins, Geist_Mono } from "next/font/google";
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import { GeistMono } from "geist/font/mono";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      className={`h-full antialiased ${poppins.variable} ${geistMono.variable}`}
+      className={`h-full antialiased ${GeistMono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">

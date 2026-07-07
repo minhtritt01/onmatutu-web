@@ -9,8 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fontsource/poppins": "^5.2.7",
     "@supabase/supabase-js": "^2.110.0",
     "@types/nodemailer": "^8.0.1",
+    "geist": "^1.7.2",
     "gray-matter": "^4.0.3",
     "next": "16.2.9",
     "next-intl": "^4.13.0",
