@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site-config";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PostCard } from "@/components/PostCard";
 import { TikTokIcon } from "@/components/icons/SocialIcons";
+import Link from "next/link";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -33,7 +34,9 @@ export default async function Home({ params }: Props) {
 
         {/* Site name + hashtag */}
         <div className="animate-fade-in-up" style={{ animationDelay: "120ms" }}>
-          <h1 className="text-3xl font-semibold sm:text-4xl">{siteConfig.name}</h1>
+          <h1 className="text-3xl font-semibold sm:text-4xl">
+            {siteConfig.name}
+          </h1>
           <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-brand-yellow/80">
             {siteConfig.hashtag}
           </p>
@@ -52,13 +55,13 @@ export default async function Home({ params }: Props) {
           className="flex flex-wrap justify-center gap-3 animate-fade-in-up"
           style={{ animationDelay: "320ms" }}
         >
-          <a
+          <Link
             href="/blog"
             className="rounded-full bg-brand-yellow px-6 py-2.5 text-sm font-medium text-foreground transition hover:opacity-90"
           >
             {t("readStories")}
-          </a>
-          <a
+          </Link>
+          <Link
             href={siteConfig.socials.tiktok}
             target="_blank"
             rel="noreferrer"
@@ -66,9 +69,8 @@ export default async function Home({ params }: Props) {
           >
             <TikTokIcon className="w-4 h-4" />
             {t("followTiktok")}
-          </a>
+          </Link>
         </div>
-
       </section>
 
       {/* Latest posts */}
