@@ -5,9 +5,13 @@ import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import YouTube, { type YouTubePlayer } from "react-youtube";
 import { getRelaxTracks, type RelaxTrack } from "@/lib/relax-content";
-import { parseYoutubeId } from "@/lib/youtube";
+import { parseYoutubeId, searchYoutube, type YoutubeSearchResult } from "@/lib/youtube";
 
 type TrackId = "rain" | "forest" | "ocean" | "campfire" | "lofi";
+type SearchStatus = "idle" | "loading" | "error" | "empty" | "unavailable";
+
+const SEARCH_DEBOUNCE_MS = 400;
+const SEARCH_MIN_CHARS = 2;
 
 const TRACKS: { id: TrackId; src: string; icon: string }[] = [
   { id: "rain", src: "/sounds/rain.mp3", icon: "🌧️" },
@@ -30,6 +34,12 @@ export function AmbientPlayer() {
   const [pasteError, setPasteError] = useState(false);
   const [pastedTracks, setPastedTracks] = useState<{ videoId: string; title: string }[]>([]);
   const youtubePlayerRef = useRef<YouTubePlayer | null>(null);
+
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<YoutubeSearchResult[]>([]);
+  const [searchStatus, setSearchStatus] = useState<SearchStatus>("idle");
+  const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = volume;
@@ -82,6 +92,50 @@ export function AmbientPlayer() {
     if (!audio || !trackId) return;
     audio.play().catch(() => {});
   }, [trackId]);
+
+  function runSearch(query: string) {
+    setSearchStatus("loading");
+    searchYoutube(query)
+      .then((results) => {
+        setSearchResults(results);
+        setSearchStatus(results.length === 0 ? "empty" : "idle");
+      })
+      .catch((err) => {
+        setSearchStatus(err instanceof Error && err.message === "not_configured" ? "unavailable" : "error");
+      });
+  }
+
+  function handleSearchQueryChange(value: string) {
+    setSearchQuery(value);
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    const trimmed = value.trim();
+    if (trimmed.length < SEARCH_MIN_CHARS) {
+      setSearchStatus("idle");
+      setSearchResults([]);
+      return;
+    }
+    searchDebounceRef.current = setTimeout(() => runSearch(trimmed), SEARCH_DEBOUNCE_MS);
+  }
+
+  function handleSearchSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    const trimmed = searchQuery.trim();
+    if (trimmed.length < SEARCH_MIN_CHARS) return;
+    runSearch(trimmed);
+  }
+
+  function handleSelectSearchResult(result: YoutubeSearchResult) {
+    handleSelectYoutube(result.videoId);
+    if (pastedTracks.some((track) => track.videoId === result.videoId)) return;
+    setPastedTracks((current) => [...current, { videoId: result.videoId, title: result.title }]);
+  }
+
+  useEffect(() => {
+    return () => {
+      if (searchDebounceRef.current) clearTimeout(searchDebounceRef.current);
+    };
+  }, []);
 
   const currentTrack = TRACKS.find((track) => track.id === trackId);
 
@@ -154,6 +208,81 @@ export function AmbientPlayer() {
           </ul>
         </>
       )}
+
+      <div className="mt-3">
+        <button
+          type="button"
+          onClick={() => setSearchOpen((v) => !v)}
+          aria-pressed={searchOpen}
+          className={`flex w-full items-center gap-2 rounded-lg border px-3 py-2 text-left text-sm transition ${
+            searchOpen
+              ? "border-brand-yellow bg-brand-yellow/10 text-foreground"
+              : "border-brand-gray text-foreground/70 hover:bg-brand-gray/20"
+          }`}
+        >
+          <span aria-hidden="true">🔍</span>
+          <span>{t("searchLabel")}</span>
+        </button>
+
+        {searchOpen && (
+          <div className="mt-2">
+            <form onSubmit={handleSearchSubmit} className="flex gap-2">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => handleSearchQueryChange(e.target.value)}
+                placeholder={t("searchPlaceholder")}
+                className="flex-1 rounded-lg border border-brand-gray bg-background/60 px-2 py-1 text-sm text-foreground placeholder:text-foreground/40"
+              />
+              <button
+                type="submit"
+                className="rounded-lg border border-brand-gray px-3 py-1 text-sm text-foreground/70 hover:bg-brand-gray/20"
+              >
+                {t("searchSubmit")}
+              </button>
+            </form>
+
+            {searchStatus === "loading" && (
+              <p className="mt-2 text-xs text-foreground/50">{t("searchLoading")}</p>
+            )}
+            {searchStatus === "error" && <p className="mt-2 text-xs text-red-500">{t("searchError")}</p>}
+            {searchStatus === "empty" && <p className="mt-2 text-xs text-foreground/50">{t("searchEmpty")}</p>}
+            {searchStatus === "unavailable" && (
+              <p className="mt-2 text-xs text-foreground/50">{t("searchUnavailable")}</p>
+            )}
+
+            {searchResults.length > 0 && (
+              <ul className="mt-2 flex flex-col gap-1">
+                {searchResults.map((result) => (
+                  <li key={result.videoId}>
+                    <button
+                      onClick={() => handleSelectSearchResult(result)}
+                      aria-pressed={youtubeVideoId === result.videoId}
+                      className={`flex w-full items-center gap-2 rounded-lg border px-3 py-2 text-left text-sm transition ${
+                        youtubeVideoId === result.videoId
+                          ? "border-brand-yellow bg-brand-yellow/10 text-foreground"
+                          : "border-transparent text-foreground/70 hover:bg-brand-gray/20"
+                      }`}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={result.thumbnailUrl}
+                        alt=""
+                        aria-hidden="true"
+                        className="h-8 w-8 shrink-0 rounded object-cover"
+                      />
+                      <span className="truncate">{result.title}</span>
+                      {youtubeVideoId === result.videoId && (
+                        <span className="ml-auto shrink-0 text-xs text-brand-yellow">{t("playing")}</span>
+                      )}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+      </div>
 
       <form onSubmit={handlePasteSubmit} className="mt-3 flex flex-col gap-1">
         <label htmlFor="ambient-youtube-url" className="text-xs text-foreground/50">

@@ -207,7 +207,14 @@
       "pasteLabel": "Paste a YouTube link",
       "pastePlaceholder": "https://youtube.com/watch?v=...",
       "pastePlay": "Play",
-      "pasteInvalid": "That doesn't look like a valid YouTube link"
+      "pasteInvalid": "That doesn't look like a valid YouTube link",
+      "searchLabel": "Search YouTube for music",
+      "searchPlaceholder": "Search songs…",
+      "searchSubmit": "Search",
+      "searchLoading": "Searching…",
+      "searchError": "Couldn't reach YouTube. Try again later.",
+      "searchEmpty": "No songs found. Try a different search.",
+      "searchUnavailable": "Music search is temporarily unavailable."
     },
     "background": {
       "label": "Background:",

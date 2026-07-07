@@ -207,7 +207,14 @@
       "pasteLabel": "Dán link YouTube",
       "pastePlaceholder": "https://youtube.com/watch?v=...",
       "pastePlay": "Phát",
-      "pasteInvalid": "Link YouTube không hợp lệ"
+      "pasteInvalid": "Link YouTube không hợp lệ",
+      "searchLabel": "Tìm nhạc trên YouTube",
+      "searchPlaceholder": "Tìm bài hát…",
+      "searchSubmit": "Tìm",
+      "searchLoading": "Đang tìm…",
+      "searchError": "Không kết nối được với YouTube. Vui lòng thử lại sau.",
+      "searchEmpty": "Không tìm thấy bài hát nào. Hãy thử từ khóa khác.",
+      "searchUnavailable": "Tính năng tìm nhạc đang tạm thời không khả dụng."
     },
     "background": {
       "label": "Nền:",

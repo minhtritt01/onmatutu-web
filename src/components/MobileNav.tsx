@@ -29,7 +29,7 @@ export function MobileNav({ navItems }: { navItems: NavItem[] }) {
   const t = useTranslations("nav");
 
   return (
-    <div className="sm:hidden">
+    <div className="xl:hidden">
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? t("closeMenu") : t("openMenu")}

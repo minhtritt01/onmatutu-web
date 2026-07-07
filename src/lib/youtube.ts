@@ -17,3 +17,38 @@ export function parseYoutubeId(input: string): string | null {
 
   return null;
 }
+
+export interface YoutubeSearchResult {
+  videoId: string;
+  title: string;
+  thumbnailUrl: string;
+  channelTitle: string;
+}
+
+interface YoutubeRawSearchItem {
+  id: { videoId: string };
+  snippet: {
+    title: string;
+    channelTitle: string;
+    thumbnails: { default: { url: string } };
+  };
+}
+
+/** Server-only: shapes a raw YouTube Data API search item into the slim shape sent to the client. */
+export function shapeYoutubeSearchResult(raw: YoutubeRawSearchItem): YoutubeSearchResult {
+  return {
+    videoId: raw.id.videoId,
+    title: raw.snippet.title,
+    thumbnailUrl: raw.snippet.thumbnails.default.url,
+    channelTitle: raw.snippet.channelTitle,
+  };
+}
+
+/** Client: searches YouTube via our server-side proxy (keeps the API key off the client). */
+export async function searchYoutube(query: string): Promise<YoutubeSearchResult[]> {
+  const res = await fetch(`/api/youtube/search?query=${encodeURIComponent(query)}`);
+  if (res.status === 503) throw new Error("not_configured");
+  if (!res.ok) throw new Error("youtube_search_failed");
+  const data = await res.json();
+  return data.results as YoutubeSearchResult[];
+}
