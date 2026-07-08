@@ -39,8 +39,15 @@
   "affirmations": {
     "title": "Affirmation mỗi ngày",
     "description": "Tổng hợp những lời nhắc nhẹ nhàng buổi sáng từ {siteName}.",
-    "intro": "Những lời nhắc nhẹ nhàng, không sáo rỗng — gắn với một tình huống cụ thể, để bạn bắt đầu ngày mới dễ chịu hơn.",
-    "noPosts": "Chưa có affirmation nào. Thêm bài viết Pillar C trong content/blog."
+    "intro": "Chọn cảm xúc bạn đang có, hoặc xem tất cả.",
+    "allCategory": "Tất cả",
+    "noAffirmations": "Chưa có affirmation nào ở đây.",
+    "categories": {
+      "buon": "Buồn",
+      "ap-luc": "Áp lực",
+      "co-don": "Cô đơn",
+      "dong-luc-sang": "Động lực buổi sáng"
+    }
   },
   "about": {
     "title": "Giới thiệu",

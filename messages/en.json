@@ -39,8 +39,15 @@
   "affirmations": {
     "title": "Daily Affirmations",
     "description": "A collection of gentle morning reminders from {siteName}.",
-    "intro": "Gentle, grounded reminders — tied to real situations, to help you start your day feeling a little lighter.",
-    "noPosts": "No affirmations yet. Add Pillar C posts to content/blog."
+    "intro": "Pick how you're feeling, or see all of them.",
+    "allCategory": "All",
+    "noAffirmations": "No affirmations here yet.",
+    "categories": {
+      "buon": "Sadness",
+      "ap-luc": "Pressure",
+      "co-don": "Loneliness",
+      "dong-luc-sang": "Morning motivation"
+    }
   },
   "about": {
     "title": "About",

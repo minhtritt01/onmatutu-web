@@ -23,6 +23,10 @@ function quotesDir(locale: string) {
   return path.join(process.cwd(), "content/quotes", locale);
 }
 
+function affirmationsDir(locale: string) {
+  return path.join(process.cwd(), "content/affirmations", locale);
+}
+
 export type PostFrontmatter = {
   title: string;
   description: string;
@@ -192,4 +196,43 @@ export function getAllQuotes(locale = "vi"): Quote[] {
 
 export function getQuotesByCategory(category: QuoteCategory, locale = "vi"): Quote[] {
   return getAllQuotes(locale).filter((q) => q.frontmatter.category === category);
+}
+
+// --- Affirmations ---
+
+export type AffirmationCategory = "buon" | "ap-luc" | "co-don" | "dong-luc-sang";
+
+export type AffirmationFrontmatter = {
+  text: string;
+  category: AffirmationCategory;
+};
+
+export type Affirmation = {
+  slug: string;
+  frontmatter: AffirmationFrontmatter;
+};
+
+function readAffirmationsMdxDir(dir: string): Affirmation[] {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => {
+      const slug = file.replace(/\.mdx$/, "");
+      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
+      const { data } = matter(raw);
+      return { slug, frontmatter: data as AffirmationFrontmatter };
+    });
+}
+
+export function getAllAffirmations(locale = "vi"): Affirmation[] {
+  if (locale === "vi") return readAffirmationsMdxDir(affirmationsDir("vi"));
+  const viAffirmations = readAffirmationsMdxDir(affirmationsDir("vi"));
+  const localeAffirmations = readAffirmationsMdxDir(affirmationsDir(locale));
+  const localeMap = new Map(localeAffirmations.map((a) => [a.slug, a]));
+  return viAffirmations.map((viAffirmation) => localeMap.get(viAffirmation.slug) ?? viAffirmation);
+}
+
+export function getAffirmationsByCategory(category: AffirmationCategory, locale = "vi"): Affirmation[] {
+  return getAllAffirmations(locale).filter((a) => a.frontmatter.category === category);
 }
