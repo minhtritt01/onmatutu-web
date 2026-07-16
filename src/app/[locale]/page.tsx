@@ -3,10 +3,37 @@ import { getAllPosts } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PostCard } from "@/components/PostCard";
-import { TikTokIcon } from "@/components/icons/SocialIcons";
+import { StatsStrip } from "@/components/StatsStrip";
+import {
+  TikTokIcon,
+  YouTubeIcon,
+  FacebookIcon,
+} from "@/components/icons/SocialIcons";
 import Link from "next/link";
 
 type Props = { params: Promise<{ locale: string }> };
+
+// Follow CTAs, mapped from siteConfig.socials with per-platform hover accents.
+const FOLLOW_LINKS = [
+  {
+    href: siteConfig.socials.tiktok,
+    label: "TikTok",
+    Icon: TikTokIcon,
+    hover: "hover:border-foreground/60",
+  },
+  {
+    href: siteConfig.socials.youtube,
+    label: "YouTube",
+    Icon: YouTubeIcon,
+    hover: "hover:border-[#FF0000] hover:text-[#FF0000]",
+  },
+  {
+    href: siteConfig.socials.facebook,
+    label: "Facebook",
+    Icon: FacebookIcon,
+    hover: "hover:border-[#1877F2] hover:text-[#1877F2]",
+  },
+] as const;
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
@@ -61,16 +88,29 @@ export default async function Home({ params }: Props) {
           >
             {t("readStories")}
           </Link>
-          <Link
-            href={siteConfig.socials.tiktok}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 rounded-full border border-brand-gray px-6 py-2.5 text-sm font-medium transition hover:bg-brand-gray/20"
-          >
-            <TikTokIcon className="w-4 h-4" />
-            {t("followTiktok")}
-          </Link>
+          {FOLLOW_LINKS.map(({ href, label, Icon, hover }) => (
+            <Link
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${t("follow")} ${label}`}
+              className={`flex items-center gap-2 rounded-full border border-brand-gray px-5 py-2.5 text-sm font-medium transition-colors duration-200 ${hover}`}
+            >
+              <Icon className="w-4 h-4" />
+              {label}
+            </Link>
+          ))}
         </div>
+      </section>
+
+      {/* Social-proof stats */}
+      <section
+        className="animate-fade-in-up py-4"
+        style={{ animationDelay: "420ms" }}
+      >
+        <h2 className="sr-only">{t("statsHeading")}</h2>
+        <StatsStrip stats={siteConfig.stats} />
       </section>
 
       {/* Latest posts */}

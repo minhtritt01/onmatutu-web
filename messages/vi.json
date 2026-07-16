@@ -20,9 +20,14 @@
     "heroAlt": "Nhân vật Ổn Mà, Từ Từ - mỉm cười nhẹ nhàng",
     "readStories": "Đọc câu chuyện",
     "followTiktok": "Theo dõi TikTok",
+    "follow": "Theo dõi",
     "latestStories": "Câu chuyện mới nhất",
     "noPosts": "Chưa có bài viết nào. Thêm file .mdx vào content/blog để bắt đầu.",
-    "pillarLabel": "Pillar {pillar}"
+    "pillarLabel": "Pillar {pillar}",
+    "statsHeading": "Cộng đồng của mình",
+    "statFollowers": "Người theo dõi",
+    "statLikes": "Lượt thích",
+    "statVideos": "Video"
   },
   "blog": {
     "title": "Câu chuyện",

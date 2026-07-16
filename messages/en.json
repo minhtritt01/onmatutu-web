@@ -20,9 +20,14 @@
     "heroAlt": "Ổn Mà, Từ Từ character — gentle smile",
     "readStories": "Read stories",
     "followTiktok": "Follow on TikTok",
+    "follow": "Follow",
     "latestStories": "Latest stories",
     "noPosts": "No posts yet. Add .mdx files to content/blog to get started.",
-    "pillarLabel": "Pillar {pillar}"
+    "pillarLabel": "Pillar {pillar}",
+    "statsHeading": "Our community",
+    "statFollowers": "Followers",
+    "statLikes": "Likes",
+    "statVideos": "Videos"
   },
   "blog": {
     "title": "Stories",

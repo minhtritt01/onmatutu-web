@@ -9,6 +9,14 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/onmatutu",
     facebook: "https://www.facebook.com/onmatutuofficial",
   },
+  // Generic social-proof stats shown on the homepage. Each item is a label
+  // key (resolved to the `home.stat<Key>` i18n string) plus a raw number.
+  // Add / remove / reorder freely — StatsStrip renders whatever is here.
+  stats: [
+    { key: "followers", value: 50 },
+    { key: "likes", value: 120 },
+    { key: "videos", value: 25 },
+  ],
 } as const;
 
 export type Pillar = "A" | "B" | "C" | "D";
