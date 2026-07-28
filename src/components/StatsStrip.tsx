@@ -32,7 +32,7 @@ const ICONS: Record<string, ReactNode> = {
   followers: (
     <path d="M17 20h5v-1a4 4 0 0 0-3-3.87M9 20H4v-1a4 4 0 0 1 3-3.87m10-4.13a3 3 0 1 0-4-4m-4 4a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
   ),
-  likes: (
+  views: (
     <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" />
   ),
   videos: (
@@ -57,7 +57,7 @@ export function StatsStrip({ stats }: Props) {
     if (!el) return;
 
     const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     if (prefersReduced) {
       setProgress(1);
@@ -77,7 +77,7 @@ export function StatsStrip({ stats }: Props) {
         };
         raf = requestAnimationFrame(tick);
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
     observer.observe(el);
 
