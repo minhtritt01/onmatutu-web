@@ -13,7 +13,7 @@ export const siteConfig = {
   // key (resolved to the `home.stat<Key>` i18n string) plus a raw number.
   // Add / remove / reorder freely — StatsStrip renders whatever is here.
   stats: [
-    { key: "followers", value: 63 },
+    { key: "followers", value: 64 },
     { key: "views", value: 44231 },
     { key: "videos", value: 82 },
   ],
