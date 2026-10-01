@@ -15,7 +15,7 @@ export const siteConfig = {
   stats: [
     { key: "followers", value: 81 },
     { key: "views", value: 67021 },
-    { key: "videos", value: 131 },
+    { key: "videos", value: 135 },
   ],
 } as const;
 
